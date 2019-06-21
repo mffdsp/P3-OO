@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.ImageIcon;
 
 public class DetailView extends JFrame {
@@ -33,6 +35,10 @@ public class DetailView extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ViewClass.class.getResource("/com/payroll/icons/APPICON.png")));
 		setBounds(100, 100, 300, 330);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int height = screenSize.height;
+		int width = screenSize.width;
+		setLocation(width/2-getSize().width/2, height/2-getSize().height/2);
 		contentPane = new JPanel();
 		contentPane.setForeground(SystemColor.menu);
 		contentPane.setBackground(SystemColor.menu);

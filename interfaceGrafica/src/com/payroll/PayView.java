@@ -14,6 +14,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractListModel;
 import java.awt.Cursor;
+import java.awt.Dimension;
+
 import javax.swing.border.CompoundBorder;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
@@ -22,11 +24,9 @@ import javax.swing.ListSelectionModel;
 
 public class PayView extends JFrame {
 
-	private JPanel contentPane;
-	int mode = 1;
-	/**
-	 * Create the frame.
-	 */
+		private JPanel contentPane;
+		int mode = 1;
+	
 	public PayView(DefaultListModel DLMA, DefaultListModel DLMC,  DefaultListModel DLMH, Funcionario[] func) {
 		
 		setForeground(Color.WHITE);
@@ -41,6 +41,10 @@ public class PayView extends JFrame {
 		contentPane.setLayout(null);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ViewClass.class.getResource("/com/payroll/icons/APPICON.png")));
 		getContentPane().setBackground(SystemColor.inactiveCaption);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int height = screenSize.height;
+		int width = screenSize.width;
+		setLocation(width/2-getSize().width/2, height/2-getSize().height/2);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(135, 11, 385, 244);
@@ -65,7 +69,7 @@ public class PayView extends JFrame {
 			}
 		});
 		
-		
+		Command.saveS(func);
 		JList list_1 = new JList();
 		list_1.setBounds(135, 11, -128, 232);
 		list_1.setBorder(null);
@@ -116,10 +120,18 @@ public class PayView extends JFrame {
 		btnDetalhar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int achou = 0;
+				try{
+					if(hlist.getSelectedIndex() == -1) {
+						throw new Exception("Necessário selecionar uma opção");
+					}
+				}catch(Exception eop) {
+					System.err.println(eop);
+					return;
+				}
 				for(int i = 0; i < 50; i++) {
 					switch (mode){
 					case 1:
-						if(func[i] instanceof Horista) {
+						if(func[i] instanceof Horista && !hlist.getSelectedValue().toString().equals("Lista Vazia")) {
 							if(hlist.getSelectedIndex() == achou) {
 								new DetailView(func[i]).setVisible(true);
 							}
@@ -127,7 +139,7 @@ public class PayView extends JFrame {
 						}
 						break;
 					case 2:
-						if(func[i] instanceof Comissionado) {
+						if(func[i] instanceof Comissionado  ) {
 							if(hlist.getSelectedIndex() == achou) {
 								new DetailView(func[i]).setVisible(true);	
 							}

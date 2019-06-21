@@ -76,12 +76,7 @@ public class ViewClass extends JFrame{
 	
 	public ViewClass() throws IOException {
 				
-		//VISUAL
-//		BufferedImage myPicture = ImageIO.read(new File("/com/payroll/bk.jpg"));
-//		JLabel picLabel = new JLabel(new ImageIcon(myPicture));
-//		getContentPane().add(picLabel);
-	
-
+		//frameset
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
 		setType(Type.NORMAL);
 		setTitle("FolhaDePagamento");
@@ -99,7 +94,7 @@ public class ViewClass extends JFrame{
 		texto.setForeground(SystemColor.controlText);
 		texto.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		texto.setBounds(625, 11, 180, 14);
-		
+		//frameset
 		
 		
 		JButton button_2 = new JButton("");
@@ -158,7 +153,6 @@ public class ViewClass extends JFrame{
 
 		
 		contentPane.setLayout(null);
-		//contentPane.add(background);
 		contentPane.add(AddBt);
 		contentPane.add(button_1);
 		contentPane.add(button_2);
@@ -409,24 +403,33 @@ public class ViewClass extends JFrame{
 		btnRodarFolhaDe.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnRodarFolhaDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				DefaultListModel DLMA = new DefaultListModel();
-				DefaultListModel DLMC = new DefaultListModel();
-				DefaultListModel DLMH = new DefaultListModel();
-				try{
-					UT.payList(teste, DLMC, DLMA, DLMH);
+				if(CalendarMT.payboo){
+					JOptionPane.showMessageDialog(null ,
+							"Folha de pagamento já rodada hoje", "ERRO", JOptionPane.ERROR_MESSAGE);
+					return;
 				}
-				catch(NullPointerException e2) {
-					System.out.println("Exception de ponteiro nulo");
+				int dialogButton = JOptionPane.YES_NO_OPTION;
+				int dialogResult = JOptionPane.showConfirmDialog (null, "Deseja rodar a folha de pagamento para hoje?", "Confirmação", dialogButton);
+				if(dialogResult == JOptionPane.YES_OPTION){
+					CalendarMT.payboo =  true;
+					DefaultListModel DLMA = new DefaultListModel();
+					DefaultListModel DLMC = new DefaultListModel();
+					DefaultListModel DLMH = new DefaultListModel();
+					try{
+						UT.payList(teste, DLMC, DLMA, DLMH);
+					}
+					catch(NullPointerException e2) {
+						System.out.println("Exception de ponteiro nulo");
+					}
+					if(DLMA.getSize() == 0) {
+						DLMA.addElement("Lista Vazia");
+					}if(DLMH.getSize() == 0) {
+						DLMH.addElement("Lista Vazia");
+					}if(DLMC.getSize() == 0) {
+						DLMC.addElement("Lista Vazia");
+					}
+					new PayView(DLMA, DLMC, DLMH, teste).setVisible(true);
 				}
-				if(DLMA.getSize() == 0) {
-					DLMA.addElement("Lista Vazia");
-				}if(DLMH.getSize() == 0) {
-					DLMH.addElement("Lista Vazia");
-				}if(DLMC.getSize() == 0) {
-					DLMC.addElement("Lista Vazia");
-				}
-				new PayView(DLMA, DLMC, DLMH, teste).setVisible(true);
 			}
 		});
 		btnRodarFolhaDe.setIcon(new ImageIcon(ViewClass.class.getResource("/com/payroll/icons/icons8-transfer\u00EAncia-de-dinheiro-64 (1).png")));

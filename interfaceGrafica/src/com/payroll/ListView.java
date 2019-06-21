@@ -14,6 +14,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Cursor;
+import java.awt.Dimension;
+
 import javax.swing.border.CompoundBorder;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
@@ -29,6 +31,10 @@ public class ListView extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("Lista de funcionários adicionados ao sistema");
 		setBounds(100, 100, 545, 335);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int height = screenSize.height;
+		int width = screenSize.width;
+		setLocation(width/2-getSize().width/2, height/2-getSize().height/2);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.WHITE);
 		contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
@@ -98,11 +104,20 @@ public class ListView extends JFrame {
 		contentPane.add(btnDetalhar);
 		btnDetalhar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				try{
+					if(hlist.getSelectedIndex() == -1) {
+						throw new Exception("Necessário selecionar uma opção");
+					}
+				}catch(Exception eop) {
+					System.err.println(eop);
+					return;
+				}
 				int achou = 0;
 				for(int i = 0; i < 50; i++) {
 					switch (mode){
 					case 1:
-						if(func[i] instanceof Horista) {
+						if(func[i] instanceof Horista && !hlist.getSelectedValue().toString().equals("Lista Vazia")) {
 							if(hlist.getSelectedIndex() == achou) {
 								new DetailView(func[i]).setVisible(true);
 							}

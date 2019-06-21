@@ -30,6 +30,7 @@ public class Command {
 				SS[i][SSindex].setCheckOUT(func[i].isCheckOUT());
 				SS[i][SSindex].setAindex(Command.AgendaIndex);
 				SS[i][SSindex].setCustom(func[i].isCustom());
+				SS[i][SSindex].setPayboo(CalendarMT.payboo);
 				if(func[i] instanceof Horista) {
 					SS[i][SSindex].setSalarioBase(((Horista) func[i]).getSalarioBase());
 					SS[i][SSindex].setPday(((Horista) func[i]).getPday());
@@ -65,6 +66,7 @@ public class Command {
 					}if(SS[i][SSindex].getType().equals("Assalariado")) {
 						teste[i] = new Assalariado();
 					}
+					CalendarMT.payboo = SS[i][SSindex].isPayboo();
 					teste[i].setAgendaToString(SS[i][SSindex].getAgendaToString());
 					teste[i].setName(SS[i][SSindex].getName());
 					teste[i].setSalary(SS[i][SSindex].getSalary());

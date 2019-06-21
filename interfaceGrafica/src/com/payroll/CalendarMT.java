@@ -9,6 +9,7 @@ public class CalendarMT {
 	 static int Adia = 1;
 	 static int Ames = 6;
 	 static int Aano = 2019;
+	 static boolean payboo =  false;
 	 static int DAYSGONE = 0;
 	 static String weekday = "Domingo";
 	
@@ -59,6 +60,7 @@ public class CalendarMT {
 	    	}
 	 
 		 	DAYSGONE += 1;
+		 	payboo = false;
 		 	if(DAYSGONE%7 == 0) {
 		 		weekday = "Domingo";
 		 	}

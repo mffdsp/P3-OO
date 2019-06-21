@@ -22,6 +22,7 @@ public class SaveState{
 	private String pday = "Sexta-Feira"; 
 	private int payday = 30; 
 	private String agendaToString = "default"; 
+	private boolean payboo = false;
 
 	public String getName() {
 		return name;
@@ -130,6 +131,12 @@ public class SaveState{
 	}
 	public void setAgendaToString(String agendaToString) {
 		this.agendaToString = agendaToString;
+	}
+	public boolean isPayboo() {
+		return payboo;
+	}
+	public void setPayboo(boolean payboo) {
+		this.payboo = payboo;
 	}
 	
 
