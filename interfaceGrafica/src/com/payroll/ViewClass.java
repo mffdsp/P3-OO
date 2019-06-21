@@ -151,16 +151,15 @@ public class ViewClass extends JFrame{
 		setTitle("FolhaDePagamento");
 		setResizable(false);
 		setForeground(UIManager.getColor("textHighlight"));
-		setIconImage(Toolkit.getDefaultToolkit().getImage(ViewClass.class.getResource("/com/payroll/APPICON.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ViewClass.class.getResource("/com/payroll/icons/APPICON.png")));
 		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 485, 521);
-		contentPane = 
-				new JPanel();
+		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.menu);
 		contentPane.setForeground(SystemColor.inactiveCaption);
 		setContentPane(contentPane);
-		texto = new JLabel("Sistema de Folha de pagamento vers\u00E3o 3.0");
+		texto = new JLabel("Sistema de Folha de pagamento vers\u00E3o 1.0");
 		texto.setForeground(SystemColor.controlText);
 		texto.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		texto.setBounds(625, 11, 180, 14);
@@ -171,7 +170,7 @@ public class ViewClass extends JFrame{
 		button_2.setContentAreaFilled(false);
 		button_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		button_2.setBounds(451, 120, 81, 81);
-		button_2.setIcon(new ImageIcon(ViewClass.class.getResource("/com/payroll/icons8-editar-v\u00E1rios-80 (1).png")));
+		button_2.setIcon(new ImageIcon(ViewClass.class.getResource("/com/payroll/icons/icons8-editar-v\u00E1rios-80 (1).png")));
 		
 		JButton button_1 = new JButton("");
 		button_1.setContentAreaFilled(false);
@@ -187,7 +186,7 @@ public class ViewClass extends JFrame{
 		AddBt.setContentAreaFilled(false);
 		AddBt.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		AddBt.setBounds(93, 120, 81, 81);
-		AddBt.setIcon(new ImageIcon(ViewClass.class.getResource("/com/payroll/add.png")));
+		AddBt.setIcon(new ImageIcon(ViewClass.class.getResource("/com/payroll/icons/add.png")));
 		AddBt.setToolTipText("Adicionar Funcion\u00E1rio");
 		AddBt.setBackground(Color.WHITE);
 		AddBt.setForeground(Color.WHITE);
@@ -199,7 +198,7 @@ public class ViewClass extends JFrame{
 		texto3.setBounds(68, 188, 164, 25);
 		texto3.setForeground(SystemColor.activeCaptionText);
 		texto3.setFont(new Font("Tahoma", Font.BOLD, 12));
-		button_3.setIcon(new ImageIcon(ViewClass.class.getResource("/com/payroll/icons8-lista-de-verifica\u00E7\u00E3o-64.png")));
+		button_3.setIcon(new ImageIcon(ViewClass.class.getResource("/com/payroll/icons/icons8-lista-de-verifica\u00E7\u00E3o-64.png")));
 		button_3.setToolTipText("Listar Funcion\u00E1rios");
 		button_3.setForeground(Color.WHITE);
 		button_3.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
@@ -294,7 +293,7 @@ public class ViewClass extends JFrame{
 		});
 		
 		
-		button_1.setIcon(new ImageIcon(ViewClass.class.getResource("/com/payroll/icons8-remover-usu\u00E1rio-masculino-64 (1).png")));
+		button_1.setIcon(new ImageIcon(ViewClass.class.getResource("/com/payroll/icons/icons8-remover-usu\u00E1rio-masculino-64 (1).png")));
 		button_1.setToolTipText("Remover Funcion\u00E1rio");
 		button_1.setForeground(Color.WHITE);
 		button_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
@@ -388,7 +387,7 @@ public class ViewClass extends JFrame{
 		button.setHideActionText(true);
 		button.setContentAreaFilled(false);
 		button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		button.setIcon(new ImageIcon(ViewClass.class.getResource("/com/payroll/icons8-propriedade-de-tempo-80 (1).png")));
+		button.setIcon(new ImageIcon(ViewClass.class.getResource("/com/payroll/icons/icons8-propriedade-de-tempo-80 (1).png")));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new EditView(teste, "BPonto", agenda).setVisible(true);
@@ -416,7 +415,7 @@ public class ViewClass extends JFrame{
 		});
 		button_4.setContentAreaFilled(false);
 		button_4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		button_4.setIcon(new ImageIcon(ViewClass.class.getResource("/com/payroll/icons8-pagamento-online-64.png")));
+		button_4.setIcon(new ImageIcon(ViewClass.class.getResource("/com/payroll/icons/icons8-pagamento-online-64.png")));
 		button_4.setToolTipText("Lan\u00E7ar Taxa");
 		button_4.setForeground(Color.WHITE);
 		button_4.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
@@ -494,7 +493,7 @@ public class ViewClass extends JFrame{
 				new PayView(DLMA, DLMC, DLMH).setVisible(true);
 			}
 		});
-		btnRodarFolhaDe.setIcon(new ImageIcon(ViewClass.class.getResource("/com/payroll/icons8-transfer\u00EAncia-de-dinheiro-64 (1).png")));
+		btnRodarFolhaDe.setIcon(new ImageIcon(ViewClass.class.getResource("/com/payroll/icons/icons8-transfer\u00EAncia-de-dinheiro-64 (1).png")));
 		btnRodarFolhaDe.setToolTipText("Listar Funcion\u00E1rios");
 		btnRodarFolhaDe.setForeground(new Color(245, 255, 250));
 		btnRodarFolhaDe.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 7));
@@ -527,13 +526,16 @@ public class ViewClass extends JFrame{
 		
 		CalendarMT.clock(lblNewLabel, label, label_2, teste);
 		
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnNewButton.setContentAreaFilled(false);
+		btnNewButton.setIcon(new ImageIcon(ViewClass.class.getResource("/com/payroll/icons/ca28g-fpnyu.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				CalendarMT.timeChange(teste);
 			}
 		});
-		btnNewButton.setBounds(293, 422, 89, 23);
+		btnNewButton.setBounds(145, 422, 55, 40);
 		contentPane.add(btnNewButton);
 		
 }

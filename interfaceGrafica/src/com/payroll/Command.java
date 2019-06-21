@@ -28,8 +28,16 @@ public class Command {
 				SS[i][SSindex].setCheckIN(func[i].isCheckIN());
 				SS[i][SSindex].setCheckOUT(func[i].isCheckOUT());
 				SS[i][SSindex].setAindex(Command.AgendaIndex);
+				SS[i][SSindex].setCustom(func[i].isCustom());
 				if(func[i] instanceof Horista) {
 					SS[i][SSindex].setSalarioBase(((Horista) func[i]).getSalarioBase());
+					SS[i][SSindex].setPday(((Horista) func[i]).getPday());
+				}
+				if(func[i] instanceof Assalariado) {
+					SS[i][SSindex].setPayday(((Assalariado) func[i]).getPayday());
+				}
+				if(func[i] instanceof Comissionado) {
+					SS[i][SSindex].setPday(((Comissionado) func[i]).getPday());
 				}
 				
 			}
@@ -47,6 +55,13 @@ public class Command {
 			for(int i = 0; i < 50; i++) {
 				if(teste[i] != null) {
 					
+					if(SS[i][SSindex].getType().equals("Comissionado")) {
+						teste[i] = new Comissionado();
+					}if(SS[i][SSindex].getType().equals("Horista")) {
+						teste[i] = new Horista();
+					}if(SS[i][SSindex].getType().equals("Assalariado")) {
+						teste[i] = new Assalariado();
+					}
 					teste[i].setName(SS[i][SSindex].getName());
 					teste[i].setSalary(SS[i][SSindex].getSalary());
 					teste[i].setAdress(SS[i][SSindex].getAdress());
@@ -58,8 +73,16 @@ public class Command {
 					teste[i].setSaved(SS[i][SSindex].isSaved());
 					teste[i].setCheckIN(SS[i][SSindex].isCheckIN());
 					teste[i].setCheckOUT(SS[i][SSindex].isCheckOUT());
+					teste[i].setCustom(SS[i][SSindex].isCustom());
 					if(teste[i] instanceof Horista) {
 						((Horista) teste[i]).setSalarioBase(SS[i][SSindex].getSalarioBase());
+						((Horista) teste[i]).setPday(SS[i][SSindex].getPday());
+					}
+					if(teste[i] instanceof Assalariado) {
+						((Assalariado) teste[i]).setPayday(SS[i][SSindex].getPayday());
+					}
+					if(teste[i] instanceof Comissionado) {
+						((Comissionado) teste[i]).setPday(SS[i][SSindex].getPday());
 					}
 					
 				}
@@ -81,6 +104,13 @@ public class Command {
 			for(int i = 0; i < 50; i++) {
 				if(teste[i] != null) {
 					
+					if(SS[i][SSindex].getType().equals("Comissionado")) {
+						teste[i] = new Comissionado();
+					}if(SS[i][SSindex].getType().equals("Horista")) {
+						teste[i] = new Horista();
+					}if(SS[i][SSindex].getType().equals("Assalariado")) {
+						teste[i] = new Assalariado();
+					}
 					teste[i].setName(SS[i][SSindex].getName());
 					teste[i].setSalary(SS[i][SSindex].getSalary());
 					teste[i].setAdress(SS[i][SSindex].getAdress());
@@ -92,11 +122,17 @@ public class Command {
 					teste[i].setSaved(SS[i][SSindex].isSaved());
 					teste[i].setCheckIN(SS[i][SSindex].isCheckIN());
 					teste[i].setCheckOUT(SS[i][SSindex].isCheckOUT());
-				
+					teste[i].setCustom(SS[i][SSindex].isCustom());
 					if(teste[i] instanceof Horista) {
 						((Horista) teste[i]).setSalarioBase(SS[i][SSindex].getSalarioBase());
+						((Horista) teste[i]).setPday(SS[i][SSindex].getPday());
 					}
-					
+					if(teste[i] instanceof Assalariado) {
+						((Assalariado) teste[i]).setPayday(SS[i][SSindex].getPayday());
+					}
+					if(teste[i] instanceof Comissionado) {
+						((Comissionado) teste[i]).setPday(SS[i][SSindex].getPday());
+					}
 					
 				}
 			}

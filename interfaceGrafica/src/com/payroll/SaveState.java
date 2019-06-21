@@ -19,6 +19,10 @@ public class SaveState{
 	private double salarioBase = 0; 
 	private boolean Asaved = false;
 	private int Aindex = 0;
+	private boolean custom = false;
+	private String pday = "Sexta-Feira"; 
+	private int payday = 30; 
+
 	public String getName() {
 		return name;
 	}
@@ -102,6 +106,24 @@ public class SaveState{
 	}
 	public void setAindex(int aindex) {
 		Aindex = aindex;
+	}
+	public boolean isCustom() {
+		return custom;
+	}
+	public void setCustom(boolean custom) {
+		this.custom = custom;
+	}
+	public int getPayday() {
+		return payday;
+	}
+	public void setPayday(int payday) {
+		this.payday = payday;
+	}
+	public String getPday() {
+		return pday;
+	}
+	public void setPday(String pday) {
+		this.pday = pday;
 	}
 	
 

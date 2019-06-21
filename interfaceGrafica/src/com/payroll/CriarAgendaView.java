@@ -37,7 +37,7 @@ public class CriarAgendaView extends JFrame {
 		setLocation(width/2-getSize().width/2, height/2-getSize().height/2);
 		setTitle("Criar Agenda");
 		setResizable(false);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(ViewClass.class.getResource("/com/payroll/APPICON.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ViewClass.class.getResource("/com/payroll/icons/APPICON.png")));
 		
 		
 		
@@ -87,8 +87,8 @@ public class CriarAgendaView extends JFrame {
 		contentPane.add(lblDiaDaS);
 		
 		JComboBox comboBox_ds = new JComboBox();
-		comboBox_ds.setModel(new DefaultComboBoxModel(new String[] {"Sabado", "Segunda-Feira", "Terca-Feira", "Quarta-Feira", 
-				"Quinta-Feira", "Sexta-Feira", "Domingo" }));
+		comboBox_ds.setModel(new DefaultComboBoxModel(new String[] {"Segunda-Feira", "Terca-Feira", "Quarta-Feira", 
+				"Quinta-Feira", "Sexta-Feira"}));
 		comboBox_ds.setSelectedIndex(0);
 		comboBox_ds.setBounds(106, 104, 112, 20);
 		

@@ -234,7 +234,7 @@ public class SignUP extends JFrame {
 		
 		JLabel lbimg = new JLabel("");
 		lbimg.setBounds(28, 11, 145, 107);
-		lbimg.setIcon(new ImageIcon(SignUP.class.getResource("/com/payroll/icons8-gest\u00E3o-de-cliente-100.png")));
+		lbimg.setIcon(new ImageIcon(SignUP.class.getResource("/com/payroll/icons/icons8-gest\u00E3o-de-cliente-100.png")));
 		contentPane.setLayout(null);
 		contentPane.add(btnSalvar);
 		contentPane.add(LBadress);
@@ -251,7 +251,7 @@ public class SignUP extends JFrame {
 		contentPane.add(CBtype);
 		
 		JLabel LBcoinic = new JLabel("");
-		LBcoinic.setIcon(new ImageIcon(SignUP.class.getResource("/com/payroll/icons8-caro-64.png")));
+		LBcoinic.setIcon(new ImageIcon(SignUP.class.getResource("/com/payroll/icons/icons8-caro-64.png")));
 		LBcoinic.setBounds(28, 279, 106, 107);
 		contentPane.add(LBcoinic);
 		

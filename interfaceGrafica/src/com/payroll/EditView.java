@@ -93,10 +93,12 @@ public class EditView extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int indice = 0;
 				boolean notvalid = true;
+				boolean sinnotvalid = true;
 				try {
 					int teste = Integer.parseInt(codeField.getText());
 					indice = getIndex(codeField.getText());
 					notvalid = func[indice] == null || Integer.parseInt(codeField.getText()) < 20190 || !func[indice].isSaved();
+					sinnotvalid = func[indice] == null || Integer.parseInt(codeField.getText()) < 19190 || !func[indice].isSaved();
 				}
 				catch(Exception e0) {
 					System.err.print(e0);
@@ -137,7 +139,7 @@ public class EditView extends JFrame {
 				}
 				if(action.equals("TSindical"))
 				{
-					if(notvalid)
+					if(sinnotvalid)
 					{
 						JOptionPane.showMessageDialog(null ,
 								"Código incorreto", "ERRO", JOptionPane.ERROR_MESSAGE);

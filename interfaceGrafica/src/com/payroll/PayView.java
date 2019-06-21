@@ -23,6 +23,8 @@ import java.awt.Cursor;
 import javax.swing.UIManager;
 import javax.swing.border.CompoundBorder;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
+
 import javax.swing.ListSelectionModel;
 
 public class PayView extends JFrame {
@@ -43,6 +45,7 @@ public class PayView extends JFrame {
 		contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ViewClass.class.getResource("/com/payroll/icons/APPICON.png")));
 		getContentPane().setBackground(SystemColor.inactiveCaption);
 		
 		JScrollPane scrollPane = new JScrollPane();

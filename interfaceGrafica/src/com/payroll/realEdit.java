@@ -66,6 +66,7 @@ public class realEdit extends JFrame {
 		custom = func[index].isCustom();
 		Utility UT = new Utility();
 		setTitle("Editar Informações");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ViewClass.class.getResource("/com/payroll/icons/APPICON.png")));
 		setForeground(Color.WHITE);
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -143,7 +144,7 @@ public class realEdit extends JFrame {
 		panel.add(label_3);
 		
 		JLabel label_4 = new JLabel("");
-		label_4.setIcon(new ImageIcon(realEdit.class.getResource("/com/payroll/icons8-gest\u00E3o-de-cliente-100.png")));
+		label_4.setIcon(new ImageIcon(realEdit.class.getResource("/com/payroll/icons/icons8-gest\u00E3o-de-cliente-100.png")));
 		label_4.setBounds(28, 11, 145, 107);
 		panel.add(label_4);
 		
@@ -184,7 +185,7 @@ public class realEdit extends JFrame {
 		panel.add(comboBox_1);
 		
 		JLabel label_7 = new JLabel("");
-		label_7.setIcon(new ImageIcon(realEdit.class.getResource("/com/payroll/icons8-caro-64.png")));
+		label_7.setIcon(new ImageIcon(realEdit.class.getResource("/com/payroll/icons/icons8-caro-64.png")));
 		label_7.setBounds(28, 247, 106, 107);
 		panel.add(label_7);
 		
@@ -263,7 +264,7 @@ public class realEdit extends JFrame {
 				}
 			}
 		});
-		tglbtnNewToggleButton.setBounds(448, 101, 132, 23);
+		tglbtnNewToggleButton.setBounds(449, 94, 132, 23);
 		panel.add(tglbtnNewToggleButton);
 		
 		JLabel lblSindicato = new JLabel("Sindicato:");
@@ -303,17 +304,17 @@ public class realEdit extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(comboBox_1.getSelectedItem().toString().equals("Assalariado") && !custom) {
-					System.out.println("criou A");
+					//System.out.println("criou A");
 					func[index] = new Assalariado();
 					func[index].setType("Assalariado");
 					
 				}else if(comboBox_1.getSelectedItem().toString().equals("Horista") && !custom ) {
-					System.out.println("criou H ");
+					//System.out.println("criou H ");
 					func[index] = new Horista();
 					func[index].setType("Horista");
 					
 				}else if(comboBox_1.getSelectedItem().toString().equals("Comissionado") && !custom ) {
-					System.out.println("criou C ");
+					//System.out.println("criou C ");
 					func[index] = new Comissionado();
 					func[index].setType("Comissionado");
 					
@@ -382,8 +383,7 @@ public class realEdit extends JFrame {
 						return;
 					}
 				}
-				
-				//Dia de recebimento de Assalariado
+				System.out.println("something");
 				if(func[index] instanceof Assalariado && !func[index].isCustom()) {
 					try {
 						if(Integer.parseInt(textField_3.getText()) > 30 || Integer.parseInt(textField_3.getText()) < 1) {

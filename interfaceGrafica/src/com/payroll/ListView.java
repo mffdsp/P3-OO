@@ -22,6 +22,7 @@ import java.awt.Cursor;
 import javax.swing.UIManager;
 import javax.swing.border.CompoundBorder;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 
 public class ListView extends JFrame {
@@ -63,6 +64,7 @@ public class ListView extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		getContentPane().setBackground(SystemColor.inactiveCaption);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ViewClass.class.getResource("/com/payroll/icons/APPICON.png")));
 		
 
 		JList hlist = new JList();

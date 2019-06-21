@@ -22,6 +22,7 @@ public class Utility {
 		for(int i = 0; i < 50; i++)
 		{
 			func[i] = new Horista();
+			func[i].setType("Horista");
 			agenda[i] = new Agenda();
 			agenda[i].setSaved(false);
 		}
