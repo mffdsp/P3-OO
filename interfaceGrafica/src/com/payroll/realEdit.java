@@ -26,6 +26,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.border.CompoundBorder;
 import javax.swing.JToggleButton;
+import javax.swing.ListSelectionModel;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 
@@ -175,7 +176,7 @@ public class realEdit extends JFrame {
 			comboBox_1.setModel(new DefaultComboBoxModel(new String[] { func[index].getType(), "Horista", "Assalariado"}));
 			break;
 		case "Assalariado":
-			comboBox_1.setModel(new DefaultComboBoxModel(new String[] { func[index].getType(), "Horsita", "Comissionado"}));
+			comboBox_1.setModel(new DefaultComboBoxModel(new String[] { func[index].getType(), "Horista", "Comissionado"}));
 			break;
 		}
 		
@@ -191,7 +192,7 @@ public class realEdit extends JFrame {
 		if(func[index].isSindicaty()) {
 			comboBox_sind.setModel(new DefaultComboBoxModel(new String[] {"SIM", "NAO"}));
 		}else comboBox_sind.setModel(new DefaultComboBoxModel(new String[] {"NAO", "SIM"}));
-		comboBox_sind.setBounds(371, 95, 56, 20);
+		comboBox_sind.setBounds(362, 95, 65, 20);
 		panel.add(comboBox_sind);
 		
 		JLabel lblDiaDePagamento = new JLabel("");
@@ -203,6 +204,8 @@ public class realEdit extends JFrame {
 		
 		
 		JList list = new JList();
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
 		if(func[index].isCustom())
 		{
 			acc = 0; list.setVisible(true);			
@@ -266,7 +269,7 @@ public class realEdit extends JFrame {
 		JLabel lblSindicato = new JLabel("Sindicato:");
 		lblSindicato.setForeground(Color.BLACK);
 		lblSindicato.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblSindicato.setBounds(280, 94, 92, 21);
+		lblSindicato.setBounds(260, 94, 92, 21);
 		panel.add(lblSindicato);
 		
 		textField_3 = new JTextField();
@@ -300,13 +303,19 @@ public class realEdit extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(comboBox_1.getSelectedItem().toString().equals("Assalariado") && !custom) {
+					System.out.println("criou A");
 					func[index] = new Assalariado();
+					func[index].setType("Assalariado");
 					
 				}else if(comboBox_1.getSelectedItem().toString().equals("Horista") && !custom ) {
+					System.out.println("criou H ");
 					func[index] = new Horista();
+					func[index].setType("Horista");
 					
 				}else if(comboBox_1.getSelectedItem().toString().equals("Comissionado") && !custom ) {
+					System.out.println("criou C ");
 					func[index] = new Comissionado();
+					func[index].setType("Comissionado");
 					
 				} else if(custom) {
 					
@@ -316,9 +325,23 @@ public class realEdit extends JFrame {
 						((Assalariado) func[index]).setPayday(((Mensal)agenda[list.getSelectedIndex()]).getDia());
 						
 					}else if(agenda[list.getSelectedIndex()] instanceof Semanal) {
-						func[index] = new Horista();
-						func[index].setType("Horista");
-						((Horista) func[index]).setPday(((Semanal)agenda[list.getSelectedIndex()]).getDia());
+						
+						if(comboBox_1.getSelectedItem().toString().equals("Comissionado")) {
+							
+							func[index] = new Comissionado();
+							func[index].setType("Comissionado");
+							((Comissionado) func[index]).setPday(((Semanal)agenda[list.getSelectedIndex()]).getDia());
+							((Comissionado) func[index]).setFrequencia(((Semanal)agenda[list.getSelectedIndex()]).getFrequencia());
+							
+						}if(comboBox_1.getSelectedItem().toString().equals("Horista")) {
+							
+							func[index] = new Horista();
+							func[index].setType("Horista");
+							((Horista) func[index]).setPday(((Semanal)agenda[list.getSelectedIndex()]).getDia());
+							((Horista) func[index]).setFrequencia(((Semanal)agenda[list.getSelectedIndex()]).getFrequencia());
+							
+						}
+						
 					}
 					func[index].setAgendaID(list.getSelectedIndex());
 					
@@ -328,9 +351,6 @@ public class realEdit extends JFrame {
 				func[index].setAdress(textField_1.getText());
 				func[index].setPayMode(comboBox.getSelectedItem().toString());
 				func[index].setCustom(custom);
-				if(!func[index].isCustom()){
-					func[index].setType(comboBox_1.getSelectedItem().toString());
-				}
 				func[index].setCode("2019" + index);
 				func[index].setSindicatycode("1010" + index);
 				func[index].setAgendaID(list.getSelectedIndex());
@@ -348,11 +368,14 @@ public class realEdit extends JFrame {
 						return;
 					}
 				} 
-				
 				//Salario de Assalariado e Comissionado
 				else {
 					try { 
 						func[index].setSalary(Double.parseDouble(textField.getText()));
+						if(func[index] instanceof Comissionado) {
+							((Comissionado)func[index]).setRealSalary(Double.parseDouble(textField.getText()));;
+						}
+						
 					} catch(Exception ex0) {
 						UT.ERRO();
 						System.err.print(ex0); 

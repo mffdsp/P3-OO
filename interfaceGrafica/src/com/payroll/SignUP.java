@@ -46,15 +46,15 @@ public class SignUP extends JFrame {
 	private JLabel errotext;
 	boolean sind = false;
 	Utility UT = new Utility();
-	JComboBox comboBox = new JComboBox();
-	JComboBox comboBox_1 = new JComboBox();
+	JComboBox CBtype = new JComboBox();
+	JComboBox CBptype = new JComboBox();
 	
 	/**
 	 * Launch the application.
 	 */
 	public void saveValues(Funcionario[] func, int index) {
 		
-		switch(comboBox.getSelectedItem().toString()) {
+		switch(CBtype.getSelectedItem().toString()) {
 			
 		case "Assalariado":
 			func[index] = new Assalariado();
@@ -72,8 +72,8 @@ public class SignUP extends JFrame {
 		func[index].setSindicatycode("1919" + index);
 		func[index].setName(NameField.getText());
 		func[index].setAdress(AdressField.getText());
-		func[index].setType(comboBox.getSelectedItem().toString());
-		func[index].setPayMode(comboBox_1.getSelectedItem().toString());
+		func[index].setType(CBtype.getSelectedItem().toString());
+		func[index].setPayMode(CBptype.getSelectedItem().toString());
 		func[index].setCode("2019" + index);
 		
 	}
@@ -99,15 +99,13 @@ public class SignUP extends JFrame {
 				"Funcionário adicionado com sucesso!", "Feito", JOptionPane.INFORMATION_MESSAGE);
 		actions = 0;
 		
-		
-		
 		if(func[index] instanceof Horista) {
 			((Horista) func[index]).setSalarioBase(Double.parseDouble(SalaryField.getText()));
 			func[index].setSalary(0);
 		}if(func[index] instanceof Assalariado) {
 			((Assalariado)func[index]).setPayday(30);
 		}if(func[index] instanceof Comissionado) {
-			//System.err.println("1");
+			//DOnothing
 		}
 		
 		func[index].setSaved(true);
@@ -138,20 +136,20 @@ public class SignUP extends JFrame {
 		setSize(576, 540);
 		setLocation(width/2-getSize().width/2, height/2-getSize().height/2);
 		
-		JLabel lblNewLabel = new JLabel("Nome:");
-		lblNewLabel.setBounds(28, 128, 56, 21);
-		lblNewLabel.setForeground(Color.BLACK);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		JLabel LBname = new JLabel("Nome:");
+		LBname.setBounds(28, 128, 56, 21);
+		LBname.setForeground(Color.BLACK);
+		LBname.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
-		JLabel lblEndereo = new JLabel("Endere\u00E7o:");
-		lblEndereo.setBounds(28, 164, 93, 21);
-		lblEndereo.setForeground(SystemColor.activeCaptionText);
-		lblEndereo.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		JLabel LBadress = new JLabel("Endere\u00E7o:");
+		LBadress.setBounds(28, 164, 93, 21);
+		LBadress.setForeground(SystemColor.activeCaptionText);
+		LBadress.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
-		JLabel lblTipo = new JLabel("Valor:");
-		lblTipo.setBounds(28, 418, 71, 21);
-		lblTipo.setForeground(Color.BLACK);
-		lblTipo.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		JLabel LBvalue = new JLabel("Valor:");
+		LBvalue.setBounds(28, 418, 71, 21);
+		LBvalue.setForeground(Color.BLACK);
+		LBvalue.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
 		AdressField = new JTextField();
 		AdressField.setBounds(142, 161, 285, 24);
@@ -210,64 +208,64 @@ public class SignUP extends JFrame {
 			}
 		});
 		
-		JLabel lblTipo_1 = new JLabel("Tipo de funcin\u00E1rio:");
-		lblTipo_1.setBounds(28, 196, 202, 21);
-		lblTipo_1.setForeground(Color.BLACK);
-		lblTipo_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		JLabel LBtype = new JLabel("Tipo de funcin\u00E1rio:");
+		LBtype.setBounds(28, 196, 202, 21);
+		LBtype.setForeground(Color.BLACK);
+		LBtype.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
-		comboBox.setBounds(287, 199, 140, 20);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Horista", "Assalariado", "Comissionado"}));
-		comboBox.setSelectedIndex(1);
+		CBtype.setBounds(287, 199, 140, 20);
+		CBtype.setModel(new DefaultComboBoxModel(new String[] {"Horista", "Assalariado", "Comissionado"}));
+		CBtype.setSelectedIndex(1);
 	
 		
 		
 		
-		JLabel lblMtodoDePagamento = new JLabel("M\u00E9todo de pagamento:");
-		lblMtodoDePagamento.setBounds(28, 386, 202, 21);
-		lblMtodoDePagamento.setForeground(Color.BLACK);
-		lblMtodoDePagamento.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		JLabel LBpayt = new JLabel("M\u00E9todo de pagamento:");
+		LBpayt.setBounds(28, 386, 202, 21);
+		LBpayt.setForeground(Color.BLACK);
+		LBpayt.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
 		
-		comboBox_1.setBounds(223, 386, 140, 20);
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Correios", "Maos", "Conta bancaria"}));
+		CBptype.setBounds(223, 386, 140, 20);
+		CBptype.setModel(new DefaultComboBoxModel(new String[] {"Correios", "Maos", "Conta bancaria"}));
 		
 		
 		
 		
-		JLabel label = new JLabel("");
-		label.setBounds(28, 11, 145, 107);
-		label.setIcon(new ImageIcon(SignUP.class.getResource("/com/payroll/icons8-gest\u00E3o-de-cliente-100.png")));
+		JLabel lbimg = new JLabel("");
+		lbimg.setBounds(28, 11, 145, 107);
+		lbimg.setIcon(new ImageIcon(SignUP.class.getResource("/com/payroll/icons8-gest\u00E3o-de-cliente-100.png")));
 		contentPane.setLayout(null);
 		contentPane.add(btnSalvar);
-		contentPane.add(lblEndereo);
-		contentPane.add(lblNewLabel);
-		contentPane.add(lblTipo);
+		contentPane.add(LBadress);
+		contentPane.add(LBname);
+		contentPane.add(LBvalue);
 		contentPane.add(SalaryField);
 		contentPane.add(AdressField);
 		contentPane.add(NameField);
 		contentPane.add(errotext);
-		contentPane.add(label);
-		contentPane.add(lblMtodoDePagamento);
-		contentPane.add(comboBox_1);
-		contentPane.add(lblTipo_1);
-		contentPane.add(comboBox);
+		contentPane.add(lbimg);
+		contentPane.add(LBpayt);
+		contentPane.add(CBptype);
+		contentPane.add(LBtype);
+		contentPane.add(CBtype);
 		
-		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon(SignUP.class.getResource("/com/payroll/icons8-caro-64.png")));
-		label_1.setBounds(28, 279, 106, 107);
-		contentPane.add(label_1);
+		JLabel LBcoinic = new JLabel("");
+		LBcoinic.setIcon(new ImageIcon(SignUP.class.getResource("/com/payroll/icons8-caro-64.png")));
+		LBcoinic.setBounds(28, 279, 106, 107);
+		contentPane.add(LBcoinic);
 		
-		JLabel lblAssociao = new JLabel("Associa\u00E7\u00E3o Sindical:");
-		lblAssociao.setForeground(Color.BLACK);
-		lblAssociao.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblAssociao.setBounds(28, 228, 202, 21);
-		contentPane.add(lblAssociao);
+		JLabel LBsindboo = new JLabel("Associa\u00E7\u00E3o Sindical:");
+		LBsindboo.setForeground(Color.BLACK);
+		LBsindboo.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		LBsindboo.setBounds(28, 228, 202, 21);
+		contentPane.add(LBsindboo);
 		
-		JComboBox comboBox_sind = new JComboBox();
+		JComboBox CBsindboo = new JComboBox();
 		
-		comboBox_sind.setModel(new DefaultComboBoxModel(new String[] {"N\u00C3O", "SIM"}));
-		comboBox_sind.setBounds(287, 231, 140, 20);
-		contentPane.add(comboBox_sind);
+		CBsindboo.setModel(new DefaultComboBoxModel(new String[] {"N\u00C3O", "SIM"}));
+		CBsindboo.setBounds(287, 231, 140, 20);
+		contentPane.add(CBsindboo);
 		
 		JLabel codeLabel = new JLabel("New label");
 		codeLabel.setForeground(SystemColor.textHighlight);
@@ -283,10 +281,10 @@ public class SignUP extends JFrame {
 		contentPane.add(ScodeLabel);
 		
 		
-		comboBox_sind.addActionListener(new ActionListener() {
+		CBsindboo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				if(comboBox_sind.getSelectedItem().equals("SIM")) {
+				if(CBsindboo.getSelectedItem().equals("SIM")) {
 					sind = true;
 					
 					ScodeLabel.setText("Código sindical = " + "1919" + index);

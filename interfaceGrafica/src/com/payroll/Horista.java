@@ -6,30 +6,28 @@ import java.util.Date;
 
 public class Horista extends Funcionario implements SystemMT{
 	
-	Calendar c = Calendar.getInstance();
      // Getting the day of the week
 	protected double salarioBase = 0;
 	protected int tipo = 1;
 	protected int diasTB = 0;
 	private String pday = "Sexta-Feira"; 
-	protected boolean pago = false;
+	private int frequenciaD = 6;
+	private int frequencia = 1;
 	
-
+	
+	public int getFrequencia() {
+		return frequencia;
+	}
+	public void setFrequencia(int frequencia) {
+		this.frequencia = frequencia;
+	}
 	public boolean pagarFuncionario() {
 		
-		if(tipo == 1) {
-			if(diasTB >= 7 && CalendarMT.weekday.equals(pday)) {
-				pago = true; 
-				return pago;
-			}
-		}else {
-			if(diasTB > 12 && CalendarMT.weekday.equals(pday)) {
-				pago = true;
-				return pago;
-			}
-			
+		setPago(frequenciaD >= frequencia*7 && CalendarMT.weekday.equals(pday));
+		if(isPago()) {
+			 frequenciaD = 6;
 		}
-		return pago;
+		return isPago();
 	
 	}
 	
@@ -57,5 +55,14 @@ public class Horista extends Funcionario implements SystemMT{
 
 	public void setPday(String pday) {
 		this.pday = pday;
+	}
+
+
+	public int getFrequenciaD() {
+		return frequenciaD;
+	}
+
+	public void setFrequenciaD(int frequenciaD) {
+		this.frequenciaD += frequenciaD;
 	}
 }

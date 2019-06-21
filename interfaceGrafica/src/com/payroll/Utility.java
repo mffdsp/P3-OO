@@ -42,6 +42,29 @@ public class Utility {
 			
 		}
 	}
+	
+	public void payList(Funcionario[] teste, DefaultListModel DLMC, DefaultListModel DLMA, DefaultListModel DLMH) {
+		for(int i = 0; i < 50; i++) { 
+			if(teste[i].isSaved())
+			{
+				if(teste[i] instanceof Assalariado && ((Assalariado)teste[i]).pagarFuncionario()){
+					
+					DLMA.addElement(teste[i].toString());	
+					
+				}if(teste[i] instanceof Comissionado && ((Comissionado)teste[i]).pagarFuncionario()){
+					
+					DLMC.addElement(teste[i].toString());	
+					
+				}if(teste[i] instanceof Horista && ((Horista)teste[i]).pagarFuncionario()){
+					
+					DLMH.addElement(teste[i].toString());	
+					
+				}
+			}
+			
+		}
+	}
+	
 	public void ERRO() {
 		JOptionPane.showMessageDialog(null ,
 				"Preencha todos os campos corretamente!", "ERRO", JOptionPane.ERROR_MESSAGE);

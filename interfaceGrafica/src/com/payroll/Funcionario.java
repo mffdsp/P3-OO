@@ -17,6 +17,7 @@ public abstract class Funcionario{
 	protected int timeIN = 0;
 	protected int timeOUT = 0;
 	protected int WH = 0;
+	private boolean pago = false;
 	private boolean checkIN = false;
 	private boolean checkOUT = false;
 	private boolean custom = false;
@@ -41,7 +42,7 @@ public abstract class Funcionario{
 		return timeOUT;
 	}
 	public String toString() {
-		return name + " - " + code +  " - " + salary + "RS";
+		return name + " - " + code +  " - " + salary + "RS" + " / Pago via: " + payMode;
 	}
 	public String getName() {
 		return name;
@@ -122,6 +123,12 @@ public abstract class Funcionario{
 	}
 	public void setAgendaID(int agendaID) {
 		this.agendaID = agendaID;
+	}
+	public boolean isPago() {
+		return pago;
+	}
+	public void setPago(boolean pago) {
+		this.pago = pago;
 	}
 }
 

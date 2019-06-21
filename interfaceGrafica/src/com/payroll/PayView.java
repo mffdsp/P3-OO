@@ -9,6 +9,7 @@ import java.awt.Window.Type;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JList;
 import javax.swing.DefaultListModel;
@@ -22,30 +23,11 @@ import java.awt.Cursor;
 import javax.swing.UIManager;
 import javax.swing.border.CompoundBorder;
 import java.awt.SystemColor;
+import javax.swing.ListSelectionModel;
 
 public class PayView extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	
-	
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PayView frame = new PayView(null, null, null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the frame.
 	 */
@@ -63,22 +45,35 @@ public class PayView extends JFrame {
 		contentPane.setLayout(null);
 		getContentPane().setBackground(SystemColor.inactiveCaption);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(135, 11, 385, 244);
+		contentPane.add(scrollPane);
+		
 
 		JList hlist = new JList();
+		scrollPane.setViewportView(hlist);
+		hlist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		hlist.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		hlist.setForeground(Color.BLACK);
 		hlist.setBackground(Color.WHITE);
 		hlist.setBorder(new CompoundBorder());
 		hlist.setSelectedIndices(new int[] {2});
-		hlist.setBounds(135, 11, 385, 244);
-		contentPane.add(hlist);
-		hlist.setModel(DLMH);
+		hlist.setModel(new AbstractListModel() {
+			String[] values = new String[] {};
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
+		
 		
 		JList list_1 = new JList();
 		list_1.setBounds(135, 11, -128, 232);
 		list_1.setBorder(null);
 		contentPane.add(list_1);
-		
+		hlist.setModel(DLMH);
 		JButton btnNewButton = new JButton("Horistas");
 		btnNewButton.setForeground(Color.BLACK);
 		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));

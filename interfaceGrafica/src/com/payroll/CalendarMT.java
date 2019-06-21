@@ -10,7 +10,7 @@ public class CalendarMT {
 	 static int Ames = 6;
 	 static int Aano = 2019;
 	 static int DAYSGONE = 0;
-	 static String weekday = "Segunda-Feira";
+	 static String weekday = "Domingo";
 	
 	 public static String valueToString(int value) {
 		 if(value < 10) {
@@ -26,11 +26,7 @@ public class CalendarMT {
 		 Ahora = (Ahora + 1) % 24;
 	     if(Ahora == 0 && auxiliandinho == 23)
 	     {
-	    	 for(int i = 0; i < 50; i++) {
-	    		 func[i].setCheckIN(false);
-	    		 func[i].setCheckOUT(false);
-	    	 }
-	         timeChange();
+	         timeChange(func);
 	     }
 	 }
 	 public static void passMinute(Funcionario[] func) {
@@ -44,7 +40,25 @@ public class CalendarMT {
 	     }
 	 }
      
-	 public static void timeChange(){
+	 public static void timeChange(Funcionario[] func){
+		 
+		 	for(int i = 0; i < 50; i++) {
+    		 func[i].setCheckIN(false);
+    		 func[i].setCheckOUT(false);
+    		 if(func[i] instanceof Horista) {
+    			 
+    			( (Horista) func[i]).setFrequenciaD(1);
+    		 }else if(func[i] instanceof Comissionado) 
+    		 {
+    			( (Comissionado) func[i]).setFrequenciaD(1);
+    		 }else if(func[i] instanceof Assalariado) {
+    			 
+        		( (Assalariado) func[i]).setFrequenciaD(1);
+    		 }
+	    		
+	    	}
+	 
+		 	DAYSGONE += 1;
 		 	if(DAYSGONE%7 == 0) {
 		 		weekday = "Domingo";
 		 	}
@@ -67,7 +81,7 @@ public class CalendarMT {
 		 		weekday = "Sabado";
 		 	}
 		 	
-	        DAYSGONE += 1;
+	  
 	        
 	        int aux = Adia;
 

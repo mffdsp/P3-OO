@@ -64,10 +64,10 @@ public class VenderView extends JFrame {
 				try {
 					double value = Double.parseDouble(TFvalor.getText());
 					double salary = func[index].getSalary();
-					func[index].setSalary(salary + value);
+					((Comissionado)func[index]).setRealSalary(value);
 					JOptionPane.showMessageDialog(null ,
 							"Venda associada com sucesso à: \n"
-							+ func[index].getName() + "Salario acumulado em: " + func[index].getSalary() + "RS", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+							+ func[index].getName() + "Salario acumulado em: " + ( ((Comissionado)func[index]).getRealSalary() + salary) + "RS", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
 					Command.saveS(func);
 					setVisible(false);
 				} catch(Exception ex0) {

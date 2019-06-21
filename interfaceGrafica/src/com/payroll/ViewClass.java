@@ -478,9 +478,8 @@ public class ViewClass extends JFrame{
 				DefaultListModel DLMA = new DefaultListModel();
 				DefaultListModel DLMC = new DefaultListModel();
 				DefaultListModel DLMH = new DefaultListModel();
-				
 				try{
-					UT.setList(teste, DLMC, DLMA, DLMH);
+					UT.payList(teste, DLMC, DLMA, DLMH);
 				}
 				catch(NullPointerException e2) {
 					System.out.println("Exception de ponteiro nulo");
@@ -528,8 +527,15 @@ public class ViewClass extends JFrame{
 		
 		CalendarMT.clock(lblNewLabel, label, label_2, teste);
 		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CalendarMT.timeChange(teste);
+			}
+		});
+		btnNewButton.setBounds(293, 422, 89, 23);
+		contentPane.add(btnNewButton);
+		
 }
-	
-
 }
 
