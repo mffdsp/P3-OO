@@ -1,0 +1,22 @@
+	<?xml version="1.0" encoding="UTF-8"?>
+	
+	<?import javafx.geometry.Insets?>
+	<?import javafx.scene.control.*?>
+	<?import javafx.scene.layout.VBox?>
+	<VBox xmlns="http://javafx.com/javafx"
+	      xmlns:fx="http://javafx.com/fxml"
+	      fx:controller="AppController">
+	
+	    <padding>
+	        <Insets top="20" bottom="20" left="20" right="20" />
+	    </padding>
+	
+	    <TableView>
+	        <columns>
+	            <TableColumn text=""></TableColumn>
+	            <TableColumn text="Nome"></TableColumn>
+	            <TableColumn text="Idade"></TableColumn>
+	            <TableColumn text="Endereço"></TableColumn>
+	        </columns>
+	    </TableView>
+	</VBox>
