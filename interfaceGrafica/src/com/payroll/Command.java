@@ -16,6 +16,7 @@ public class Command {
 			if(func[i] != null) 
 			{
 				SS[i][SSindex] = new SaveState();
+				SS[i][SSindex].setAgendaToString(func[i].getAgendaToString());
 				SS[i][SSindex].setName(func[i].getName());
 				SS[i][SSindex].setSalary(func[i].getSalary());
 				SS[i][SSindex].setAdress(func[i].getAdress());
@@ -50,10 +51,12 @@ public class Command {
 			if(SSindex == 1) {
 				throw new Exception("EMPTY STACK");
 			}
+			System.out.println("undo");
 			UNDOAC += 1;
 			SSindex -= 1;
 			for(int i = 0; i < 50; i++) {
 				if(teste[i] != null) {
+					
 					
 					if(SS[i][SSindex].getType().equals("Comissionado")) {
 						teste[i] = new Comissionado();
@@ -62,6 +65,7 @@ public class Command {
 					}if(SS[i][SSindex].getType().equals("Assalariado")) {
 						teste[i] = new Assalariado();
 					}
+					teste[i].setAgendaToString(SS[i][SSindex].getAgendaToString());
 					teste[i].setName(SS[i][SSindex].getName());
 					teste[i].setSalary(SS[i][SSindex].getSalary());
 					teste[i].setAdress(SS[i][SSindex].getAdress());
@@ -99,6 +103,7 @@ public class Command {
 			if(UNDOAC == 0) {
 				throw new Exception("EMPTY STACK");
 			}
+			System.out.println("redo");
 			UNDOAC -= 1;
 			SSindex += 1;
 			for(int i = 0; i < 50; i++) {
@@ -111,6 +116,7 @@ public class Command {
 					}if(SS[i][SSindex].getType().equals("Assalariado")) {
 						teste[i] = new Assalariado();
 					}
+					teste[i].setAgendaToString(SS[i][SSindex].getAgendaToString());
 					teste[i].setName(SS[i][SSindex].getName());
 					teste[i].setSalary(SS[i][SSindex].getSalary());
 					teste[i].setAdress(SS[i][SSindex].getAdress());

@@ -1,63 +1,34 @@
 package com.payroll;
 
-import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Insets;
-import java.awt.Window.Type;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.ListSelectionModel;
 import javax.swing.JList;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
-import javax.swing.JFormattedTextField;
-import javax.swing.AbstractListModel;
 import java.awt.Cursor;
-import javax.swing.UIManager;
 import javax.swing.border.CompoundBorder;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
 
 public class ListView extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	
-	
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ListView frame = new ListView(null, null, null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public ListView(DefaultListModel DLMA, DefaultListModel DLMC,  DefaultListModel DLMH) {
+	int mode = 1;
+	public ListView(DefaultListModel DLMA, DefaultListModel DLMC,  DefaultListModel DLMH, Funcionario[] func) {
 		
 		setForeground(Color.WHITE);
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("Lista de funcionários adicionados ao sistema");
-		setBounds(100, 100, 546, 300);
+		setBounds(100, 100, 545, 335);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.WHITE);
 		contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
@@ -68,6 +39,7 @@ public class ListView extends JFrame {
 		
 
 		JList hlist = new JList();
+		hlist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		hlist.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		hlist.setForeground(Color.BLACK);
 		hlist.setBackground(Color.WHITE); 
@@ -89,6 +61,7 @@ public class ListView extends JFrame {
 		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				mode = 1;
 				hlist.setModel(DLMH);
 			}
 		});
@@ -99,6 +72,7 @@ public class ListView extends JFrame {
 		button.setBackground(Color.WHITE);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				mode = 2;
 				hlist.setModel(DLMC);
 			}
 		});
@@ -109,6 +83,7 @@ public class ListView extends JFrame {
 		button_1.setBackground(Color.WHITE);
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				mode = 3;
 				hlist.setModel(DLMA);
 			}
 		});
@@ -116,7 +91,43 @@ public class ListView extends JFrame {
 		button_1.setBounds(10, 102, 115, 59);
 		contentPane.add(button_1);
 
-		
+		//Find func
+		JButton btnDetalhar = new JButton("Detalhar");
+		btnDetalhar.setToolTipText("Clique para detalhar o funcionario");
+		btnDetalhar.setBounds(431, 266, 89, 31);
+		contentPane.add(btnDetalhar);
+		btnDetalhar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int achou = 0;
+				for(int i = 0; i < 50; i++) {
+					switch (mode){
+					case 1:
+						if(func[i] instanceof Horista) {
+							if(hlist.getSelectedIndex() == achou) {
+								new DetailView(func[i]).setVisible(true);
+							}
+							achou += 1;
+						}
+						break;
+					case 2:
+						if(func[i] instanceof Comissionado) {
+							if(hlist.getSelectedIndex() == achou) {
+								new DetailView(func[i]).setVisible(true);	
+							}
+							achou += 1;
+						}
+						break;
+					case 3:
+						if(func[i] instanceof Assalariado) {
+							if(hlist.getSelectedIndex() == achou) {
+								new DetailView(func[i]).setVisible(true);
+							}
+							achou += 1;
+						}
+						break;
+				}	
+			}
+		}});
 		
 	}
 }

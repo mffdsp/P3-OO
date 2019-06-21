@@ -1,6 +1,5 @@
 package com.payroll;
 
-import java.util.Date;
 
 public class SaveState{
 
@@ -22,6 +21,7 @@ public class SaveState{
 	private boolean custom = false;
 	private String pday = "Sexta-Feira"; 
 	private int payday = 30; 
+	private String agendaToString = "default"; 
 
 	public String getName() {
 		return name;
@@ -124,6 +124,12 @@ public class SaveState{
 	}
 	public void setPday(String pday) {
 		this.pday = pday;
+	}
+	public String getAgendaToString() {
+		return agendaToString;
+	}
+	public void setAgendaToString(String agendaToString) {
+		this.agendaToString = agendaToString;
 	}
 	
 

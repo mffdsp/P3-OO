@@ -1,8 +1,7 @@
 package com.payroll;
 
-import java.awt.BorderLayout;
+
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.Toolkit;

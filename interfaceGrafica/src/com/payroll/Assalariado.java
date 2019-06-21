@@ -1,6 +1,5 @@
 package com.payroll;
 
-import java.util.Date;
 
 public class Assalariado extends Funcionario implements SystemMT{
 
@@ -18,7 +17,7 @@ public class Assalariado extends Funcionario implements SystemMT{
 		setPago(payday == CalendarMT.Adia && Uday && frequenciaD >= 30);
 			
 		if(isPago()) {
-			frequenciaD = 29;
+			frequenciaD = 26;
 		}
 		return isPago();
 	

@@ -4,8 +4,6 @@ public class Mensal extends Agenda{
 	
 	private int dia = 0;
 	
-	
-	
 	public String toString() {
 		return "Mensal - " + dia;
 	}

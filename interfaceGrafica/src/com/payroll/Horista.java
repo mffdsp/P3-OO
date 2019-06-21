@@ -1,9 +1,6 @@
 package com.payroll;
 
 
-import java.util.Calendar;
-import java.util.Date;
-
 public class Horista extends Funcionario implements SystemMT{
 	
      // Getting the day of the week
@@ -14,7 +11,10 @@ public class Horista extends Funcionario implements SystemMT{
 	private int frequenciaD = 6;
 	private int frequencia = 1;
 	
-	
+	@Override
+	public String toString() {
+		return name + " / " + code +  " / " + salarioBase + "RS";
+	}
 	public int getFrequencia() {
 		return frequencia;
 	}

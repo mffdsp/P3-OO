@@ -1,86 +1,22 @@
 package com.payroll;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+
 import java.awt.*;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.Scanner;
-import java.awt.image.BufferedImage;
+
 import java.io.*;
-import java.sql.PreparedStatement;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.Graphics2D;
 
-import javax.swing.border.EmptyBorder;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
 
-import javax.swing.border.CompoundBorder;
-import java.awt.Color;
-import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.LineBorder;
 import java.awt.Dialog.ModalExclusionType;
-import java.awt.Window.Type;
-import java.util.Date;
-import java.util.Calendar;
-import java.text.DateFormat;
-import java.util.Date;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.layout.StackPane;
-import javafx.scene.text.FontWeight;
-import javafx.stage.Stage;
-import javafx.util.Duration;
-import javafx.animation.Animation;
-import javafx.animation.Animation.Status;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Application;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.text.FontWeight;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class ViewClass extends JFrame{
 	
@@ -332,7 +268,7 @@ public class ViewClass extends JFrame{
 				}if(DLMC.getSize() == 0) {
 					DLMC.addElement("Lista Vazia");
 				}
-				new ListView(DLMA, DLMC, DLMH).setVisible(true);
+				new ListView(DLMA, DLMC, DLMH, teste).setVisible(true);
 			}
 		});
 		
@@ -490,7 +426,7 @@ public class ViewClass extends JFrame{
 				}if(DLMC.getSize() == 0) {
 					DLMC.addElement("Lista Vazia");
 				}
-				new PayView(DLMA, DLMC, DLMH).setVisible(true);
+				new PayView(DLMA, DLMC, DLMH, teste).setVisible(true);
 			}
 		});
 		btnRodarFolhaDe.setIcon(new ImageIcon(ViewClass.class.getResource("/com/payroll/icons/icons8-transfer\u00EAncia-de-dinheiro-64 (1).png")));

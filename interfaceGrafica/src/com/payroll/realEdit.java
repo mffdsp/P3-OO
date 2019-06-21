@@ -6,10 +6,10 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
-import java.awt.Window.Type;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -25,11 +25,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.border.CompoundBorder;
-import javax.swing.JToggleButton;
-import javax.swing.ListSelectionModel;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-
 public class realEdit extends JFrame {
 
 	private JPanel contentPane;
@@ -66,6 +61,7 @@ public class realEdit extends JFrame {
 		custom = func[index].isCustom();
 		Utility UT = new Utility();
 		setTitle("Editar Informações");
+		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ViewClass.class.getResource("/com/payroll/icons/APPICON.png")));
 		setForeground(Color.WHITE);
 		setType(Type.UTILITY);
@@ -80,7 +76,7 @@ public class realEdit extends JFrame {
 		int width = screenSize.width;
 		setLocation(width/2-getSize().width/2, height/2-getSize().height/2);
 		contentPane.setLayout(null);
-		setSize(620, 540);
+		setSize(612, 532);
 		
 		JLabel lblEditar = new JLabel("EDITAR");
 		contentPane.add(lblEditar, BorderLayout.CENTER);
@@ -201,11 +197,11 @@ public class realEdit extends JFrame {
 		lblDiaDePagamento.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lblDiaDePagamento.setBounds(289, 224, 138, 21);
 		panel.add(lblDiaDePagamento);
-		
-		
+
 		
 		JList list = new JList();
-		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		JScrollPane scrollPane_1 = new JScrollPane();
+		
 		
 		if(func[index].isCustom())
 		{
@@ -217,15 +213,18 @@ public class realEdit extends JFrame {
 					DLMA.addElement(agenda[i]);
 				}
 			}
+			scrollPane_1.setBounds(448, 130, 132, 176);
 			list.setForeground(Color.BLACK);
 			list.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			list.setBorder(new CompoundBorder());
 			list.setBackground(Color.WHITE);
 			list.setBounds(448, 130, 132, 176);
 			panel.add(list); 
+			panel.add(scrollPane_1);
 			list.setModel(DLMA);
 			list.setSelectedIndex(func[index].getAgendaID());
 			func[index].setCustom(true);
+			scrollPane_1.setViewportView(list);
 		}
 		
 		JButton tglbtnNewToggleButton = new JButton("Custom Schedule");
@@ -241,20 +240,26 @@ public class realEdit extends JFrame {
 							DLMA.addElement(agenda[i]);
 						}
 					}
+					scrollPane_1.setBounds(448, 130, 132, 176);
 					list.setForeground(Color.BLACK);
 					list.setFont(new Font("Tahoma", Font.PLAIN, 14));
 					list.setBorder(new CompoundBorder());
 					list.setBackground(Color.WHITE);
 					list.setBounds(448, 130, 132, 176);
 					panel.add(list); 
+					panel.add(scrollPane_1);
 					list.setModel(DLMA);
 					list.setSelectedIndex(0);
+					scrollPane_1.setViewportView(list);
+					list.setVisible(true);
+					scrollPane_1.setVisible(true);
 					custom = true;
 				}
 				else if(acc == 0) {
 					acc = 1;
 					custom = false;
 					list.setVisible(false);
+					scrollPane_1.setVisible(false);
 					panel.remove(list);
 					
 				}
@@ -323,6 +328,7 @@ public class realEdit extends JFrame {
 					if(agenda[list.getSelectedIndex()] instanceof Mensal) {
 						func[index] = new Assalariado();
 						func[index].setType("Assalariado");
+						func[index].setAgendaToString(agenda[list.getSelectedIndex()].toString());
 						((Assalariado) func[index]).setPayday(((Mensal)agenda[list.getSelectedIndex()]).getDia());
 						
 					}else if(agenda[list.getSelectedIndex()] instanceof Semanal) {
@@ -331,6 +337,7 @@ public class realEdit extends JFrame {
 							
 							func[index] = new Comissionado();
 							func[index].setType("Comissionado");
+							func[index].setAgendaToString(agenda[list.getSelectedIndex()].toString());
 							((Comissionado) func[index]).setPday(((Semanal)agenda[list.getSelectedIndex()]).getDia());
 							((Comissionado) func[index]).setFrequencia(((Semanal)agenda[list.getSelectedIndex()]).getFrequencia());
 							
@@ -338,6 +345,7 @@ public class realEdit extends JFrame {
 							
 							func[index] = new Horista();
 							func[index].setType("Horista");
+							func[index].setAgendaToString(agenda[list.getSelectedIndex()].toString());
 							((Horista) func[index]).setPday(((Semanal)agenda[list.getSelectedIndex()]).getDia());
 							((Horista) func[index]).setFrequencia(((Semanal)agenda[list.getSelectedIndex()]).getFrequencia());
 							
@@ -383,7 +391,7 @@ public class realEdit extends JFrame {
 						return;
 					}
 				}
-				System.out.println("something");
+				
 				if(func[index] instanceof Assalariado && !func[index].isCustom()) {
 					try {
 						if(Integer.parseInt(textField_3.getText()) > 30 || Integer.parseInt(textField_3.getText()) < 1) {

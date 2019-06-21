@@ -1,7 +1,5 @@
 package com.payroll;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,27 +7,17 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Toolkit;
-
-import javax.swing.SwingConstants;
-import java.awt.Window.Type;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.Dimension;
-
 import javax.swing.JComboBox;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import java.awt.SystemColor;
-import javax.swing.DropMode;
-import java.awt.Choice;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 

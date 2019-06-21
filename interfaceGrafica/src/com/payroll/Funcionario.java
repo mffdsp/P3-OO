@@ -1,6 +1,5 @@
 package com.payroll;
 
-import java.util.Date;
 
 public abstract class Funcionario{
 	 
@@ -22,6 +21,7 @@ public abstract class Funcionario{
 	private boolean checkOUT = false;
 	private boolean custom = false;
 	private int agendaID = -1; 
+	private String agendaToString = "default";
 	
 	public void setWH(int WH){
 		this.WH += WH;
@@ -42,7 +42,7 @@ public abstract class Funcionario{
 		return timeOUT;
 	}
 	public String toString() {
-		return name + " - " + code +  " - " + salary + "RS" + " / Pago via: " + payMode;
+		return name + " / " + code +  " / " + salary + "RS";
 	}
 	public String getName() {
 		return name;
@@ -129,6 +129,12 @@ public abstract class Funcionario{
 	}
 	public void setPago(boolean pago) {
 		this.pago = pago;
+	}
+	public String getAgendaToString() {
+		return agendaToString;
+	}
+	public void setAgendaToString(String agendaToString) {
+		this.agendaToString = agendaToString;
 	}
 }
 
