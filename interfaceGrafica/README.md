@@ -48,25 +48,22 @@ OLDCOMMITS = https://github.com/mffdsp/P3/tree/master/Projeto-OO
 
 # Instruções de entrada
  
-<img src="srcIcon/ADDICON.png" align= "center"> Funcionario.add()
+<img src="srcIcon/ADDICON.png" align= "center"> `Funcionario.add()`
 
- <img src="srcIcon/REMOVEICON.png" align= "center">  Funcionario.remove()
+ <img src="srcIcon/REMOVEICON.png" align= "center">  `Funcionario.remove()`
 
+ <img src="srcIcon/PONTOICON.png" align= "center"> `Funcionario.launchCard()`
 
-
- <img src="srcIcon/PONTOICON.png" align= "center"> Funcionario.launchCard()
-
-
- <img src="srcIcon/VENDAICON.png" align= "center"> Funcionario.launchSellResult()
+ <img src="srcIcon/VENDAICON.png" align= "center"> `Funcionario.launchSellResult()`
 
 
- <img src="srcIcon/TAXAICON.png" align= "center"> FuncionariolaunchSindicalTaxes()
+ <img src="srcIcon/TAXAICON.png" align= "center"> `FuncionariolaunchSindicalTaxes()`
 
 
- <img src="srcIcon/EDITICON.png" align= "center"> Funcionario.editEmpregado()
+ <img src="srcIcon/EDITICON.png" align= "center"> `Funcionario.editEmpregado()`
 
 
- <img src="srcIcon/FOLHAICON.png" align= "center"> Funcionario[].payRoll()
+ <img src="srcIcon/FOLHAICON.png" align= "center"> `Funcionario[].payRoll()`
 
 
  <img src="srcIcon/REDOICON.png" align= "center"> `System.UndoRedo()`
