@@ -28,7 +28,7 @@ OLDCOMMITS = https://github.com/mffdsp/P3/tree/master/Projeto-OO
 
 `Remoção de um empregado -> OK`
 
-<img src="srcIcon/tenor.gif" align= "left">
+<img src="srcIcon/tenor.gif" align= "center">
 
 `Lançar um Cartão de Ponto -> OK`
 
