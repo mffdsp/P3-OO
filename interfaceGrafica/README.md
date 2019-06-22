@@ -48,8 +48,7 @@ OLDCOMMITS = https://github.com/mffdsp/P3/tree/master/Projeto-OO
 
 # Instruções de entrada
  
-```java
-private static void addEmpregado(){
+`private static void addEmpregado(){
 
     <img src="srcIcon/tenor.gif" align= "right">
 }
