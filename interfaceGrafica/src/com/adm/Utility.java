@@ -61,6 +61,7 @@ public class Utility {
 					
 				}if(teste[i] instanceof Comissionado && ((Comissionado)teste[i]).pagarFuncionario()){
 					
+					((Comissionado)teste[i]).setRealSalary(teste[i].getSalary());
 					DLMC.addElement(teste[i].toString());	
 					
 				}if(teste[i] instanceof Horista && ((Horista)teste[i]).pagarFuncionario()){

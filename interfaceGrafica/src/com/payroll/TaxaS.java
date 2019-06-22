@@ -70,7 +70,7 @@ public class TaxaS extends JFrame {
 				try {
 					double value = Double.parseDouble(TFvalor.getText());
 					double salary = func[index].getSalary();
-					func[index].setSalary( salary - value);
+					func[index].setSalary(salary - value);
 					JOptionPane.showMessageDialog(null ,
 							"Taxa debitada com sucesso à: \n"
 							+ func[index].getName() + "\nCódigo Sindical: " + func[index].getSindicatycode(), "Sucesso!", JOptionPane.INFORMATION_MESSAGE);

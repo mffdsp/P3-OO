@@ -103,7 +103,7 @@ public class EditView extends JFrame {
 					int teste = Integer.parseInt(codeField.getText());
 					indice = getIndex(codeField.getText());
 					notvalid = func[indice] == null || Integer.parseInt(codeField.getText()) < 20190 || !func[indice].isSaved();
-					sinnotvalid = func[indice] == null || Integer.parseInt(codeField.getText()) < 19190 || !func[indice].isSaved();
+					sinnotvalid = func[indice] == null || Integer.parseInt(codeField.getText()) < 1110 || Integer.parseInt(codeField.getText()) > 11199 || !func[indice].isSaved();
 				}
 				catch(Exception e0) {
 					System.err.print(e0);
@@ -153,6 +153,7 @@ public class EditView extends JFrame {
 				}
 				if(action.equals("TSindical"))
 				{
+					setTitle("Insira o código SINDICAL");
 					if(sinnotvalid)
 					{
 						JOptionPane.showMessageDialog(null ,

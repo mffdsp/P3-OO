@@ -31,7 +31,7 @@ public class MainView extends JFrame{
 	Agenda agenda[] = new Agenda[50];
 	private JPanel contentPane;
 	private JLabel texto;
-	private JLabel texto3;
+	private JLabel LBadd;
 	private static int index = 0;
 	
 	
@@ -98,70 +98,70 @@ public class MainView extends JFrame{
 		//frameset
 		
 		
-		JButton button_2 = new JButton("");
-		button_2.setContentAreaFilled(false);
-		button_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		button_2.setBounds(451, 120, 81, 81);
-		button_2.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-editar-v\u00E1rios-80 (1).png")));
+		JButton BTedit = new JButton("");
+		BTedit.setContentAreaFilled(false);
+		BTedit.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		BTedit.setBounds(451, 120, 81, 81);
+		BTedit.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-editar-v\u00E1rios-80 (1).png")));
 		
-		JButton button_1 = new JButton("");
-		button_1.setContentAreaFilled(false);
-		button_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		button_1.setBounds(271, 120, 81, 81);
+		JButton BTremove = new JButton("");
+		BTremove.setContentAreaFilled(false);
+		BTremove.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		BTremove.setBounds(271, 120, 81, 81);
 		
-		JButton button_3 = new JButton("");
-		button_3.setContentAreaFilled(false);
-		button_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		button_3.setBounds(631, 120, 81, 81);
+		JButton BTlist = new JButton("");
+		BTlist.setContentAreaFilled(false);
+		BTlist.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		BTlist.setBounds(631, 120, 81, 81);
 		
-		JButton AddBt = new JButton("");
-		AddBt.setContentAreaFilled(false);
-		AddBt.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		AddBt.setBounds(93, 120, 81, 81);
-		AddBt.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/add.png")));
-		AddBt.setToolTipText("Adicionar Funcion\u00E1rio");
-		AddBt.setBackground(Color.WHITE);
-		AddBt.setForeground(Color.WHITE);
-		AddBt.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
+		JButton BTadd = new JButton("");
+		BTadd.setContentAreaFilled(false);
+		BTadd.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		BTadd.setBounds(93, 120, 81, 81);
+		BTadd.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/add.png")));
+		BTadd.setToolTipText("Adicionar Funcion\u00E1rio");
+		BTadd.setBackground(Color.WHITE);
+		BTadd.setForeground(Color.WHITE);
+		BTadd.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
 		
 		
-		texto3 = new JLabel("Adicionar Funcion\u00E1rio");
-		texto3.setLabelFor(AddBt);
-		texto3.setBounds(68, 188, 164, 25);
-		texto3.setForeground(SystemColor.activeCaptionText);
-		texto3.setFont(new Font("Tahoma", Font.BOLD, 12));
-		button_3.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-lista-de-verifica\u00E7\u00E3o-64.png")));
-		button_3.setToolTipText("Listar Funcion\u00E1rios");
-		button_3.setForeground(Color.WHITE);
-		button_3.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
-		button_3.setBackground(Color.WHITE);
+		LBadd = new JLabel("Adicionar Funcion\u00E1rio");
+		LBadd.setLabelFor(BTadd);
+		LBadd.setBounds(68, 188, 164, 25);
+		LBadd.setForeground(SystemColor.activeCaptionText);
+		LBadd.setFont(new Font("Tahoma", Font.BOLD, 12));
+		BTlist.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-lista-de-verifica\u00E7\u00E3o-64.png")));
+		BTlist.setToolTipText("Listar Funcion\u00E1rios");
+		BTlist.setForeground(Color.WHITE);
+		BTlist.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
+		BTlist.setBackground(Color.WHITE);
 		
-		JLabel lblRemoverFuncionrio = new JLabel("Remover Funcion\u00E1rio");
-		lblRemoverFuncionrio.setForeground(SystemColor.activeCaptionText);
-		lblRemoverFuncionrio.setBounds(242, 188, 147, 25);
-		lblRemoverFuncionrio.setFont(new Font("Tahoma", Font.BOLD, 12));
+		JLabel LBremove = new JLabel("Remover Funcion\u00E1rio");
+		LBremove.setForeground(SystemColor.activeCaptionText);
+		LBremove.setBounds(242, 188, 147, 25);
+		LBremove.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
-		JLabel lblAlterarDados = new JLabel("Alterar Dados");
-		lblAlterarDados.setForeground(SystemColor.activeCaptionText);
-		lblAlterarDados.setBounds(451, 188, 147, 25);
-		lblAlterarDados.setFont(new Font("Tahoma", Font.BOLD, 12));
+		JLabel LBedit = new JLabel("Alterar Dados");
+		LBedit.setForeground(SystemColor.activeCaptionText);
+		LBedit.setBounds(451, 188, 147, 25);
+		LBedit.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
-		JLabel lblListarEmpregados = new JLabel("Listar Empregados");
-		lblListarEmpregados.setForeground(SystemColor.activeCaptionText);
-		lblListarEmpregados.setBounds(615, 188, 147, 25);
-		lblListarEmpregados.setFont(new Font("Tahoma", Font.BOLD, 12));
+		JLabel LBlist = new JLabel("Listar Empregados");
+		LBlist.setForeground(SystemColor.activeCaptionText);
+		LBlist.setBounds(615, 188, 147, 25);
+		LBlist.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 
 		
 		contentPane.setLayout(null);
-		contentPane.add(AddBt);
-		contentPane.add(button_1);
-		contentPane.add(button_2);
-		contentPane.add(button_3);
-		contentPane.add(texto3);
-		contentPane.add(lblRemoverFuncionrio);
-		contentPane.add(lblListarEmpregados);
-		contentPane.add(lblAlterarDados);
+		contentPane.add(BTadd);
+		contentPane.add(BTremove);
+		contentPane.add(BTedit);
+		contentPane.add(BTlist);
+		contentPane.add(LBadd);
+		contentPane.add(LBremove);
+		contentPane.add(LBlist);
+		contentPane.add(LBedit);
 		contentPane.add(texto);
 		
 		
@@ -178,19 +178,19 @@ public class MainView extends JFrame{
 		
 		
 		//Data
-		JLabel lblNewLabel = new JLabel();
-		lblNewLabel.setForeground(SystemColor.controlText);
-		JLabel label = new JLabel();
-		label.setForeground(SystemColor.controlText);
-		label.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel.setBounds(22, 419, 103, 25);
-		contentPane.add(lblNewLabel);
-		label.setBounds(63, 437, 43, 25);
-		contentPane.add(label);
-		lblNewLabel.setText(CalendarMT.valueToString(CalendarMT.Adia) + "/"  + CalendarMT.valueToString(CalendarMT.Ames)
+		JLabel LBdata = new JLabel();
+		LBdata.setForeground(SystemColor.controlText);
+		JLabel LBhora = new JLabel();
+		LBhora.setForeground(SystemColor.controlText);
+		LBhora.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		LBdata.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		LBdata.setBounds(22, 419, 103, 25);
+		contentPane.add(LBdata);
+		LBhora.setBounds(63, 437, 43, 25);
+		contentPane.add(LBhora);
+		LBdata.setText(CalendarMT.valueToString(CalendarMT.Adia) + "/"  + CalendarMT.valueToString(CalendarMT.Ames)
 		+ "/"  + CalendarMT.valueToString(CalendarMT.Aano)); 
-		label.setText(CalendarMT.valueToString(CalendarMT.Ahora) + ":" + CalendarMT.valueToString(CalendarMT.Aminuto)); 
+		LBhora.setText(CalendarMT.valueToString(CalendarMT.Ahora) + ":" + CalendarMT.valueToString(CalendarMT.Aminuto)); 
 	
 		
 		//ArrayList<Funcionario> teste = new ArrayList();
@@ -200,7 +200,7 @@ public class MainView extends JFrame{
 		Command.saveS(teste);
 		
 		//AddFuncionario();
-		AddBt.addActionListener(new ActionListener() {
+		BTadd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				index = UT.findIndex(teste);
@@ -217,35 +217,35 @@ public class MainView extends JFrame{
 		});
 
 		//RmvFuncionario();
-		button_1.addActionListener(new ActionListener() {
+		BTremove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new EditView(teste, "remover", agenda).setVisible(true);
 			}
 		});
 		
 		
-		button_1.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-remover-usu\u00E1rio-masculino-64 (1).png")));
-		button_1.setToolTipText("Remover Funcion\u00E1rio");
-		button_1.setForeground(Color.WHITE);
-		button_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
-		button_1.setBackground(Color.WHITE);
+		BTremove.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-remover-usu\u00E1rio-masculino-64 (1).png")));
+		BTremove.setToolTipText("Remover Funcion\u00E1rio");
+		BTremove.setForeground(Color.WHITE);
+		BTremove.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
+		BTremove.setBackground(Color.WHITE);
 		
 		
 		//editFuncionario();
 	
-		button_2.addActionListener(new ActionListener() {
+		BTedit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new EditView(teste, "editar", agenda).setVisible(true);
 			}
 		});
-		button_2.setToolTipText("Alterar Dados");
-		button_2.setForeground(Color.WHITE);
-		button_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
-		button_2.setBackground(Color.WHITE);
+		BTedit.setToolTipText("Alterar Dados");
+		BTedit.setForeground(Color.WHITE);
+		BTedit.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
+		BTedit.setBackground(Color.WHITE);
 		
 		
 		//listarFuncionario();
-		button_3.addActionListener(new ActionListener() {
+		BTlist.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) { 
 				DefaultListModel DLMA = new DefaultListModel();
 				DefaultListModel DLMC = new DefaultListModel();
@@ -268,25 +268,25 @@ public class MainView extends JFrame{
 		});
 		
 	
-		JButton btnAtualizarTempo = new JButton("");
-		btnAtualizarTempo.setToolTipText("Passar hora");
-		btnAtualizarTempo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnAtualizarTempo.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-clock-adicionar-64 (1).png")));
-		btnAtualizarTempo.setContentAreaFilled(false);
-		btnAtualizarTempo.setBorderPainted(false);
-		btnAtualizarTempo.setBorder(null);
-		btnAtualizarTempo.setForeground(SystemColor.inactiveCaption);
-		btnAtualizarTempo.setBackground(SystemColor.activeCaption);
-		btnAtualizarTempo.addActionListener(new ActionListener() {
+		JButton BTatthora = new JButton("");
+		BTatthora.setToolTipText("Passar hora");
+		BTatthora.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		BTatthora.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-clock-adicionar-64 (1).png")));
+		BTatthora.setContentAreaFilled(false);
+		BTatthora.setBorderPainted(false);
+		BTatthora.setBorder(null);
+		BTatthora.setForeground(SystemColor.inactiveCaption);
+		BTatthora.setBackground(SystemColor.activeCaption);
+		BTatthora.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				CalendarMT.passHour(teste);
-				lblNewLabel.setText(CalendarMT.valueToString(CalendarMT.Adia) + "/"  + CalendarMT.valueToString(CalendarMT.Ames)
+				LBdata.setText(CalendarMT.valueToString(CalendarMT.Adia) + "/"  + CalendarMT.valueToString(CalendarMT.Ames)
 				+ "/"  + CalendarMT.valueToString(CalendarMT.Aano)); 
-				label.setText(CalendarMT.valueToString(CalendarMT.Ahora) + ":" + CalendarMT.valueToString(CalendarMT.Aminuto)); 
+				LBhora.setText(CalendarMT.valueToString(CalendarMT.Ahora) + ":" + CalendarMT.valueToString(CalendarMT.Aminuto)); 
 			}
 		});
-		btnAtualizarTempo.setBounds(95, 417, 60, 49);
-		contentPane.add(btnAtualizarTempo);
+		BTatthora.setBounds(95, 417, 60, 49);
+		contentPane.add(BTatthora);
 		
 		JButton UndoBTN = new JButton("");
 		UndoBTN.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -313,96 +313,96 @@ public class MainView extends JFrame{
 		RedoBTN.setBounds(45, 11, 35, 50);
 		contentPane.add(RedoBTN);
 		
-		JButton button = new JButton("");
-		button.setHorizontalTextPosition(SwingConstants.CENTER);
-		button.setHideActionText(true);
-		button.setContentAreaFilled(false);
-		button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		button.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-propriedade-de-tempo-80 (1).png")));
-		button.addActionListener(new ActionListener() {
+		JButton BTponto = new JButton("");
+		BTponto.setHorizontalTextPosition(SwingConstants.CENTER);
+		BTponto.setHideActionText(true);
+		BTponto.setContentAreaFilled(false);
+		BTponto.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		BTponto.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-propriedade-de-tempo-80 (1).png")));
+		BTponto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new EditView(teste, "BPonto", agenda).setVisible(true);
 			}
 		});
-		button.setToolTipText("Cart\u00E3o de ponto");
-		button.setForeground(Color.WHITE);
-		button.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
-		button.setBackground(Color.WHITE);
-		button.setBounds(91, 239, 81, 81);
-		contentPane.add(button);
+		BTponto.setToolTipText("Cart\u00E3o de ponto");
+		BTponto.setForeground(Color.WHITE);
+		BTponto.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
+		BTponto.setBackground(Color.WHITE);
+		BTponto.setBounds(91, 239, 81, 81);
+		contentPane.add(BTponto);
 		
-		JLabel lblLanarCarto = new JLabel("Cart\u00E3o de Ponto");
-		lblLanarCarto.setLabelFor(button);
-		lblLanarCarto.setForeground(SystemColor.activeCaptionText);
-		lblLanarCarto.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblLanarCarto.setBounds(80, 315, 147, 25);
-		contentPane.add(lblLanarCarto);
+		JLabel LBcartao = new JLabel("Cart\u00E3o de Ponto");
+		LBcartao.setLabelFor(BTponto);
+		LBcartao.setForeground(SystemColor.activeCaptionText);
+		LBcartao.setFont(new Font("Tahoma", Font.BOLD, 12));
+		LBcartao.setBounds(80, 315, 147, 25);
+		contentPane.add(LBcartao);
 		
-		JButton button_4 = new JButton("");
-		button_4.addActionListener(new ActionListener() {
+		JButton BTtaxa = new JButton("");
+		BTtaxa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new EditView(teste, "TSindical", agenda).setVisible(true);
 			}
 		});
-		button_4.setContentAreaFilled(false);
-		button_4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		button_4.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-pagamento-online-64.png")));
-		button_4.setToolTipText("Lan\u00E7ar Taxa");
-		button_4.setForeground(Color.WHITE);
-		button_4.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
-		button_4.setBackground(Color.WHITE);
-		button_4.setBounds(268, 242, 81, 81);
-		contentPane.add(button_4);
+		BTtaxa.setContentAreaFilled(false);
+		BTtaxa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		BTtaxa.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-pagamento-online-64.png")));
+		BTtaxa.setToolTipText("Lan\u00E7ar Taxa");
+		BTtaxa.setForeground(Color.WHITE);
+		BTtaxa.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
+		BTtaxa.setBackground(Color.WHITE);
+		BTtaxa.setBounds(268, 242, 81, 81);
+		contentPane.add(BTtaxa);
 		
-		JLabel lblLanarTaxa = new JLabel("Lan\u00E7ar Taxa");
-		lblLanarTaxa.setForeground(SystemColor.activeCaptionText);
-		lblLanarTaxa.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblLanarTaxa.setBounds(271, 315, 147, 25);
-		contentPane.add(lblLanarTaxa);
+		JLabel LBtaxa = new JLabel("Lan\u00E7ar Taxa");
+		LBtaxa.setForeground(SystemColor.activeCaptionText);
+		LBtaxa.setFont(new Font("Tahoma", Font.BOLD, 12));
+		LBtaxa.setBounds(271, 315, 147, 25);
+		contentPane.add(LBtaxa);
 		
-		JButton button_5 = new JButton("");
-		button_5.setContentAreaFilled(false);
-		button_5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		button_5.addActionListener(new ActionListener() {
+		JButton BTvenda = new JButton("");
+		BTvenda.setContentAreaFilled(false);
+		BTvenda.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		BTvenda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new EditView(teste, "Lvenda", agenda).setVisible(true);
 			}
 		});
-		button_5.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-vender-estoque-64.png")));
-		button_5.setToolTipText("Lan\u00E7ar Venda");
-		button_5.setForeground(Color.WHITE);
-		button_5.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
-		button_5.setBackground(Color.WHITE);
-		button_5.setBounds(444, 242, 81, 81);
-		contentPane.add(button_5);
+		BTvenda.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-vender-estoque-64.png")));
+		BTvenda.setToolTipText("Lan\u00E7ar Venda");
+		BTvenda.setForeground(Color.WHITE);
+		BTvenda.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
+		BTvenda.setBackground(Color.WHITE);
+		BTvenda.setBounds(444, 242, 81, 81);
+		contentPane.add(BTvenda);
 		
-		JLabel lblCriarAgendaDe = new JLabel("Criar Agenda ");
-		lblCriarAgendaDe.setForeground(SystemColor.activeCaptionText);
-		lblCriarAgendaDe.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblCriarAgendaDe.setBounds(631, 315, 96, 25);
-		contentPane.add(lblCriarAgendaDe);
+		JLabel LBagenda = new JLabel("Criar Agenda ");
+		LBagenda.setForeground(SystemColor.activeCaptionText);
+		LBagenda.setFont(new Font("Tahoma", Font.BOLD, 12));
+		LBagenda.setBounds(631, 315, 96, 25);
+		contentPane.add(LBagenda);
 		
-		JButton btnAaaaaa = new JButton("");
-		btnAaaaaa.addActionListener(new ActionListener() {
+		JButton BTagenda = new JButton("");
+		BTagenda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new CriarAgendaView(agenda, teste).setVisible(true);
 			}
 		});
-		btnAaaaaa.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnAaaaaa.setContentAreaFilled(false);
-		btnAaaaaa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnAaaaaa.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-criar-arquivo-64 (1).png")));
-		btnAaaaaa.setToolTipText("Criar Agenda");
-		btnAaaaaa.setForeground(Color.WHITE);
-		btnAaaaaa.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
-		btnAaaaaa.setBackground(Color.WHITE);
-		btnAaaaaa.setBounds(631, 239, 81, 81);
-		contentPane.add(btnAaaaaa);
+		BTagenda.setVerticalAlignment(SwingConstants.BOTTOM);
+		BTagenda.setContentAreaFilled(false);
+		BTagenda.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		BTagenda.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-criar-arquivo-64 (1).png")));
+		BTagenda.setToolTipText("Criar Agenda");
+		BTagenda.setForeground(Color.WHITE);
+		BTagenda.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
+		BTagenda.setBackground(Color.WHITE);
+		BTagenda.setBounds(631, 239, 81, 81);
+		contentPane.add(BTagenda);
 		
-		JButton btnRodarFolhaDe = new JButton("");
-		btnRodarFolhaDe.setContentAreaFilled(false);
-		btnRodarFolhaDe.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnRodarFolhaDe.addActionListener(new ActionListener() {
+		JButton BTfolha = new JButton("");
+		BTfolha.setContentAreaFilled(false);
+		BTfolha.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		BTfolha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(CalendarMT.payboo[CalendarMT.DAYSGONE]){
 					JOptionPane.showMessageDialog(null ,
@@ -433,50 +433,50 @@ public class MainView extends JFrame{
 				}
 			}
 		});
-		btnRodarFolhaDe.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-transfer\u00EAncia-de-dinheiro-64 (1).png")));
-		btnRodarFolhaDe.setToolTipText("Listar Funcion\u00E1rios");
-		btnRodarFolhaDe.setForeground(new Color(245, 255, 250));
-		btnRodarFolhaDe.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 7));
-		btnRodarFolhaDe.setBackground(Color.WHITE);
-		btnRodarFolhaDe.setBounds(701, 386, 81, 81);
-		contentPane.add(btnRodarFolhaDe);
+		BTfolha.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-transfer\u00EAncia-de-dinheiro-64 (1).png")));
+		BTfolha.setToolTipText("Listar Funcion\u00E1rios");
+		BTfolha.setForeground(new Color(245, 255, 250));
+		BTfolha.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 7));
+		BTfolha.setBackground(Color.WHITE);
+		BTfolha.setBounds(701, 386, 81, 81);
+		contentPane.add(BTfolha);
 		
-		JLabel lblLanarVenda = new JLabel("Lan\u00E7ar Venda");
-		lblLanarVenda.setForeground(SystemColor.activeCaptionText);
-		lblLanarVenda.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblLanarVenda.setBounds(451, 315, 147, 25);
-		contentPane.add(lblLanarVenda);
+		JLabel LBvenda = new JLabel("Lan\u00E7ar Venda");
+		LBvenda.setForeground(SystemColor.activeCaptionText);
+		LBvenda.setFont(new Font("Tahoma", Font.BOLD, 12));
+		LBvenda.setBounds(451, 315, 147, 25);
+		contentPane.add(LBvenda);
 		
 		JLabel label_1 = new JLabel(" ");
 		label_1.setBounds(10, 135, 46, 14);
 		contentPane.add(label_1);
 		
-		JLabel lblRodarFolha = new JLabel("Rodar Folha ");
-		lblRodarFolha.setForeground(Color.BLACK);
-		lblRodarFolha.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblRodarFolha.setBounds(705, 448, 96, 25);
-		contentPane.add(lblRodarFolha);
+		JLabel LBfolha = new JLabel("Rodar Folha ");
+		LBfolha.setForeground(Color.BLACK);
+		LBfolha.setFont(new Font("Tahoma", Font.BOLD, 12));
+		LBfolha.setBounds(705, 448, 96, 25);
+		contentPane.add(LBfolha);
 		
 		
-		JLabel label_2 = new JLabel(CalendarMT.getWeekDay());
-		label_2.setForeground(Color.BLACK);
-		label_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		label_2.setBounds(22, 453, 96, 25);
-		contentPane.add(label_2); 
+		JLabel LBsemana = new JLabel(CalendarMT.getWeekDay());
+		LBsemana.setForeground(Color.BLACK);
+		LBsemana.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		LBsemana.setBounds(22, 453, 96, 25);
+		contentPane.add(LBsemana); 
 		
-		CalendarMT.clock(lblNewLabel, label, label_2, teste);
+		CalendarMT.clock(LBdata, LBhora, LBsemana, teste);
 		
-		JButton btnNewButton = new JButton("");
-		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton.setContentAreaFilled(false);
-		btnNewButton.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/ca28g-fpnyu.png")));
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton BTattdia = new JButton("");
+		BTattdia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		BTattdia.setContentAreaFilled(false);
+		BTattdia.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/ca28g-fpnyu.png")));
+		BTattdia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				CalendarMT.timeChange(teste);
 			}
 		});
-		btnNewButton.setBounds(145, 422, 55, 40);
-		contentPane.add(btnNewButton);
+		BTattdia.setBounds(145, 422, 55, 40);
+		contentPane.add(BTattdia);
 		
 }
 }

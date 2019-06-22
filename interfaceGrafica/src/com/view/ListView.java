@@ -25,6 +25,7 @@ import com.employee.Horista;
 
 import java.awt.SystemColor;
 import java.awt.Toolkit;
+import javax.swing.JScrollPane;
 
 public class ListView extends JFrame {
 
@@ -49,66 +50,64 @@ public class ListView extends JFrame {
 		getContentPane().setBackground(SystemColor.inactiveCaption);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MainView.class.getResource("/com/payroll/icons/APPICON.png")));
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(135, 11, 385, 244);
+		contentPane.add(scrollPane);
+		
 
 		JList hlist = new JList();
+		scrollPane.setViewportView(hlist);
 		hlist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		hlist.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		hlist.setForeground(Color.BLACK);
 		hlist.setBackground(Color.WHITE); 
 		hlist.setBorder(new CompoundBorder());
 		hlist.setSelectedIndices(new int[] {2});
-		hlist.setBounds(135, 11, 385, 244);
-		contentPane.add(hlist);
 		hlist.setModel(DLMH);
 		
-		JList list_1 = new JList();
-		list_1.setBounds(135, 11, -128, 232);
-		list_1.setBorder(null);
-		contentPane.add(list_1);
-		
-		JButton btnNewButton = new JButton("Horistas");
-		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-		btnNewButton.setIcon(null);
-		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton BThoristas = new JButton("Horistas");
+		BThoristas.setForeground(Color.BLACK);
+		BThoristas.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		BThoristas.setIcon(null);
+		BThoristas.setBackground(Color.WHITE);
+		BThoristas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				mode = 1;
 				hlist.setModel(DLMH);
 			}
 		});
-		btnNewButton.setBounds(10, 11, 115, 59);
-		contentPane.add(btnNewButton);
+		BThoristas.setBounds(10, 11, 115, 59);
+		contentPane.add(BThoristas);
 		
-		JButton button = new JButton("Comissionados");
-		button.setBackground(Color.WHITE);
-		button.addActionListener(new ActionListener() {
+		JButton BTcomissionados = new JButton("Comissionados");
+		BTcomissionados.setBackground(Color.WHITE);
+		BTcomissionados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mode = 2;
 				hlist.setModel(DLMC);
 			}
 		});
-		button.setBounds(10, 196, 115, 59);
-		contentPane.add(button);
+		BTcomissionados.setBounds(10, 196, 115, 59);
+		contentPane.add(BTcomissionados);
 		
-		JButton button_1 = new JButton("Assalariados");
-		button_1.setBackground(Color.WHITE);
-		button_1.addActionListener(new ActionListener() {
+		JButton BTassalariado = new JButton("Assalariados");
+		BTassalariado.setBackground(Color.WHITE);
+		BTassalariado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mode = 3;
 				hlist.setModel(DLMA);
 			}
 		});
-		button_1.setBorder(null);
-		button_1.setBounds(10, 102, 115, 59);
-		contentPane.add(button_1);
+		BTassalariado.setBorder(null);
+		BTassalariado.setBounds(10, 102, 115, 59);
+		contentPane.add(BTassalariado);
 
 		//Find func
-		JButton btnDetalhar = new JButton("Detalhar");
-		btnDetalhar.setToolTipText("Clique para detalhar o funcionario");
-		btnDetalhar.setBounds(431, 266, 89, 31);
-		contentPane.add(btnDetalhar);
-		btnDetalhar.addActionListener(new ActionListener() {
+		JButton BTdetalhar = new JButton("Detalhar");
+		BTdetalhar.setToolTipText("Clique para detalhar o funcionario");
+		BTdetalhar.setBounds(431, 266, 89, 31);
+		contentPane.add(BTdetalhar);
+		BTdetalhar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				try{

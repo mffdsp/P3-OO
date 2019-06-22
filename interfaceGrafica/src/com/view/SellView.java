@@ -67,12 +67,18 @@ public class SellView extends JFrame {
 		BTsave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+					
 					double value = Double.parseDouble(TFvalor.getText());
-					double salary = func[index].getSalary();
-					((Comissionado)func[index]).setRealSalary(value);
+					double addValue = value * ((Comissionado)func[index]).getPVenda()/100;
+					
+					((Comissionado)func[index]).setRealSalary(addValue);
+					
 					JOptionPane.showMessageDialog(null ,
-							"Venda associada com sucesso à: \n"
-							+ func[index].getName() + "Salario acumulado em: " + ( ((Comissionado)func[index]).getRealSalary() + salary) + "RS", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+							"Venda associada com sucesso à:\n"
+							+ func[index].getName() + "\nTaxa de:" + ((Comissionado)func[index]).getPVenda() + "%"
+							+ "\nValor adicionado: " +
+							addValue + "RS", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+					
 					Command.saveS(func);
 					setVisible(false);
 				} catch(Exception ex0) {

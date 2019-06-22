@@ -74,54 +74,50 @@ public class PayView extends JFrame {
 		});
 		
 		Command.saveS(func);
-		JList list_1 = new JList();
-		list_1.setBounds(135, 11, -128, 232);
-		list_1.setBorder(null);
-		contentPane.add(list_1);
 		hlist.setModel(DLMH);
-		JButton btnNewButton = new JButton("Horistas");
-		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-		btnNewButton.setIcon(null);
-		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton BThorista = new JButton("Horistas");
+		BThorista.setForeground(Color.BLACK);
+		BThorista.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		BThorista.setIcon(null);
+		BThorista.setBackground(Color.WHITE);
+		BThorista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				mode = 1;
 				hlist.setModel(DLMH);
 			}
 		}); 
-		btnNewButton.setBounds(10, 11, 115, 59);
-		contentPane.add(btnNewButton);
+		BThorista.setBounds(10, 11, 115, 59);
+		contentPane.add(BThorista);
 		
-		JButton button = new JButton("Comissionados");
-		button.setBackground(Color.WHITE);
-		button.addActionListener(new ActionListener() {
+		JButton BTcomissionado = new JButton("Comissionados");
+		BTcomissionado.setBackground(Color.WHITE);
+		BTcomissionado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mode = 2;
 				hlist.setModel(DLMC);
 			}
 		});
-		button.setBounds(10, 196, 115, 59);
-		contentPane.add(button);
+		BTcomissionado.setBounds(10, 196, 115, 59);
+		contentPane.add(BTcomissionado);
 		
-		JButton button_1 = new JButton("Assalariados");
-		button_1.setBackground(Color.WHITE);
-		button_1.addActionListener(new ActionListener() {
+		JButton BTassalariado = new JButton("Assalariados");
+		BTassalariado.setBackground(Color.WHITE);
+		BTassalariado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mode = 3;
 				hlist.setModel(DLMA);
 			}
 		});
-		button_1.setBorder(null);
-		button_1.setBounds(10, 102, 115, 59);
-		contentPane.add(button_1);
+		BTassalariado.setBorder(null);
+		BTassalariado.setBounds(10, 102, 115, 59);
+		contentPane.add(BTassalariado);
 		
 		//Find func
-		JButton btnDetalhar = new JButton("Detalhar");
-		btnDetalhar.setToolTipText("Clique para detalhar o pagamento");
-		btnDetalhar.setBounds(431, 266, 89, 31);
-		contentPane.add(btnDetalhar);
-		btnDetalhar.addActionListener(new ActionListener() {
+		JButton BTdetalhar = new JButton("Detalhar");
+		BTdetalhar.setToolTipText("Clique para detalhar o pagamento");
+		BTdetalhar.setBounds(431, 266, 89, 31);
+		contentPane.add(BTdetalhar);
+		BTdetalhar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int achou = 0;
 				try{

@@ -28,6 +28,7 @@ import javax.swing.JButton;
 import java.awt.SystemColor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 public class SignUP extends JFrame {
 	
@@ -65,7 +66,7 @@ public class SignUP extends JFrame {
 			break;
 		}
 		func[index].setSindicaty(sind);
-		func[index].setSindicatycode("1919" + index);
+		func[index].setSindicatycode("111" + index);
 		func[index].setName(NameField.getText());
 		func[index].setAdress(AdressField.getText());
 		func[index].setType(CBtype.getSelectedItem().toString());
@@ -101,7 +102,8 @@ public class SignUP extends JFrame {
 		}if(func[index] instanceof Assalariado) {
 			((Assalariado)func[index]).setPayday(30);
 		}if(func[index] instanceof Comissionado) {
-			//DOnothing
+			((Comissionado)func[index]).setPVenda(15);
+			((Comissionado)func[index]).setRealSalary(func[index].getSalary()/2);
 		}
 		
 		func[index].setSaved(true);
@@ -177,6 +179,7 @@ public class SignUP extends JFrame {
 		NameField.setColumns(10);
 		
 		SalaryField = new JTextField();
+		SalaryField.setHorizontalAlignment(SwingConstants.RIGHT);
 		SalaryField.setBounds(77, 419, 57, 24);
 		SalaryField.setBackground(SystemColor.textHighlightText);
 		SalaryField.setColumns(10);
@@ -276,6 +279,13 @@ public class SignUP extends JFrame {
 		ScodeLabel.setBounds(279, 246, 159, 33);
 		contentPane.add(ScodeLabel);
 		
+		JLabel LBrs = new JLabel("R$");
+		LBrs.setHorizontalAlignment(SwingConstants.LEFT);
+		LBrs.setForeground(Color.BLACK);
+		LBrs.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		LBrs.setBounds(136, 420, 71, 21);
+		contentPane.add(LBrs);
+		
 		
 		CBsindboo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -283,7 +293,7 @@ public class SignUP extends JFrame {
 				if(CBsindboo.getSelectedItem().equals("SIM")) {
 					sind = true;
 					
-					ScodeLabel.setText("Código sindical = " + "1919" + index);
+					ScodeLabel.setText("Código sindical = " + "111" + index);
 				}else {
 					sind = true;
 					ScodeLabel.setText("");

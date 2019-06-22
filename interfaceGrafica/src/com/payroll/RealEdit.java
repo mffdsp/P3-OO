@@ -37,18 +37,20 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.border.CompoundBorder;
+import javax.swing.SwingConstants;
 
 public class RealEdit extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField TFvalor;
+	private JTextField TFadress;
+	private JTextField TFname;
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private static int SSindex = 0;
 	private int acc = 1;
 	boolean custom = false;
+	private JTextField TFcomi;
 
 	/**
 	 * Launch the application.,
@@ -74,23 +76,12 @@ public class RealEdit extends JFrame {
 		custom = func[index].isCustom();
 		Utility UT = new Utility();
 		
-		setTitle("Editar Informações");
-		setResizable(false);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(MainView.class.getResource("/com/payroll/icons/APPICON.png")));
-		setForeground(Color.WHITE);
-		setType(Type.UTILITY);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.inactiveCaption);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int height = screenSize.height;
-		int width = screenSize.width;
-		setLocation(width/2-getSize().width/2, height/2-getSize().height/2);
 		contentPane.setLayout(null);
-		setSize(612, 532);
+		
 		
 		JLabel lblEditar = new JLabel("EDITAR");
 		contentPane.add(lblEditar, BorderLayout.CENTER);
@@ -104,116 +95,142 @@ public class RealEdit extends JFrame {
 		panel.setBounds(0, 0, 604, 506);
 		contentPane.add(panel);
 		
-		JButton button = new JButton("Salvar");
-		button.setBounds(501, 337, 93, 158);
-		panel.add(button);
+		JButton BTsave = new JButton("Salvar");
+		BTsave.setBounds(501, 337, 93, 158);
+		panel.add(BTsave);
 		
-		JLabel label = new JLabel("Endere\u00E7o:");
-		label.setForeground(Color.BLACK);
-		label.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label.setBounds(28, 164, 93, 21);
-		panel.add(label);
+		JLabel LBadress = new JLabel("Endere\u00E7o:");
+		LBadress.setForeground(Color.BLACK);
+		LBadress.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		LBadress.setBounds(28, 164, 93, 21);
+		panel.add(LBadress);
 		
-		JLabel label_1 = new JLabel("Nome:");
-		label_1.setForeground(Color.BLACK);
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label_1.setBounds(28, 128, 56, 21);
-		panel.add(label_1);
+		JLabel LBname = new JLabel("Nome:");
+		LBname.setForeground(Color.BLACK);
+		LBname.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		LBname.setBounds(28, 128, 56, 21);
+		panel.add(LBname);
 		
-		JLabel label_2 = new JLabel("Valor:");
-		label_2.setForeground(Color.BLACK);
-		label_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label_2.setBounds(26, 384, 71, 21);
-		panel.add(label_2);
+		JLabel LBvalor = new JLabel("Valor:");
+		LBvalor.setForeground(Color.BLACK);
+		LBvalor.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		LBvalor.setBounds(26, 386, 71, 21);
+		panel.add(LBvalor);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		TFvalor = new JTextField();
+		TFvalor.setColumns(10);
 		if(func[index] instanceof Horista)
 		{
-			textField.setText(Double.toString(((Horista)func[index]).getSalarioBase()));
-		}else textField.setText(Double.toString(func[index].getSalary()));	
-		textField.setBackground(SystemColor.textHighlightText);
-		textField.setBounds(77, 384, 57, 24);
-		panel.add(textField);
+			TFvalor.setText(Double.toString(((Horista)func[index]).getSalarioBase()));
+		}else TFvalor.setText(Double.toString(func[index].getSalary()));	
+		TFvalor.setBackground(SystemColor.textHighlightText);
+		TFvalor.setBounds(77, 384, 57, 24);
+		panel.add(TFvalor);
 		
-		textField_1 = new JTextField();
-		textField_1.setText(func[index].getAdress());
-		textField_1.setColumns(10);
-		textField_1.setBackground(SystemColor.textHighlightText);
-		textField_1.setBounds(142, 161, 285, 24);
-		panel.add(textField_1);
+		TFadress = new JTextField();
+		TFadress.setText(func[index].getAdress());
+		TFadress.setColumns(10);
+		TFadress.setBackground(SystemColor.textHighlightText);
+		TFadress.setBounds(142, 161, 285, 24);
+		panel.add(TFadress);
 		
-		textField_2 = new JTextField();
-		textField_2.setText(func[index].getName());
-		textField_2.setForeground(Color.BLACK);
-		textField_2.setColumns(10);
-		textField_2.setBackground(SystemColor.textHighlightText);
-		textField_2.setBounds(142, 126, 285, 24);
-		panel.add(textField_2);
+		TFname = new JTextField();
+		TFname.setText(func[index].getName());
+		TFname.setForeground(Color.BLACK);
+		TFname.setColumns(10);
+		TFname.setBackground(SystemColor.textHighlightText);
+		TFname.setBounds(142, 126, 285, 24);
+		panel.add(TFname);
+
+		JLabel LBicon1 = new JLabel("");
+		LBicon1.setIcon(new ImageIcon(RealEdit.class.getResource("/com/payroll/icons/icons8-gest\u00E3o-de-cliente-100.png")));
+		LBicon1.setBounds(28, 11, 145, 107);
+		panel.add(LBicon1);
 		
-		JLabel label_3 = new JLabel("");
-		label_3.setBounds(272, 426, 0, 0);
-		panel.add(label_3);
+		JLabel LBmetodo = new JLabel("M\u00E9todo de pagamento:");
+		LBmetodo.setForeground(Color.BLACK);
+		LBmetodo.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		LBmetodo.setBounds(28, 352, 202, 21);
+		panel.add(LBmetodo);
 		
-		JLabel label_4 = new JLabel("");
-		label_4.setIcon(new ImageIcon(RealEdit.class.getResource("/com/payroll/icons/icons8-gest\u00E3o-de-cliente-100.png")));
-		label_4.setBounds(28, 11, 145, 107);
-		panel.add(label_4);
+		JComboBox CBmetodo = new JComboBox();
+		CBmetodo.setModel(new DefaultComboBoxModel(new String[] { func[index].getPayMode(), "Maos", "Deposito"}));
+		CBmetodo.setBounds(224, 355, 140, 20);
+		panel.add(CBmetodo);
 		
-		JLabel label_5 = new JLabel("M\u00E9todo de pagamento:");
-		label_5.setForeground(Color.BLACK);
-		label_5.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label_5.setBounds(28, 352, 202, 21);
-		panel.add(label_5);
+		JLabel LBtipo = new JLabel("Tipo de funcin\u00E1rio:");
+		LBtipo.setForeground(Color.BLACK);
+		LBtipo.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		LBtipo.setBounds(28, 196, 202, 21);
+		panel.add(LBtipo);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] { func[index].getPayMode(), "Maos", "Deposito"}));
-		comboBox.setBounds(224, 355, 140, 20);
-		panel.add(comboBox);
+		JLabel LBcomi = new JLabel("Comiss\u00E3o de venda :");
+		LBcomi.setForeground(Color.BLACK);
+		LBcomi.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		LBcomi.setBounds(26, 418, 164, 21);
+		panel.add(LBcomi);
 		
-		JLabel label_6 = new JLabel("Tipo de funcin\u00E1rio:");
-		label_6.setForeground(Color.BLACK);
-		label_6.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label_6.setBounds(28, 196, 202, 21);
-		panel.add(label_6);
+		JLabel LBpcomi = new JLabel("%");
+		LBpcomi.setForeground(Color.BLACK);
+		LBpcomi.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		LBpcomi.setBounds(260, 417, 71, 21);
+		panel.add(LBpcomi);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] { func[index].getType(), "Assalariado", "Comissionado"}));
+		TFcomi = new JTextField();
+		TFcomi.setHorizontalAlignment(SwingConstants.RIGHT);
+		TFcomi.setColumns(10);
+		TFcomi.setBackground(SystemColor.textHighlightText);
+		TFcomi.setBounds(200, 416, 57, 24);
+		panel.add(TFcomi);
+		
+		JLabel LBdiap = new JLabel("Dia de pagamento:");
+		LBdiap.setForeground(Color.BLACK);
+		LBdiap.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		LBdiap.setBounds(289, 224, 138, 21);
+		panel.add(LBdiap);
+		
+		JComboBox CBtipo = new JComboBox();
+		CBtipo.setModel(new DefaultComboBoxModel(new String[] { func[index].getType(), "Assalariado", "Comissionado"}));
 		
 		String setValue = func[index].getType();
+
 		switch(setValue) {
 		case "Horista":
-			comboBox_1.setModel(new DefaultComboBoxModel(new String[] { func[index].getType(), "Assalariado", "Comissionado"}));
+			TFcomi.setText("15");
+			LBcomi.setVisible(false);
+			LBpcomi.setVisible(false);
+			TFcomi.setVisible(false);
+			LBdiap.setVisible(false);
+			CBtipo.setModel(new DefaultComboBoxModel(new String[] { func[index].getType(), "Assalariado", "Comissionado"}));
 			break;
 		case "Comissionado":
-			comboBox_1.setModel(new DefaultComboBoxModel(new String[] { func[index].getType(), "Horista", "Assalariado"}));
+			TFcomi.setText(Integer.toString(((Comissionado) func[index]).getPVenda()));
+			LBdiap.setVisible(false);
+			CBtipo.setModel(new DefaultComboBoxModel(new String[] { func[index].getType(), "Horista", "Assalariado"}));
 			break;
 		case "Assalariado":
-			comboBox_1.setModel(new DefaultComboBoxModel(new String[] { func[index].getType(), "Horista", "Comissionado"}));
+			TFcomi.setText("15");
+			LBcomi.setVisible(false);
+			LBpcomi.setVisible(false);
+			TFcomi.setVisible(false);
+			CBtipo.setModel(new DefaultComboBoxModel(new String[] { func[index].getType(), "Horista", "Comissionado"}));
 			break;
 		}
+		CBtipo.setBounds(287, 196, 140, 20);
+		panel.add(CBtipo);
 		
-		comboBox_1.setBounds(287, 196, 140, 20);
-		panel.add(comboBox_1);
+		JLabel LBicon2 = new JLabel("");
+		LBicon2.setIcon(new ImageIcon(RealEdit.class.getResource("/com/payroll/icons/icons8-caro-64.png")));
+		LBicon2.setBounds(28, 247, 106, 107);
+		panel.add(LBicon2);
 		
-		JLabel label_7 = new JLabel("");
-		label_7.setIcon(new ImageIcon(RealEdit.class.getResource("/com/payroll/icons/icons8-caro-64.png")));
-		label_7.setBounds(28, 247, 106, 107);
-		panel.add(label_7);
-		
-		JComboBox comboBox_sind = new JComboBox();
+		JComboBox CBsind = new JComboBox();
 		if(func[index].isSindicaty()) {
-			comboBox_sind.setModel(new DefaultComboBoxModel(new String[] {"SIM", "NAO"}));
-		}else comboBox_sind.setModel(new DefaultComboBoxModel(new String[] {"NAO", "SIM"}));
-		comboBox_sind.setBounds(362, 95, 65, 20);
-		panel.add(comboBox_sind);
+			CBsind.setModel(new DefaultComboBoxModel(new String[] {"SIM", "NAO"}));
+		}else CBsind.setModel(new DefaultComboBoxModel(new String[] {"NAO", "SIM"}));
+		CBsind.setBounds(362, 95, 65, 20);
+		panel.add(CBsind);
 		
-		JLabel lblDiaDePagamento = new JLabel("");
-		lblDiaDePagamento.setForeground(Color.BLACK);
-		lblDiaDePagamento.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lblDiaDePagamento.setBounds(289, 224, 138, 21);
-		panel.add(lblDiaDePagamento);
-
 		
 		JList list = new JList();
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -243,8 +260,8 @@ public class RealEdit extends JFrame {
 			scrollPane_1.setViewportView(list);
 		}
 		
-		JButton tglbtnNewToggleButton = new JButton("Custom Schedule");
-		tglbtnNewToggleButton.addActionListener(new ActionListener() {
+		JButton TFcustom = new JButton("Custom Schedule");
+		TFcustom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(acc == 1 && agenda[0].isSaved()) 
 				{
@@ -285,43 +302,62 @@ public class RealEdit extends JFrame {
 				}
 			}
 		});
-		tglbtnNewToggleButton.setBounds(449, 94, 132, 23);
-		panel.add(tglbtnNewToggleButton);
+		TFcustom.setBounds(449, 94, 132, 23);
+		panel.add(TFcustom);
 		
-		JLabel lblSindicato = new JLabel("Sindicato:");
-		lblSindicato.setForeground(Color.BLACK);
-		lblSindicato.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblSindicato.setBounds(260, 94, 92, 21);
-		panel.add(lblSindicato);
+		JLabel LBsind = new JLabel("Sindicato:");
+		LBsind.setForeground(Color.BLACK);
+		LBsind.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		LBsind.setBounds(260, 94, 92, 21);
+		panel.add(LBsind);
+		
+		JLabel LBrs = new JLabel("R$");
+		LBrs.setHorizontalAlignment(SwingConstants.LEFT);
+		LBrs.setForeground(Color.BLACK);
+		LBrs.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		LBrs.setBounds(137, 386, 71, 21);
+		panel.add(LBrs);
+		
+	
+		
 		
 		textField_3 = new JTextField();
+		
 		if(func[index].getType().equals("Assalariado") && !func[index].isCustom()) {
 			textField_3.setBounds(387, 224, 40, 30);
 			textField_3.setText(Integer.toString(((Assalariado) func[index]).getPayday()) );
 			panel.add(textField_3);
-			
 			textField_3.setColumns(2);
-			lblDiaDePagamento.setText("Dia de pagamento:");
+			LBdiap.setVisible(true);
 		}
 		
-		comboBox_1.addActionListener(new ActionListener() {
+		CBtipo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(comboBox_1.getSelectedItem().toString().equals("Assalariado") ) {
+				if(CBtipo.getSelectedItem().toString().equals("Assalariado") ) {
 					
 					textField_3.setBounds(387, 224, 40, 30);
 					panel.add(textField_3);
 					textField_3.setColumns(2);
-					lblDiaDePagamento.setText("Dia de pagamento:");
+					LBdiap.setVisible(true);
 					
 				}else {
 					panel.remove(textField_3);
-					lblDiaDePagamento.setText("");
+					LBdiap.setVisible(false);
+				}
+				if(CBtipo.getSelectedItem().toString().equals("Comissionado")){
+					LBcomi.setVisible(true);
+					LBpcomi.setVisible(true);
+					TFcomi.setVisible(true);
+				}else {
+					LBcomi.setVisible(false);
+					LBpcomi.setVisible(false);
+					TFcomi.setVisible(false);
 				}
 			}
 		});
 		
 		
-		button.addActionListener(new ActionListener() {
+		BTsave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				
@@ -331,17 +367,17 @@ public class RealEdit extends JFrame {
 					return;
 				}
 				
-				if(comboBox_1.getSelectedItem().toString().equals("Assalariado") && !custom) {
+				if(CBtipo.getSelectedItem().toString().equals("Assalariado") && !custom) {
 					//System.out.println("criou A");
 					func[index] = new Assalariado();
 					func[index].setType("Assalariado");
 					
-				}else if(comboBox_1.getSelectedItem().toString().equals("Horista") && !custom ) {
+				}else if(CBtipo.getSelectedItem().toString().equals("Horista") && !custom ) {
 					//System.out.println("criou H ");
 					func[index] = new Horista();
 					func[index].setType("Horista");
 					
-				}else if(comboBox_1.getSelectedItem().toString().equals("Comissionado") && !custom ) {
+				}else if(CBtipo.getSelectedItem().toString().equals("Comissionado") && !custom ) {
 					//System.out.println("criou C ");
 					func[index] = new Comissionado();
 					func[index].setType("Comissionado");
@@ -356,7 +392,7 @@ public class RealEdit extends JFrame {
 						
 					}else if(agenda[list.getSelectedIndex()] instanceof Semanal) {
 						
-						if(comboBox_1.getSelectedItem().toString().equals("Comissionado")) {
+						if(CBtipo.getSelectedItem().toString().equals("Comissionado")) {
 							
 							func[index] = new Comissionado();
 							func[index].setType("Comissionado");
@@ -364,7 +400,7 @@ public class RealEdit extends JFrame {
 							((Comissionado) func[index]).setPday(((Semanal)agenda[list.getSelectedIndex()]).getDia());
 							((Comissionado) func[index]).setFrequencia(((Semanal)agenda[list.getSelectedIndex()]).getFrequencia());
 							
-						}if(comboBox_1.getSelectedItem().toString().equals("Horista")) {
+						}if(CBtipo.getSelectedItem().toString().equals("Horista")) {
 							
 							func[index] = new Horista();
 							func[index].setType("Horista");
@@ -379,21 +415,21 @@ public class RealEdit extends JFrame {
 					
 				}
 				//Valores independem de tipo
-				func[index].setName(textField_2.getText());
-				func[index].setAdress(textField_1.getText());
-				func[index].setPayMode(comboBox.getSelectedItem().toString());
+				func[index].setName(TFname.getText());
+				func[index].setAdress(TFadress.getText());
+				func[index].setPayMode(CBmetodo.getSelectedItem().toString());
 				func[index].setCustom(custom);
 				func[index].setCode("2019" + index);
-				func[index].setSindicatycode("1010" + index);
+				func[index].setSindicatycode("111" + index);
 				func[index].setAgendaID(list.getSelectedIndex());
-				if(comboBox_sind.getSelectedItem().toString().equals("SIM")) {
+				if(CBsind.getSelectedItem().toString().equals("SIM")) {
 					func[index].setSindicaty(true);
 				} else func[index].setSindicaty(false);
 				
 				//Salario Base do Horista
 				if(func[index] instanceof Horista) {
 					try {
-						((Horista) func[index]).setSalarioBase(Double.parseDouble(textField.getText()));
+						((Horista) func[index]).setSalarioBase(Double.parseDouble(TFvalor.getText()));
 					} catch(Exception ex0) {
 						UT.ERRO();
 						System.err.print(ex0);
@@ -403,9 +439,9 @@ public class RealEdit extends JFrame {
 				//Salario de Assalariado e Comissionado
 				else {
 					try { 
-						func[index].setSalary(Double.parseDouble(textField.getText()));
+						func[index].setSalary(Double.parseDouble(TFvalor.getText()));
 						if(func[index] instanceof Comissionado) {
-							((Comissionado)func[index]).setRealSalary(Double.parseDouble(textField.getText()));;
+							((Comissionado)func[index]).setRealSalary(func[index].getSalary()/2);
 						}
 						
 					} catch(Exception ex0) {
@@ -427,6 +463,20 @@ public class RealEdit extends JFrame {
 						return;
 					}
 				}
+				
+				if(func[index] instanceof Comissionado) {
+					try {
+						if(Integer.parseInt(TFcomi.getText()) > 100 || Integer.parseInt(TFcomi.getText()) < 0) {
+							throw new Exception("Valores fora do intervalo <insira entre 0 e 100>");
+						}
+						else ((Comissionado) func[index]).setPVenda(Integer.parseInt(TFcomi.getText()));
+					} catch(Exception ex) {
+						UT.ERRO();
+						System.err.print(ex);
+						return;
+					}
+				}
+				
 				func[index].setSaved(true);
 				Command.saveS(func);
 				setVisible(false);
@@ -435,6 +485,21 @@ public class RealEdit extends JFrame {
 		});
 		
 		
+		
+		
+		setTitle("Editar Informações");
+		setResizable(false);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MainView.class.getResource("/com/payroll/icons/APPICON.png")));
+		setForeground(Color.WHITE);
+		setType(Type.UTILITY);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		setContentPane(contentPane);
+		setSize(612, 532);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int height = screenSize.height;
+		int width = screenSize.width;
+		setLocation(width/2-getSize().width/2, height/2-getSize().height/2);
 		
 	}
 }

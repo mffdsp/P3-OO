@@ -45,6 +45,7 @@ public class Command {
 				}
 				if(func[i] instanceof Comissionado) {
 					SS[i][SSindex].setPday(((Comissionado) func[i]).getPday());
+					SS[i][SSindex].setPVenda(((Comissionado) func[i]).getPVenda());
 				}
 				
 			}
@@ -55,15 +56,15 @@ public class Command {
 	public static void undo(Funcionario[] teste){
 		try {
 			if(SSindex == 1) {
-				throw new Exception("EMPTY STACK");
+				System.out.println("EMPTY STACK");
+				return;
 			}
 			System.out.println("undo");
 			UNDOAC += 1;
 			SSindex -= 1;
 			for(int i = 0; i < 50; i++) {
 				if(teste[i] != null) {
-					
-					
+										
 					if(SS[i][SSindex].getType().equals("Comissionado")) {
 						teste[i] = new Comissionado();
 					}if(SS[i][SSindex].getType().equals("Horista")) {
@@ -94,6 +95,7 @@ public class Command {
 					}
 					if(teste[i] instanceof Comissionado) {
 						((Comissionado) teste[i]).setPday(SS[i][SSindex].getPday());
+						((Comissionado) teste[i]).setPVenda(SS[i][SSindex].getPVenda());
 					}
 					
 				}
@@ -108,7 +110,8 @@ public class Command {
 	public static void redo(Funcionario[] teste){
 		try {
 			if(UNDOAC == 0) {
-				throw new Exception("EMPTY STACK");
+				System.out.println("ENDOF STACK");
+				return;
 			}
 			System.out.println("redo");
 			UNDOAC -= 1;
@@ -146,6 +149,7 @@ public class Command {
 					}
 					if(teste[i] instanceof Comissionado) {
 						((Comissionado) teste[i]).setPday(SS[i][SSindex].getPday());
+						((Comissionado) teste[i]).setPVenda(SS[i][SSindex].getPVenda());
 					}
 					
 				}

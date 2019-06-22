@@ -10,17 +10,17 @@ public class Comissionado extends Funcionario implements SystemMT {
 	private String pday = "Sexta-Feira"; 
 	private int frequenciaD = 6;
 	private int frequencia = 2;
+	private int pvenda = 15;
 	
 	@Override
 	public String toString() {
-		return name + " - " + code +  " - " + (realSalary + super.getSalary()) + "RS" + " / Pago via: " + payMode;
+		return name + " - " + code +  " - " + this.realSalary + "RS" + " / Pago via: " + payMode;
 	}
 	
 	public boolean pagarFuncionario() {
 		
 		setPago(frequenciaD >= frequencia*7 && CalendarMT.weekday.equals(pday));
 		if(isPago()) {
-			 realSalary = 0;
 			 frequenciaD = 6;
 		}
 		return isPago();
@@ -63,5 +63,13 @@ public class Comissionado extends Funcionario implements SystemMT {
 
 	public void setFrequencia(int frequencia) {
 		this.frequencia = frequencia;
+	}
+
+	public int getPVenda() {
+		return pvenda;
+	}
+
+	public void setPVenda(int pvenda) {
+		this.pvenda = pvenda;
 	}
 }

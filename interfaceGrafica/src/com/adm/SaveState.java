@@ -23,6 +23,7 @@ public class SaveState{
 	private int payday = 30; 
 	private String agendaToString = "default"; 
 	private boolean[] payboo = new boolean[50];
+	private int pvenda = 15;
 
 	public String getName() {
 		return name;
@@ -137,6 +138,12 @@ public class SaveState{
 	}
 	public void setPayboo(boolean payboo) {
 		this.payboo[CalendarMT.DAYSGONE] = payboo;
+	}
+	public int getPVenda() {
+		return pvenda;
+	}
+	public void setPVenda(int pvenda) {
+		this.pvenda = pvenda;
 	}
 	
 

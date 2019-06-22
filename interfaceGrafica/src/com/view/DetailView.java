@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.employee.Comissionado;
 import com.employee.Funcionario;
 import com.employee.Horista;
 
@@ -19,6 +20,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 public class DetailView extends JFrame {
 
@@ -76,6 +78,7 @@ public class DetailView extends JFrame {
 		contentPane.add(lblValor);
 		
 		TFname = new JTextField();
+		TFname.setHorizontalAlignment(SwingConstants.LEFT);
 		TFname.setBackground(SystemColor.textHighlightText);
 		TFname.setText(func.getName());
 		TFname.setEditable(false);
@@ -108,8 +111,11 @@ public class DetailView extends JFrame {
 		contentPane.add(TFptype);
 		
 		TFsalary = new JTextField();
+		TFsalary = new JTextField();
 		if(func instanceof Horista) {
 			TFsalary.setText(Double.toString(((Horista) func).getSalarioBase()));
+		}else if(func instanceof Comissionado) {
+			TFsalary.setText(Double.toString(((Comissionado) func).getRealSalary()));
 		}else TFsalary.setText(Double.toString(func.getSalary()));
 		
 		TFsalary.setEditable(false);
@@ -140,7 +146,7 @@ public class DetailView extends JFrame {
 	
 		
 	}
-	public DetailView(Funcionario func, boolean rmv) {
+public DetailView(Funcionario func, boolean rmv) {
 		
 		//FRAME
 		setTitle("Detalhes");
@@ -187,6 +193,7 @@ public class DetailView extends JFrame {
 		TFname.setBackground(SystemColor.textHighlightText);
 		TFname.setText(func.getName());
 		TFname.setEditable(false);
+		TFname.setHorizontalAlignment(SwingConstants.LEFT);
 		TFname.setBounds(155, 86, 86, 25);
 		contentPane.add(TFname);
 		TFname.setColumns(10);
@@ -203,6 +210,7 @@ public class DetailView extends JFrame {
 		TFtype.setText(func.getType());
 		TFtype.setEditable(false);
 		TFtype.setColumns(10);
+		TFtype.setHorizontalAlignment(SwingConstants.LEFT);
 		TFtype.setBackground(Color.WHITE);
 		TFtype.setBounds(155, 146, 86, 25);
 		contentPane.add(TFtype);
@@ -211,6 +219,7 @@ public class DetailView extends JFrame {
 		TFptype.setText(func.getPayMode());
 		TFptype.setEditable(false);
 		TFptype.setColumns(10);
+		TFptype.setHorizontalAlignment(SwingConstants.LEFT);
 		TFptype.setBackground(Color.WHITE);
 		TFptype.setBounds(155, 176, 86, 25);
 		contentPane.add(TFptype);
@@ -218,6 +227,8 @@ public class DetailView extends JFrame {
 		TFsalary = new JTextField();
 		if(func instanceof Horista) {
 			TFsalary.setText(Double.toString(((Horista) func).getSalarioBase()));
+		}else if(func instanceof Comissionado) {
+			TFsalary.setText(Double.toString(((Comissionado) func).getRealSalary()));
 		}else TFsalary.setText(Double.toString(func.getSalary()));
 		
 		TFsalary.setEditable(false);
@@ -248,4 +259,5 @@ public class DetailView extends JFrame {
 	
 		
 	}
+	
 }
