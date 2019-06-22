@@ -52,33 +52,28 @@ Funcionario.add()
     <img src="srcIcon/ADDICON.png" align= "center">
 
 Funcionario.remove()
- <img src="srcIcon/ADDICON.png" align= "center">
+ <img src="srcIcon/REMOVEICON.png" align= "center">
 
 Funcionario.launchCard()
- <img src="srcIcon/ADDICON.png" align= "center">
+ <img src="srcIcon/PONTOICON.png" align= "center">
 
 Funcionario.launchSellResult()
- <img src="srcIcon/ADDICON.png" align= "center">
+ <img src="srcIcon/VENDAICON.png" align= "center">
 
 FuncionariolaunchSindicalTaxes()
- <img src="srcIcon/ADDICON.png" align= "center">
+ <img src="srcIcon/TAXAICON.png" align= "center">
 
 Funcionario.editEmpregado()
- <img src="srcIcon/ADDICON.png" align= "center">
+ <img src="srcIcon/EDITICON.png" align= "center">
 
 Funcionario[].payRoll()
- <img src="srcIcon/ADDICON.png" align= "center">
+ <img src="srcIcon/FOLHAICON.png" align= "center">
 
 System.UndoRedo()
- <img src="srcIcon/ADDICON.png" align= "center">
-
+ <img src="srcIcon/UNDOICON.png" align= "center">
  
-Funcionario.search()
- <img src="srcIcon/ADDICON.png" align= "center">
-
-
 Schedule.create()
-<img src="srcIcon/ADDICON.png" align= "center">
+<img src="srcIcon/AGENDAICON.png" align= "center">
 
 
 
