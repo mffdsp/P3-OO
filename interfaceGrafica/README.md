@@ -28,7 +28,7 @@ OLDCOMMITS = https://github.com/mffdsp/P3/tree/master/Projeto-OO
 
 `Remoção de um empregado -> OK`
 
-<img src="srcIcon/tenor.gif" align= "center">
+<img src="srcIcon/tenor.gif" align= "right">
 
 `Lançar um Cartão de Ponto -> OK`
 
@@ -48,72 +48,42 @@ OLDCOMMITS = https://github.com/mffdsp/P3/tree/master/Projeto-OO
 
 # Instruções de entrada
  
-private static void addEmpregado()
-    <img src="srcIcon/tenor.gif" align= "right">
+Funcionario.add()
+    <img src="srcIcon/ADDICON.png" align= "center">
 
-private static void rmvEmpregado(){
+Funcionario.remove()
+ <img src="srcIcon/ADDICON.png" align= "center">
 
-    insertCode(String);
+Funcionario.launchCard()
+ <img src="srcIcon/ADDICON.png" align= "center">
 
-}
+Funcionario.launchSellResult()
+ <img src="srcIcon/ADDICON.png" align= "center">
 
-private static void launchCard(){
+FuncionariolaunchSindicalTaxes()
+ <img src="srcIcon/ADDICON.png" align= "center">
 
-    insertCode(String);
-    inserType(int);
+Funcionario.editEmpregado()
+ <img src="srcIcon/ADDICON.png" align= "center">
+
+Funcionario[].payRoll()
+ <img src="srcIcon/ADDICON.png" align= "center">
+
+System.UndoRedo()
+ <img src="srcIcon/ADDICON.png" align= "center">
+
+ 
+Funcionario.search()
+ <img src="srcIcon/ADDICON.png" align= "center">
 
 
-}
-private static void launchSellResult(){
+Schedule.create()
+<img src="srcIcon/ADDICON.png" align= "center">
 
-    insertCode(String);
-    insertValue(double);
-    insertDay(int);
-    
-}
-private static void launchSindicalTaxes(){
 
-    insertSindicalCode(String);
-    insertValue(double);
-    
-}
-private static void editEmpregado(){
 
-    insertCode(String);
-    insertName(String);
-    insertAdress(String);
-    insertType(int);
-    insertMethod(int);
-    insertSalary(double);
-    insertBoolSindicaty(int);
 
-}
-private static void payRoll(){
 
-    confirmAction();
-
-}
-private static void UndoRedo(){
-
-    confirmAction();
-    
-}
-private static void searchEmpregado(){
-
-    insertMode(int);
-    insertSearch(String);
-    insertRecover(String);
-
-}
-
-private static void createPayRoll(){
-
-    insertName(String);
-    insertType(int);
-    insertDay(int);
-    insertDayOfWeek(int);
-
-}
 
 
 ```
