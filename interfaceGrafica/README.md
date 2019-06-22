@@ -48,8 +48,7 @@ OLDCOMMITS = https://github.com/mffdsp/P3/tree/master/Projeto-OO
 
 # Instruções de entrada
  
-<img src="srcIcon/ADDICON.png" align= "center">
-Funcionario.add()
+<img src="srcIcon/ADDICON.png" align= "center"> Funcionario.add()
 
  <img src="srcIcon/REMOVEICON.png" align= "center">
  Funcionario.remove()
