@@ -4,6 +4,12 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.adm.CalendarMT;
+import com.adm.Command;
+import com.employee.Funcionario;
+import com.employee.Horista;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -70,7 +76,7 @@ public class BaterPonto extends JFrame {
 					JOptionPane.ERROR_MESSAGE);
 				
 				//Sucesso
-				}else {
+				}else { 
 					func[index].setCheckOUT(true);
 					func[index].setTimeOUT(CalendarMT.Ahora);
 					int value = func[index].getTimeOUT() - func[index].getTimeIN();

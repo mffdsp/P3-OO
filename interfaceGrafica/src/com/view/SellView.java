@@ -1,35 +1,34 @@
-package com.payroll;
+package com.view;
 
 
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JEditorPane;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import com.adm.Command;
 import com.adm.Utility;
+import com.employee.Comissionado;
 import com.employee.Funcionario;
-import com.view.MainView;
 
-import javax.swing.JTextField;
-import javax.swing.JEditorPane;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.Dimension;
-import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.JButton;
-import java.awt.SystemColor;
-import java.awt.Toolkit;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-public class TaxaS extends JFrame {
+public class SellView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField TFvalor;
-
-	public TaxaS(Funcionario[] func, int index) {
+	
+	public SellView(Funcionario[] func, int index) {
 		Utility UT = new Utility();
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -44,11 +43,11 @@ public class TaxaS extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		setTitle("Registrar Taxa");
+		setTitle("Lançar Venda");
 		
 		JEditorPane TFobs = new JEditorPane();
 		TFobs.setBackground(SystemColor.textHighlightText);
-		TFobs.setText("Insira as observa\u00E7\u00F5es sobre a Taxa");
+		TFobs.setText("Caso tenha observaçoes sobre a venda, insira aqui");
 		TFobs.setBounds(0, 87, 141, 79);
 		contentPane.add(TFobs);
 		
@@ -57,8 +56,8 @@ public class TaxaS extends JFrame {
 		TFvalor.setBounds(113, 24, 86, 29);
 		contentPane.add(TFvalor);
 		TFvalor.setColumns(10);
-		 
-		JLabel LBtaxa = new JLabel("Valor de Taxa:");
+		
+		JLabel LBtaxa = new JLabel("Valor da Venda:");
 		LBtaxa.setHorizontalAlignment(SwingConstants.LEFT);
 		LBtaxa.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		LBtaxa.setBounds(10, 31, 93, 14);
@@ -70,13 +69,12 @@ public class TaxaS extends JFrame {
 				try {
 					double value = Double.parseDouble(TFvalor.getText());
 					double salary = func[index].getSalary();
-					func[index].setSalary( salary - value);
+					((Comissionado)func[index]).setRealSalary(value);
 					JOptionPane.showMessageDialog(null ,
-							"Taxa debitada com sucesso à: \n"
-							+ func[index].getName() + "\nCódigo Sindical: " + func[index].getSindicatycode(), "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+							"Venda associada com sucesso à: \n"
+							+ func[index].getName() + "Salario acumulado em: " + ( ((Comissionado)func[index]).getRealSalary() + salary) + "RS", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
 					Command.saveS(func);
 					setVisible(false);
-							
 				} catch(Exception ex0) {
 					UT.ERRO();
 					System.err.print(ex0); 
@@ -86,6 +84,6 @@ public class TaxaS extends JFrame {
 		});
 		BTsave.setBounds(140, 87, 69, 79);
 		contentPane.add(BTsave);
-		
 	}
+
 }

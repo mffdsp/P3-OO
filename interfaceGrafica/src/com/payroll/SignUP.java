@@ -4,6 +4,14 @@ package com.payroll;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.adm.Command;
+import com.adm.Utility;
+import com.employee.Assalariado;
+import com.employee.Comissionado;
+import com.employee.Funcionario;
+import com.employee.Horista;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Toolkit;
@@ -216,7 +224,7 @@ public class SignUP extends JFrame {
 		
 		CBptype.setBounds(223, 386, 140, 20);
 		CBptype.setModel(new DefaultComboBoxModel(new String[] {"Correios", "Maos", "Conta bancaria"}));
-		
+		 
 		
 		
 		
