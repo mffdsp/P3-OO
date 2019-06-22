@@ -1,17 +1,16 @@
-                           
-                           
-                           
+
                             "--------------------------------------------------------"
                             "------                   HELP                      -----"
                             "------                                             -----"
                             "------            Instruções de Uso:               -----"
                             "------                                             -----"
                             "------  + Executar = java -jar executavel.jar      -----"
-                            "------  + Dir = src/com                            -----"
                             "------  + Cada Btn representa uma função*          -----"  
                             "------  + Datas/Horas são fantasiosas              -----"
                             "------  + Undo/Redo válidos para toda ação         -----"
+                            "------  + Code = 2019XX // Scode = 111XX           -----"
                             "------  + Senha/user inicial - "admin/admin"       -----"
+                            "------  + Taxa inicial de comissão = 15%           -----"
                             "------  + Dúvidas - mffsp@ic.ufal.br               -----"
                             "------                                             -----"
                             "------                                             -----"
