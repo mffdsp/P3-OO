@@ -51,13 +51,7 @@ OLDCOMMITS = https://github.com/mffdsp/P3/tree/master/Projeto-OO
 ```java
 private static void addEmpregado(){
 
-    insertName(String);
-    insertAdress(String);
-    insertType(int);
-    insertMethod(int);
-    insertSalary(double);
-    insertBoolSindicaty(int);
-
+    <img src="srcIcon/tenor.gif" align= "right">
 }
 
 private static void rmvEmpregado(){
