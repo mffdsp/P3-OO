@@ -70,7 +70,7 @@ Funcionario[].payRoll()
  <img src="srcIcon/FOLHAICON.png" align= "center">
 
 System.UndoRedo()
- <img src="srcIcon/UNDOICON.png" align= "center">
+ <img src="srcIcon/REDOICON.png" align= "center">
  
 Schedule.create()
 <img src="srcIcon/AGENDAICON.png" align= "center">
