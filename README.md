@@ -6,13 +6,14 @@
                             "------                                             -----"
                             "------            Instruções de Uso:               -----"
                             "------                                             -----"
-                            "------  + Siga os comandos com precisão            -----"
-                            "------  + Comandos '*' simbolizam os obrigatórios  -----"  
+                            "------  + Executar = java -jar executavel.jar      -----"
+                            "------  + Cada Btn representa uma função*          -----"  
                             "------  + Datas/Horas são fantasiosas              -----"
-                            "------  + Undo/Redo válidos para toda ação*        -----"
-                            "------  + Senha inicial - 'admin'                  -----"
+                            "------  + Undo/Redo válidos para toda ação         -----"
+                            "------  + Senha/user inicial - "admin/admin"       -----"
                             "------  + Dúvidas - mffsp@ic.ufal.br               -----"
                             "------                                             -----"
+                            "------  *Obrigatório                               -----"
                             "--------------------------------------------------------"
       
       
