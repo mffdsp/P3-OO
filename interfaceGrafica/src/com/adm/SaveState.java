@@ -24,6 +24,9 @@ public class SaveState{
 	private String agendaToString = "default"; 
 	private boolean[] payboo = new boolean[500];
 	private int pvenda = 15;
+	private int dia = 0;
+	private int frequencia = 0;
+	private String weekdia = "Sexta-Feira";
 
 	public String getName() {
 		return name;
@@ -144,6 +147,24 @@ public class SaveState{
 	}
 	public void setPVenda(int pvenda) {
 		this.pvenda = pvenda;
+	}
+	public int getDia() {
+		return dia;
+	}
+	public void setDia(int dia) {
+		this.dia = dia;
+	}
+	public int getFrequencia() {
+		return frequencia;
+	}
+	public void setFrequencia(int frequencia) {
+		this.frequencia = frequencia;
+	}
+	public String getWeekdia() {
+		return weekdia;
+	}
+	public void setWeekdia(String weekdia) {
+		this.weekdia = weekdia;
 	}
 	
 

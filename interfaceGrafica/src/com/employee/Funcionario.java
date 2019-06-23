@@ -1,5 +1,8 @@
 package com.employee;
 
+import com.schedule.Agenda;
+import com.schedule.Mensal;
+import com.schedule.Semanal;
 
 public abstract class Funcionario{
 	 
@@ -21,11 +24,27 @@ public abstract class Funcionario{
 	private boolean checkIN = false;
 	private boolean checkOUT = false;
 	//Schedule
+	Agenda agenda = new Agenda();
 	private boolean custom = false;
+	private String shtype = "Mensal";
 	private int agendaID = -1; 
 	private String agendaToString = "default";
 	
-	
+	public void setAgenda(Agenda agenda) {
+		if(agenda instanceof Mensal) {
+			this.agenda = new Mensal();
+			this.agenda.setFrequencia(agenda.getFrequencia());
+			((Mensal)this.agenda).setDia(((Mensal) agenda).getDia());
+		}
+		if(agenda instanceof Semanal) {
+			this.agenda = new Semanal();
+			this.agenda.setFrequencia(agenda.getFrequencia());
+			((Semanal)this.agenda).setDia((((Semanal) agenda).getDia()));
+		}
+	}
+	public Agenda getAgenda() {
+		return this.agenda;
+	}
 	public void setTimeIN(int timeIN){
 		this.timeIN = timeIN;
 	}
@@ -132,6 +151,12 @@ public abstract class Funcionario{
 	}
 	public void setAgendaToString(String agendaToString) {
 		this.agendaToString = agendaToString;
+	}
+	public String getShtype() {
+		return shtype;
+	}
+	public void setShtype(String shtype) {
+		this.shtype = shtype;
 	}
 }
 

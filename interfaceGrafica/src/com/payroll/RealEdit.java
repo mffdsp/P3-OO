@@ -165,11 +165,13 @@ public class RealEdit extends JFrame {
 		TFcomi.setBounds(200, 416, 57, 24);
 		panel.add(TFcomi);
 		
-		JLabel LBdiap = new JLabel("Dia de pagamento:");
-		LBdiap.setForeground(Color.BLACK);
-		LBdiap.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		LBdiap.setBounds(289, 224, 138, 21);
-		panel.add(LBdiap);
+		JLabel LBrs = new JLabel("R$");
+		LBrs.setHorizontalAlignment(SwingConstants.LEFT);
+		LBrs.setForeground(Color.BLACK);
+		LBrs.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		LBrs.setBounds(137, 386, 71, 21);
+		panel.add(LBrs);
+		
 		
 		JComboBox CBtipo = new JComboBox();
 		CBtipo.setModel(new DefaultComboBoxModel(new String[] { func[index].getType(), "Assalariado", "Comissionado"}));
@@ -179,19 +181,20 @@ public class RealEdit extends JFrame {
 		switch(setValue) {
 		case "Horista":
 			TFcomi.setText("15");
+			LBrs.setText("R$/hora");
 			LBcomi.setVisible(false);
 			LBpcomi.setVisible(false);
 			TFcomi.setVisible(false);
-			LBdiap.setVisible(false);
 			CBtipo.setModel(new DefaultComboBoxModel(new String[] { func[index].getType(), "Assalariado", "Comissionado"}));
 			break;
 		case "Comissionado":
+			LBrs.setText("R$");
 			TFcomi.setText(Integer.toString(((Comissionado) func[index]).getPVenda()));
-			LBdiap.setVisible(false);
 			CBtipo.setModel(new DefaultComboBoxModel(new String[] { func[index].getType(), "Horista", "Assalariado"}));
 			break;
 		case "Assalariado":
 			TFcomi.setText("15");
+			LBrs.setText("R$");
 			LBcomi.setVisible(false);
 			LBpcomi.setVisible(false);
 			TFcomi.setVisible(false);
@@ -338,38 +341,9 @@ public class RealEdit extends JFrame {
 		LBsind.setBounds(260, 34, 92, 21);
 		panel.add(LBsind);
 		
-		JLabel LBrs = new JLabel("R$");
-		LBrs.setHorizontalAlignment(SwingConstants.LEFT);
-		LBrs.setForeground(Color.BLACK);
-		LBrs.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		LBrs.setBounds(137, 386, 71, 21);
-		panel.add(LBrs);
-		
-		
-		textField_3 = new JTextField();
-		
-		if(func[index].getType().equals("Assalariado")) {
-			
-			textField_3.setBounds(387, 224, 40, 30);
-			textField_3.setText(Integer.toString(((Assalariado) func[index]).getPayday()) );
-			panel.add(textField_3);
-			textField_3.setColumns(2);
-			LBdiap.setVisible(true);
-		}
-		
+	
 		CBtipo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(CBtipo.getSelectedItem().toString().equals("Assalariado") ) {
-					
-					textField_3.setBounds(387, 224, 40, 30);
-					panel.add(textField_3);
-					textField_3.setColumns(2);
-					LBdiap.setVisible(true);
-					
-				}else {
-					panel.remove(textField_3);
-					LBdiap.setVisible(false);
-				}
 				if(CBtipo.getSelectedItem().toString().equals("Comissionado")){
 					LBcomi.setVisible(true);
 					LBpcomi.setVisible(true);
@@ -378,6 +352,11 @@ public class RealEdit extends JFrame {
 					LBcomi.setVisible(false);
 					LBpcomi.setVisible(false);
 					TFcomi.setVisible(false);
+				}
+				if(CBtipo.getSelectedItem().toString().equals("Horista")){
+					LBrs.setText("R$/hora");
+				}else {
+					LBrs.setText("R$");
 				}
 			}
 		});
@@ -399,17 +378,6 @@ public class RealEdit extends JFrame {
 					UT.ERRO();
 					return;
 				}
-				if(CBtipo.getSelectedItem().toString().equals("Assalariado")) {
-					try {
-						if(Integer.parseInt(textField_3.getText()) > 30 || Integer.parseInt(textField_3.getText()) < 1 && textField_3.isVisible()) {
-							throw new Exception("Valores fora do intervalo do mês");
-					}
-					}catch(Exception ex2) {
-						System.err.print(ex2);
-						UT.ERRO();
-						return;
-					}
-				}
 				try {
 					if(Integer.parseInt(TFcomi.getText()) > 100 || Integer.parseInt(TFcomi.getText()) < 0 && textField_3.isVisible() ) {
 						throw new Exception("Valores fora do intervalo <insira entre 0 e 100>");
@@ -421,6 +389,8 @@ public class RealEdit extends JFrame {
 				}
 				//TRY CATCH, BEFORE SAVING
 				
+				
+				Agenda nocustom = new Agenda(); 
 				int dialogButton = JOptionPane.YES_NO_OPTION;
 				int dialogResult = JOptionPane.showConfirmDialog (null, "Deseja salvar as informações?", "Confirmação", dialogButton);
 				if(!(dialogResult == JOptionPane.YES_OPTION) ){
@@ -432,53 +402,47 @@ public class RealEdit extends JFrame {
 					func[index] = new Assalariado();
 					func[index].setType("Assalariado");
 					
-				}else if(CBtipo.getSelectedItem().toString().equals("Horista") && !custom ) {
+					nocustom = new Mensal();
+					((Mensal)nocustom).setDia(Integer.parseInt(textField_3.getText()));
+					nocustom.setFrequencia(1);
+					func[index].setAgenda(nocustom);
+					
+				}else if(CBtipo.getSelectedItem().toString().equals("Horista")  && !custom) {
 					//System.out.println("criou H ");
 					func[index] = new Horista();
 					func[index].setType("Horista");
+					
+					nocustom = new Semanal();
+					((Semanal)nocustom).setDia("Sexta-Feira");
+					nocustom.setFrequencia(1);
+					func[index].setAgenda(nocustom);
 					
 				}else if(CBtipo.getSelectedItem().toString().equals("Comissionado") && !custom ) {
 					//System.out.println("criou C ");
 					func[index] = new Comissionado();
 					func[index].setType("Comissionado");
 					
-				} else if(custom) {
+					nocustom = new Semanal();
+
+					((Semanal)nocustom).setDia("Sexta-Feira");
+					nocustom.setFrequencia(2);
+					func[index].setAgenda(nocustom);
 					
-					if(agenda[list.getSelectedIndex()] instanceof Mensal) {
-						if(!CBtipo.getSelectedItem().toString().equals("Assalariado")) {
-							JOptionPane.showMessageDialog(null ,
-									"Funcionario modificado automaticamente para ASSALARIADO\ndevido à agenda personalizada", "Mudança", JOptionPane.INFORMATION_MESSAGE);
-						}
+				}else if(custom && list.getSelectedIndex() >= 0) {
+					
+					if(CBtipo.getSelectedItem().toString().equals("Comissionado")) {
+						func[index] = new Comissionado();
+						func[index].setType("Comissionado");
+					}if(CBtipo.getSelectedItem().toString().equals("Horista")) {
+						func[index] = new Horista();
+						func[index].setType("Horista");
+						
+					}if(CBtipo.getSelectedItem().toString().equals("Assalariado")) {
 						func[index] = new Assalariado();
 						func[index].setType("Assalariado");
-						func[index].setAgendaToString(agenda[list.getSelectedIndex()].toString());
-						((Assalariado) func[index]).setPayday(((Mensal)agenda[list.getSelectedIndex()]).getDia());
-						
-					}else if(agenda[list.getSelectedIndex()] instanceof Semanal) {
-						
-						if(CBtipo.getSelectedItem().toString().equals("Comissionado")  || CBtipo.getSelectedItem().toString().equals("Assalariado")) {
-							
-							if(CBtipo.getSelectedItem().toString().equals("Assalariado")) {
-								JOptionPane.showMessageDialog(null ,
-										"Funcionario modificado automaticamente para COMISSIONADO\ndevido à agenda personalizada", "Mudança", JOptionPane.INFORMATION_MESSAGE);
-							}
-							func[index] = new Comissionado();
-							func[index].setType("Comissionado");
-							func[index].setAgendaToString(agenda[list.getSelectedIndex()].toString());
-							((Comissionado) func[index]).setPday(((Semanal)agenda[list.getSelectedIndex()]).getDia());
-							((Comissionado) func[index]).setFrequencia(((Semanal)agenda[list.getSelectedIndex()]).getFrequencia());
-							
-						}if(CBtipo.getSelectedItem().toString().equals("Horista")) {
-							
-							func[index] = new Horista();
-							func[index].setType("Horista");
-							func[index].setAgendaToString(agenda[list.getSelectedIndex()].toString());
-							((Horista) func[index]).setPday(((Semanal)agenda[list.getSelectedIndex()]).getDia());
-							((Horista) func[index]).setFrequencia(((Semanal)agenda[list.getSelectedIndex()]).getFrequencia());
-							
-						}
-						
 					}
+	
+					func[index].setAgenda(agenda[list.getSelectedIndex()]);
 					func[index].setAgendaID(list.getSelectedIndex());
 					
 				}
@@ -512,11 +476,6 @@ public class RealEdit extends JFrame {
 							((Comissionado)func[index]).setRealSalary(func[index].getSalary()/2);
 						}
 				}
-				
-				if(func[index] instanceof Assalariado && !func[index].isCustom()) {
-					 ((Assalariado) func[index]).setPayday(Integer.parseInt(textField_3.getText()));
-				}
-				
 				if(func[index] instanceof Comissionado) {
 				 ((Comissionado) func[index]).setPVenda(Integer.parseInt(TFcomi.getText()));
 				 ((Comissionado)func[index]).setRealSalary(func[index].getSalary()/2);

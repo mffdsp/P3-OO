@@ -10,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 import com.employee.Comissionado;
 import com.employee.Funcionario;
 import com.employee.Horista;
+import com.schedule.Mensal;
+import com.schedule.Semanal;
 
 import java.awt.SystemColor;
 import javax.swing.JLabel;
@@ -146,7 +148,10 @@ public class DetailView extends JFrame {
 		TFcustom.setColumns(10);
 		TFcustom.setBackground(Color.WHITE);
 		TFcustom.setBounds(155, 236, 86, 25);
-	    TFcustom.setText(func.getAgendaToString());
+		if(func.getAgenda() instanceof Mensal) {
+		    TFcustom.setText(((Mensal)func.getAgenda()).toString());
+		}else   TFcustom.setText(((Semanal)func.getAgenda()).toString());
+	
 	    contentPane.add(TFcustom);
 	    
 	    LBscode = new JLabel("SCode:");

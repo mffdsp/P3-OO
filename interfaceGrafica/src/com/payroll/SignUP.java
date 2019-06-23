@@ -11,6 +11,9 @@ import com.employee.Assalariado;
 import com.employee.Comissionado;
 import com.employee.Funcionario;
 import com.employee.Horista;
+import com.schedule.Agenda;
+import com.schedule.Mensal;
+import com.schedule.Semanal;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -44,9 +47,6 @@ public class SignUP extends JFrame {
 	JComboBox CBtype = new JComboBox();
 	JComboBox CBptype = new JComboBox();
 	
-	/**
-	 * Launch the application.
-	 */
 	public void saveValues(Funcionario[] func, int index) {
 		
 		switch(CBtype.getSelectedItem().toString()) {
@@ -104,9 +104,26 @@ public class SignUP extends JFrame {
 		if(func[index] instanceof Horista) {
 			((Horista) func[index]).setSalarioBase(Double.parseDouble(SalaryField.getText()));
 			func[index].setSalary(0);
+			
+			Agenda agenda = new Semanal();
+			agenda.setFrequencia(1);
+			((Semanal)agenda).setDia("Sexta-Feira");
+			func[index].setAgenda(agenda);
+			
 		}if(func[index] instanceof Assalariado) {
-			((Assalariado)func[index]).setPayday(30);
+			
+			Agenda agenda = new Mensal();
+			agenda.setFrequencia(1);
+			((Mensal)agenda).setDia(30);
+			func[index].setAgenda(agenda);
+			
 		}if(func[index] instanceof Comissionado) {
+			
+			Agenda agenda = new Semanal();
+			agenda.setFrequencia(2);
+			((Semanal)agenda).setDia("Sexta-Feira");
+			func[index].setAgenda(agenda);
+			
 			((Comissionado)func[index]).setPVenda(15);
 			((Comissionado)func[index]).setRealSalary(func[index].getSalary()/2);
 			((Comissionado)func[index]).setPsalary(func[index].getSalary()/2);
@@ -212,6 +229,16 @@ public class SignUP extends JFrame {
 			}
 		});
 		
+		
+		
+		JLabel LBrs = new JLabel("R$");
+		LBrs.setHorizontalAlignment(SwingConstants.LEFT);
+		LBrs.setForeground(Color.BLACK);
+		LBrs.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		LBrs.setBounds(136, 420, 71, 21);
+		contentPane.add(LBrs);
+		
+		
 		JLabel LBtype = new JLabel("Tipo de funcin\u00E1rio:");
 		LBtype.setBounds(28, 196, 202, 21);
 		LBtype.setForeground(Color.BLACK);
@@ -220,7 +247,13 @@ public class SignUP extends JFrame {
 		CBtype.setBounds(287, 199, 140, 20);
 		CBtype.setModel(new DefaultComboBoxModel(new String[] {"Horista", "Assalariado", "Comissionado"}));
 		CBtype.setSelectedIndex(1);
-	
+		CBtype.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(CBtype.getSelectedItem().toString().equals(("Horista"))) {
+					LBrs.setText("R$/hora");
+				}else LBrs.setText("R$");
+			}
+		});
 		
 		
 		
@@ -284,15 +317,7 @@ public class SignUP extends JFrame {
 		ScodeLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		ScodeLabel.setBounds(268, 249, 159, 33);
 		contentPane.add(ScodeLabel);
-		
-		JLabel LBrs = new JLabel("R$");
-		LBrs.setHorizontalAlignment(SwingConstants.LEFT);
-		LBrs.setForeground(Color.BLACK);
-		LBrs.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		LBrs.setBounds(136, 420, 71, 21);
-		contentPane.add(LBrs);
-		
-		
+	
 		CBsindboo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				

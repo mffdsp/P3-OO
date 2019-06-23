@@ -2,36 +2,43 @@ package com.employee;
 
 import com.adm.CalendarMT;
 import com.adm.SystemMT;
+import com.schedule.Mensal;
+import com.schedule.Semanal;
 
 public class Horista extends Funcionario implements SystemMT{
 	
 	protected double salarioBase = 0;
 	private double psalary = 0;
-	protected int tipo = 1;
-	protected int diasTB = 0;
-	private String pday = "Sexta-Feira"; 
-	
 	private int frequenciaD = 6;
-	private int frequencia = 1;
 	
 	@Override
 	public String toString() {
 		return name + " / " + code +  " / " + salary + "RS";
 	}
-	public int getFrequencia() {
-		return frequencia;
-	}
-	public void setFrequencia(int frequencia) {
-		this.frequencia = frequencia;
-	}
+	
 	public boolean pagarFuncionario() {
+
+		boolean Uday = false;
 		
-		setPago(frequenciaD >= frequencia*7 && CalendarMT.weekday.equals(pday));
-		if(isPago()) {
-			 frequenciaD = 6;
+		if(super.agenda instanceof Mensal)
+		{
+			Uday = ( CalendarMT.Adia >= (((Mensal)super.agenda).getDia() - 2) && CalendarMT.weekday.equals("Sexta-Feira") ) ||
+					(CalendarMT.Adia == ((Mensal)super.agenda).getDia() && !CalendarMT.weekday.equals("Domingo")&& !CalendarMT.weekday.equals("Sabado"));
+			
+			setPago(Uday && frequenciaD >= 30);
+			if(isPago()) {
+			frequenciaD = 26;
+			}
+			
+		}else if(super.agenda instanceof Semanal) {
+			
+			setPago(frequenciaD >= ((Semanal)super.agenda).getFrequencia()*7 && CalendarMT.weekday.equals(((Semanal)super.agenda).getDia()));
+			if(isPago()) {
+				 frequenciaD = 6;
+			}
 		}
 		return isPago();
-	
+
 	}
 	
 	public void addSalary(int horas){
@@ -51,15 +58,6 @@ public class Horista extends Funcionario implements SystemMT{
 	public double getSalarioBase() {
 		return salarioBase;
 	}
-
-	public String getPday() {
-		return pday;
-	}
-
-	public void setPday(String pday) {
-		this.pday = pday;
-	}
-
 
 	public int getFrequenciaD() {
 		return frequenciaD;
