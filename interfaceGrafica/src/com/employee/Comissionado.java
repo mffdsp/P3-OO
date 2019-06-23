@@ -21,6 +21,7 @@ public class Comissionado extends Funcionario implements SystemMT {
 		
 		setPago(frequenciaD >= frequencia*7 && CalendarMT.weekday.equals(pday));
 		if(isPago()) {
+			
 			 frequenciaD = 6;
 		}
 		return isPago();

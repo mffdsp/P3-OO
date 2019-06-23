@@ -11,10 +11,7 @@ import com.schedule.CriarAgendaView;
 
 import java.awt.*;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Toolkit;
-
-import java.io.*;
 
 import javax.swing.*;
 
@@ -27,13 +24,13 @@ import java.awt.Dialog.ModalExclusionType;
 
 public class MainView extends JFrame{
 	
+	private static final long serialVersionUID = 1L;
 	Utility UT = new Utility();
 	Agenda agenda[] = new Agenda[50];
 	private JPanel contentPane;
 	private JLabel texto;
 	private JLabel LBadd;
 	private static int index = 0;
-	
 	
 	public static void main(String[] args) {
 	
@@ -45,38 +42,22 @@ public class MainView extends JFrame{
 	                break;
 	            }
 	        }
-	    } catch (ClassNotFoundException ex) {
+	    } catch (Exception ex) {
 	       System.err.println(ex);
-	    } catch (InstantiationException ex1) {
-	    	System.err.println(ex1);
-	    } catch (IllegalAccessException ex2) {
-	    	System.err.println(ex2);
-	    } catch (javax.swing.UnsupportedLookAndFeelException ex3) {
-	    	System.err.println(ex3);
 	    }
 	    //Nimbus set
 	    
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainView window = new MainView();
-					window.setVisible(true);
-				} catch (Exception e) {
-					System.err.println(e);
-				}
-			}
-		});
-	}
-	/**
-	 * Create the frame.
-	 * @throws IOException 
-	 * @throws Exception 
-	 */
+		try {
+			MainView window = new MainView();
+			window.setVisible(true);
+		} catch (Exception e) {
+			System.err.println(e);
+		}
 		
+	}
 	
-	
-	public MainView() throws IOException {
-				
+	public MainView() {
+					
 		//frameset
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
 		setType(Type.NORMAL);
@@ -193,20 +174,18 @@ public class MainView extends JFrame{
 		LBhora.setText(CalendarMT.valueToString(CalendarMT.Ahora) + ":" + CalendarMT.valueToString(CalendarMT.Aminuto)); 
 	
 		
-		//ArrayList<Funcionario> teste = new ArrayList();
-		
-		Funcionario[] teste = new Funcionario[50];	
-		UT.setALL(teste, agenda);
-		Command.saveS(teste);
+		Funcionario[] funcionarios = new Funcionario[50];	
+		UT.setALL(funcionarios, agenda);
+		Command.saveS(funcionarios);
 		
 		//AddFuncionario();
 		BTadd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				index = UT.findIndex(teste);
-				teste[index] = new Horista();
+				index = UT.findIndex(funcionarios);
+				funcionarios[index] = new Horista();
 				try {
-					new SignUP(teste, index).setVisible(true);
+					new SignUP(funcionarios, index).setVisible(true);
 					
 				}catch(ArrayIndexOutOfBoundsException exception) {
 					
@@ -219,7 +198,7 @@ public class MainView extends JFrame{
 		//RmvFuncionario();
 		BTremove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new EditView(teste, "remover", agenda).setVisible(true);
+				new EditView(funcionarios, "remover", agenda).setVisible(true);
 			}
 		});
 		
@@ -235,7 +214,7 @@ public class MainView extends JFrame{
 	
 		BTedit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new EditView(teste, "editar", agenda).setVisible(true);
+				new EditView(funcionarios, "editar", agenda).setVisible(true);
 			}
 		});
 		BTedit.setToolTipText("Alterar Dados");
@@ -251,7 +230,7 @@ public class MainView extends JFrame{
 				DefaultListModel DLMC = new DefaultListModel();
 				DefaultListModel DLMH = new DefaultListModel();
 				try {
-					UT.setList(teste, DLMC, DLMA, DLMH);
+					UT.setList(funcionarios, DLMC, DLMA, DLMH);
 				}
 				catch(NullPointerException e) {
 					System.out.println("Exception de ponteiro nulo");
@@ -263,7 +242,7 @@ public class MainView extends JFrame{
 				}if(DLMC.getSize() == 0) {
 					DLMC.addElement("Lista Vazia");
 				}
-				new ListView(DLMA, DLMC, DLMH, teste).setVisible(true);
+				new ListView(DLMA, DLMC, DLMH, funcionarios).setVisible(true);
 			}
 		});
 		
@@ -279,7 +258,7 @@ public class MainView extends JFrame{
 		BTatthora.setBackground(SystemColor.activeCaption);
 		BTatthora.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				CalendarMT.passHour(teste);
+				CalendarMT.passHour(funcionarios);
 				LBdata.setText(CalendarMT.valueToString(CalendarMT.Adia) + "/"  + CalendarMT.valueToString(CalendarMT.Ames)
 				+ "/"  + CalendarMT.valueToString(CalendarMT.Aano)); 
 				LBhora.setText(CalendarMT.valueToString(CalendarMT.Ahora) + ":" + CalendarMT.valueToString(CalendarMT.Aminuto)); 
@@ -294,7 +273,7 @@ public class MainView extends JFrame{
 		UndoBTN.setIcon(new ImageIcon(MainView.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
 		UndoBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Command.undo(teste);
+				Command.undo(funcionarios);
 			}
 		});
 		UndoBTN.setBounds(10, 11, 35, 50);
@@ -305,7 +284,7 @@ public class MainView extends JFrame{
 		RedoBTN.setContentAreaFilled(false);
 		RedoBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Command.redo(teste);
+				Command.redo(funcionarios);
 			}
 
 		});
@@ -321,7 +300,7 @@ public class MainView extends JFrame{
 		BTponto.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-propriedade-de-tempo-80 (1).png")));
 		BTponto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new EditView(teste, "BPonto", agenda).setVisible(true);
+				new EditView(funcionarios, "BPonto", agenda).setVisible(true);
 			}
 		});
 		BTponto.setToolTipText("Cart\u00E3o de ponto");
@@ -341,7 +320,7 @@ public class MainView extends JFrame{
 		JButton BTtaxa = new JButton("");
 		BTtaxa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new EditView(teste, "TSindical", agenda).setVisible(true);
+				new EditView(funcionarios, "TSindical", agenda).setVisible(true);
 			}
 		});
 		BTtaxa.setContentAreaFilled(false);
@@ -365,7 +344,7 @@ public class MainView extends JFrame{
 		BTvenda.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		BTvenda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new EditView(teste, "Lvenda", agenda).setVisible(true);
+				new EditView(funcionarios, "Lvenda", agenda).setVisible(true);
 			}
 		});
 		BTvenda.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-vender-estoque-64.png")));
@@ -385,7 +364,7 @@ public class MainView extends JFrame{
 		JButton BTagenda = new JButton("");
 		BTagenda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new CriarAgendaView(agenda, teste).setVisible(true);
+				new CriarAgendaView(agenda, funcionarios).setVisible(true);
 			}
 		});
 		BTagenda.setVerticalAlignment(SwingConstants.BOTTOM);
@@ -417,7 +396,7 @@ public class MainView extends JFrame{
 					DefaultListModel DLMC = new DefaultListModel();
 					DefaultListModel DLMH = new DefaultListModel();
 					try{
-						UT.payList(teste, DLMC, DLMA, DLMH);
+						UT.payList(funcionarios, DLMC, DLMA, DLMH);
 					}
 					catch(NullPointerException e2) {
 						System.out.println("Exception de ponteiro nulo");
@@ -429,7 +408,7 @@ public class MainView extends JFrame{
 					}if(DLMC.getSize() == 0) {
 						DLMC.addElement("Lista Vazia");
 					}
-					new PayView(DLMA, DLMC, DLMH, teste).setVisible(true);
+					new PayView(DLMA, DLMC, DLMH, funcionarios).setVisible(true);
 				}
 			}
 		});
@@ -464,7 +443,7 @@ public class MainView extends JFrame{
 		LBsemana.setBounds(22, 453, 96, 25);
 		contentPane.add(LBsemana); 
 		
-		CalendarMT.clock(LBdata, LBhora, LBsemana, teste);
+		CalendarMT.clock(LBdata, LBhora, LBsemana, funcionarios);
 		
 		JButton BTattdia = new JButton("");
 		BTattdia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -472,7 +451,7 @@ public class MainView extends JFrame{
 		BTattdia.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/ca28g-fpnyu.png")));
 		BTattdia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				CalendarMT.timeChange(teste);
+				CalendarMT.timeChange(funcionarios);
 			}
 		});
 		BTattdia.setBounds(145, 422, 55, 40);

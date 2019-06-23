@@ -139,7 +139,7 @@ public class PayView extends JFrame {
 						}
 						break;
 					case 2:
-						if(func[i] instanceof Comissionado  ) {
+						if(func[i] instanceof Comissionado && !hlist.getSelectedValue().toString().equals("Lista Vazia") ) {
 							if(hlist.getSelectedIndex() == achou) {
 								new DetailView(func[i]).setVisible(true);	
 							}
@@ -147,7 +147,7 @@ public class PayView extends JFrame {
 						}
 						break;
 					case 3:
-						if(func[i] instanceof Assalariado) {
+						if(func[i] instanceof Assalariado && !hlist.getSelectedValue().toString().equals("Lista Vazia")) {
 							if(hlist.getSelectedIndex() == achou) {
 								new DetailView(func[i]).setVisible(true);
 							}

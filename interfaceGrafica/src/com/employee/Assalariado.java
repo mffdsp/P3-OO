@@ -13,10 +13,10 @@ public class Assalariado extends Funcionario implements SystemMT{
 	public boolean pagarFuncionario() {
 		
 		boolean Uday = false;
-		Uday = CalendarMT.Adia >= (payday - 2) && CalendarMT.weekday.equals("Sexta-Feira") ||
-				(CalendarMT.Adia == payday && !CalendarMT.weekday.equals("Domindo")&& !CalendarMT.weekday.equals("Sabado"));
-	
-		setPago(payday == CalendarMT.Adia && Uday && frequenciaD >= 30);
+		Uday = ( CalendarMT.Adia >= (payday - 2) && CalendarMT.weekday.equals("Sexta-Feira") ) ||
+				(CalendarMT.Adia == payday && !CalendarMT.weekday.equals("Domingo")&& !CalendarMT.weekday.equals("Sabado"));
+		
+		setPago(Uday && frequenciaD >= 30);
 			
 		if(isPago()) {
 			frequenciaD = 26;

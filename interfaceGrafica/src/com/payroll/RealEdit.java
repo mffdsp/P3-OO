@@ -323,7 +323,8 @@ public class RealEdit extends JFrame {
 		
 		textField_3 = new JTextField();
 		
-		if(func[index].getType().equals("Assalariado") && !func[index].isCustom()) {
+		if(func[index].getType().equals("Assalariado")) {
+			
 			textField_3.setBounds(387, 224, 40, 30);
 			textField_3.setText(Integer.toString(((Assalariado) func[index]).getPayday()) );
 			panel.add(textField_3);
@@ -400,7 +401,7 @@ public class RealEdit extends JFrame {
 							((Comissionado) func[index]).setPday(((Semanal)agenda[list.getSelectedIndex()]).getDia());
 							((Comissionado) func[index]).setFrequencia(((Semanal)agenda[list.getSelectedIndex()]).getFrequencia());
 							
-						}if(CBtipo.getSelectedItem().toString().equals("Horista")) {
+						}if(CBtipo.getSelectedItem().toString().equals("Horista") || CBtipo.getSelectedItem().toString().equals("Assalariado")) {
 							
 							func[index] = new Horista();
 							func[index].setType("Horista");
