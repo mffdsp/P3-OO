@@ -5,6 +5,7 @@
                             "------            Instruções de Uso:               -----"
                             "------                                             -----"
                             "------  + Executar = java -jar executavel.jar      -----"
+                            "------  + Codigos em src/com                       -----"
                             "------  + Cada Btn representa uma função*          -----"  
                             "------  + Datas/Horas são fantasiosas              -----"
                             "------  + Undo/Redo válidos para toda ação         -----"
