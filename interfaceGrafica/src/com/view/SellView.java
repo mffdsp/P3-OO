@@ -27,9 +27,9 @@ public class SellView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField TFvalor;
+	Utility UT = new Utility();
 	
 	public SellView(Funcionario[] func, int index) {
-		Utility UT = new Utility();
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 225, 205);

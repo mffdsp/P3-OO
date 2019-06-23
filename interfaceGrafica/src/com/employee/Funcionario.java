@@ -3,32 +3,29 @@ package com.employee;
 
 public abstract class Funcionario{
 	 
+	//base
 	protected String name;
 	protected String adress;
 	protected double salary;
 	protected String payMode;
 	protected String type;
-	protected int DtInicial;
-	protected boolean sindicaty = false;
 	protected String code;
-	protected String Scode;
 	protected boolean saved = false; 
+	//Syndicate
+	protected boolean sindicaty = false;
+	protected String Scode = "notset";
+	//Timecard
+	private boolean pago = false;
 	protected int timeIN = 0;
 	protected int timeOUT = 0;
-	protected int WH = 0;
-	private boolean pago = false;
 	private boolean checkIN = false;
 	private boolean checkOUT = false;
+	//Schedule
 	private boolean custom = false;
 	private int agendaID = -1; 
 	private String agendaToString = "default";
 	
-	public void setWH(int WH){
-		this.WH += WH;
-	}
-	public int getWH(){
-		return WH;
-	}
+	
 	public void setTimeIN(int timeIN){
 		this.timeIN = timeIN;
 	}

@@ -22,7 +22,7 @@ public class SaveState{
 	private String pday = "Sexta-Feira"; 
 	private int payday = 30; 
 	private String agendaToString = "default"; 
-	private boolean[] payboo = new boolean[50];
+	private boolean[] payboo = new boolean[500];
 	private int pvenda = 15;
 
 	public String getName() {

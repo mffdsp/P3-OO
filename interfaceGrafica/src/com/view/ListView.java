@@ -2,7 +2,6 @@ package com.view;
 
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.JFrame;
@@ -31,6 +30,7 @@ public class ListView extends JFrame {
 
 	private JPanel contentPane;
 	int mode = 1;
+	
 	public ListView(DefaultListModel DLMA, DefaultListModel DLMC,  DefaultListModel DLMH, Funcionario[] func) {
 		
 		setForeground(Color.WHITE);
@@ -119,12 +119,12 @@ public class ListView extends JFrame {
 					return;
 				}
 				int achou = 0;
-				for(int i = 0; i < 50; i++) {
+				for(int i = 0; i < 500; i++) {
 					switch (mode){
 					case 1:
 						if(func[i] instanceof Horista && !hlist.getSelectedValue().toString().equals("Lista Vazia")) {
 							if(hlist.getSelectedIndex() == achou) {
-								new DetailView(func[i]).setVisible(true);
+								new DetailView(func[i], 1).setVisible(true);
 							}
 							achou += 1;
 						}
@@ -132,7 +132,7 @@ public class ListView extends JFrame {
 					case 2:
 						if(func[i] instanceof Comissionado) {
 							if(hlist.getSelectedIndex() == achou) {
-								new DetailView(func[i]).setVisible(true);	
+								new DetailView(func[i], 1).setVisible(true);	
 							}
 							achou += 1;
 						}
@@ -140,7 +140,7 @@ public class ListView extends JFrame {
 					case 3:
 						if(func[i] instanceof Assalariado) {
 							if(hlist.getSelectedIndex() == achou) {
-								new DetailView(func[i]).setVisible(true);
+								new DetailView(func[i], 1).setVisible(true);
 							}
 							achou += 1;
 						}

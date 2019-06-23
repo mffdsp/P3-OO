@@ -33,9 +33,7 @@ import javax.swing.SwingConstants;
 public class SignUP extends JFrame {
 	
 	private static double DBsalary = -1;
-	private static int actions = 0;
 	private static boolean invalidenumber = true;
-	private static int SSindex = 0;
 	private JPanel contentPane;
 	private JTextField AdressField;
 	private JTextField NameField;
@@ -66,7 +64,15 @@ public class SignUP extends JFrame {
 			break;
 		}
 		func[index].setSindicaty(sind);
-		func[index].setSindicatycode("111" + index);
+		if(sind) {
+			int indexs = 0;
+			while(indexs < 500) {
+				if(UT.isFree(func, "111" + indexs)) {
+					func[index].setSindicatycode("111" + indexs);
+					break;
+				}indexs += 1;
+			}
+		}
 		func[index].setName(NameField.getText());
 		func[index].setAdress(AdressField.getText());
 		func[index].setType(CBtype.getSelectedItem().toString());
@@ -94,7 +100,6 @@ public class SignUP extends JFrame {
 		func[index].setSalary(DBsalary);
 		JOptionPane.showMessageDialog(null ,
 				"Funcionário adicionado com sucesso!", "Feito", JOptionPane.INFORMATION_MESSAGE);
-		actions = 0;
 		
 		if(func[index] instanceof Horista) {
 			((Horista) func[index]).setSalarioBase(Double.parseDouble(SalaryField.getText()));
@@ -104,6 +109,7 @@ public class SignUP extends JFrame {
 		}if(func[index] instanceof Comissionado) {
 			((Comissionado)func[index]).setPVenda(15);
 			((Comissionado)func[index]).setRealSalary(func[index].getSalary()/2);
+			((Comissionado)func[index]).setPsalary(func[index].getSalary()/2);
 		}
 		
 		func[index].setSaved(true);
@@ -112,10 +118,9 @@ public class SignUP extends JFrame {
 		return;
 						
 	}
-	/**
-	 * Create the frame.
-	 */
+	
 	public SignUP(Funcionario[] func, int index) {
+		
 		setResizable(false);
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -275,8 +280,9 @@ public class SignUP extends JFrame {
 		codeLabel.setText("2019" + index); 
 		
 		JLabel ScodeLabel = new JLabel((String) null);
+		ScodeLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		ScodeLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		ScodeLabel.setBounds(279, 246, 159, 33);
+		ScodeLabel.setBounds(268, 249, 159, 33);
 		contentPane.add(ScodeLabel);
 		
 		JLabel LBrs = new JLabel("R$");
@@ -292,10 +298,16 @@ public class SignUP extends JFrame {
 				
 				if(CBsindboo.getSelectedItem().equals("SIM")) {
 					sind = true;
+					int indexs = 0;
+					while(indexs < 500) {
+						if(UT.isFree(func, "111" + indexs)) {
+							ScodeLabel.setText("111" + indexs);
+							break;
+						} indexs += 1;
+					}
 					
-					ScodeLabel.setText("Código sindical = " + "111" + index);
 				}else {
-					sind = true;
+					sind = false;
 					ScodeLabel.setText("");
 				}
 			}

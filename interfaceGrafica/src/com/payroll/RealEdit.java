@@ -3,7 +3,6 @@ package com.payroll;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 
@@ -51,26 +50,8 @@ public class RealEdit extends JFrame {
 	private int acc = 1;
 	boolean custom = false;
 	private JTextField TFcomi;
+	private JTextField TFscode;
 
-	/**
-	 * Launch the application.,
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					//realEdit frame = new realEdit();
-					//frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public RealEdit(Funcionario[] func, int index, Agenda[] agenda) {
 		
 		custom = func[index].isCustom();
@@ -118,6 +99,7 @@ public class RealEdit extends JFrame {
 		panel.add(LBvalor);
 		
 		TFvalor = new JTextField();
+		TFvalor.setHorizontalAlignment(SwingConstants.RIGHT);
 		TFvalor.setColumns(10);
 		if(func[index] instanceof Horista)
 		{
@@ -224,13 +206,57 @@ public class RealEdit extends JFrame {
 		LBicon2.setBounds(28, 247, 106, 107);
 		panel.add(LBicon2);
 		
+		
+		TFscode = new JTextField();
+		TFscode.setHorizontalAlignment(SwingConstants.RIGHT);
+		TFscode.setColumns(10);
+		TFscode.setBackground(Color.WHITE);
+		TFscode.setBounds(369, 67, 57, 24);
+		panel.add(TFscode);
+		
+		JLabel LBscode = new JLabel("S. Code:");
+		LBscode.setForeground(Color.BLACK);
+		LBscode.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		LBscode.setBounds(260, 66, 92, 21);
+		panel.add(LBscode);
+		
+		JLabel LBindisponivel = new JLabel("indisponivel");
+		LBindisponivel.setForeground(Color.RED);
+		LBindisponivel.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		LBindisponivel.setBounds(362, 94, 87, 21);
+		panel.add(LBindisponivel);
+		
 		JComboBox CBsind = new JComboBox();
+		
 		if(func[index].isSindicaty()) {
 			CBsind.setModel(new DefaultComboBoxModel(new String[] {"SIM", "NAO"}));
-		}else CBsind.setModel(new DefaultComboBoxModel(new String[] {"NAO", "SIM"}));
-		CBsind.setBounds(362, 95, 65, 20);
+			LBindisponivel.setVisible(false);
+			TFscode.setText(func[index].getSindicatycode());
+		}else {
+			CBsind.setModel(new DefaultComboBoxModel(new String[] {"NAO", "SIM"}));
+			LBindisponivel.setVisible(false);
+			LBscode.setVisible(false);
+			TFscode.setVisible(false);
+		}
+		CBsind.setBounds(362, 35, 65, 20);
 		panel.add(CBsind);
 		
+		
+		CBsind.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(CBsind.getSelectedItem().toString().equals("SIM")) {
+					LBscode.setVisible(true);
+					TFscode.setVisible(true);
+				}else {
+					LBscode.setVisible(false);
+					TFscode.setVisible(false);
+					
+				}
+			}
+		});
+		
+		
+	
 		
 		JList list = new JList();
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -261,6 +287,7 @@ public class RealEdit extends JFrame {
 		}
 		
 		JButton TFcustom = new JButton("Custom Schedule");
+		TFcustom.setToolTipText("Clique para mostrar as agendas");
 		TFcustom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(acc == 1 && agenda[0].isSaved()) 
@@ -308,7 +335,7 @@ public class RealEdit extends JFrame {
 		JLabel LBsind = new JLabel("Sindicato:");
 		LBsind.setForeground(Color.BLACK);
 		LBsind.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		LBsind.setBounds(260, 94, 92, 21);
+		LBsind.setBounds(260, 34, 92, 21);
 		panel.add(LBsind);
 		
 		JLabel LBrs = new JLabel("R$");
@@ -317,8 +344,6 @@ public class RealEdit extends JFrame {
 		LBrs.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		LBrs.setBounds(137, 386, 71, 21);
 		panel.add(LBrs);
-		
-	
 		
 		
 		textField_3 = new JTextField();
@@ -361,6 +386,40 @@ public class RealEdit extends JFrame {
 		BTsave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				//TRY CATCH, BEFORE SAVING
+				if(!UT.isFree(func, TFscode.getText()) && TFscode.isVisible() && !TFscode.getText().equals(func[index].getSindicatycode())) {
+					LBindisponivel.setVisible(true);
+					UT.ERRO();
+					return;
+				}
+				try {
+					Double.parseDouble(TFvalor.getText());
+				}catch(Exception ex1) {
+					System.err.print(ex1);
+					UT.ERRO();
+					return;
+				}
+				if(CBtipo.getSelectedItem().toString().equals("Assalariado")) {
+					try {
+						if(Integer.parseInt(textField_3.getText()) > 30 || Integer.parseInt(textField_3.getText()) < 1 && textField_3.isVisible()) {
+							throw new Exception("Valores fora do intervalo do mês");
+					}
+					}catch(Exception ex2) {
+						System.err.print(ex2);
+						UT.ERRO();
+						return;
+					}
+				}
+				try {
+					if(Integer.parseInt(TFcomi.getText()) > 100 || Integer.parseInt(TFcomi.getText()) < 0 && textField_3.isVisible() ) {
+						throw new Exception("Valores fora do intervalo <insira entre 0 e 100>");
+					}
+				}catch(Exception ex3) {
+					System.err.print(ex3);
+					UT.ERRO();
+					return;
+				}
+				//TRY CATCH, BEFORE SAVING
 				
 				int dialogButton = JOptionPane.YES_NO_OPTION;
 				int dialogResult = JOptionPane.showConfirmDialog (null, "Deseja salvar as informações?", "Confirmação", dialogButton);
@@ -415,73 +474,48 @@ public class RealEdit extends JFrame {
 					func[index].setAgendaID(list.getSelectedIndex());
 					
 				}
+				
 				//Valores independem de tipo
 				func[index].setName(TFname.getText());
 				func[index].setAdress(TFadress.getText());
 				func[index].setPayMode(CBmetodo.getSelectedItem().toString());
 				func[index].setCustom(custom);
 				func[index].setCode("2019" + index);
-				func[index].setSindicatycode("111" + index);
+				
+				if(UT.isFree(func, TFscode.getText()) && TFscode.isVisible()) 
+				func[index].setSindicatycode(TFscode.getText());
+				
 				func[index].setAgendaID(list.getSelectedIndex());
+				
+				
 				if(CBsind.getSelectedItem().toString().equals("SIM")) {
 					func[index].setSindicaty(true);
 				} else func[index].setSindicaty(false);
 				
 				//Salario Base do Horista
 				if(func[index] instanceof Horista) {
-					try {
-						((Horista) func[index]).setSalarioBase(Double.parseDouble(TFvalor.getText()));
-					} catch(Exception ex0) {
-						UT.ERRO();
-						System.err.print(ex0);
-						return;
-					}
+					((Horista) func[index]).setSalarioBase(Double.parseDouble(TFvalor.getText()));
 				} 
 				//Salario de Assalariado e Comissionado
 				else {
-					try { 
 						func[index].setSalary(Double.parseDouble(TFvalor.getText()));
 						if(func[index] instanceof Comissionado) {
 							((Comissionado)func[index]).setRealSalary(func[index].getSalary()/2);
 						}
-						
-					} catch(Exception ex0) {
-						UT.ERRO();
-						System.err.print(ex0); 
-						return;
-					}
 				}
 				
 				if(func[index] instanceof Assalariado && !func[index].isCustom()) {
-					try {
-						if(Integer.parseInt(textField_3.getText()) > 30 || Integer.parseInt(textField_3.getText()) < 1) {
-							throw new Exception("Valores fora do intervalo do mês");
-						}
-						else ((Assalariado) func[index]).setPayday(Integer.parseInt(textField_3.getText()));
-					} catch(Exception ex) {
-						UT.ERRO();
-						System.err.print(ex);
-						return;
-					}
+					 ((Assalariado) func[index]).setPayday(Integer.parseInt(textField_3.getText()));
 				}
 				
 				if(func[index] instanceof Comissionado) {
-					try {
-						if(Integer.parseInt(TFcomi.getText()) > 100 || Integer.parseInt(TFcomi.getText()) < 0) {
-							throw new Exception("Valores fora do intervalo <insira entre 0 e 100>");
-						}
-						else ((Comissionado) func[index]).setPVenda(Integer.parseInt(TFcomi.getText()));
-					} catch(Exception ex) {
-						UT.ERRO();
-						System.err.print(ex);
-						return;
-					}
+				 ((Comissionado) func[index]).setPVenda(Integer.parseInt(TFcomi.getText()));
 				}
 				
 				func[index].setSaved(true);
 				Command.saveS(func);
 				setVisible(false);
-				
+				return;
 			}
 		});
 		

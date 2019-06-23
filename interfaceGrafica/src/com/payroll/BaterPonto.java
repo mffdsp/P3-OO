@@ -23,6 +23,7 @@ import java.awt.event.ActionEvent;
 public class BaterPonto extends JFrame {
 
 	private JPanel contentPane;
+		
 	public BaterPonto(Funcionario[] func, int index) {
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -80,10 +81,11 @@ public class BaterPonto extends JFrame {
 					func[index].setCheckOUT(true);
 					func[index].setTimeOUT(CalendarMT.Ahora);
 					int value = func[index].getTimeOUT() - func[index].getTimeIN();
-					func[index].setWH(value);
+					
 					JOptionPane.showMessageDialog(null ,
 							"Saída registrada com sucesso! as " + CalendarMT.Ahora  + ":" + CalendarMT.Aminuto + 
 							"\nHoras trabalhadas hoje: " + value + "Hrs", "Sucesso!", 	JOptionPane.INFORMATION_MESSAGE);
+					
 					if(func[index] instanceof Horista) {
 						((Horista) func[index]).addSalary(value);
 						JOptionPane.showMessageDialog(null ,

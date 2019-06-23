@@ -20,6 +20,7 @@ public class Command {
     	for(int i = 0; i < 50; i++) {
 			if(func[i] != null) 
 			{
+				
 				SS[i][SSindex] = new SaveState();
 				SS[i][SSindex].setAgendaToString(func[i].getAgendaToString());
 				SS[i][SSindex].setName(func[i].getName());

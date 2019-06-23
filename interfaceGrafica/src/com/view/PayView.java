@@ -28,8 +28,8 @@ import com.employee.Horista;
 
 public class PayView extends JFrame {
 
-		private JPanel contentPane;
-		int mode = 1;
+	private JPanel contentPane;
+	int mode = 1;
 	
 	public PayView(DefaultListModel DLMA, DefaultListModel DLMC,  DefaultListModel DLMH, Funcionario[] func) {
 		
@@ -133,7 +133,7 @@ public class PayView extends JFrame {
 					case 1:
 						if(func[i] instanceof Horista && !hlist.getSelectedValue().toString().equals("Lista Vazia")) {
 							if(hlist.getSelectedIndex() == achou) {
-								new DetailView(func[i]).setVisible(true);
+								new DetailView(func[i], 2).setVisible(true);
 							}
 							achou += 1;
 						}
@@ -141,7 +141,7 @@ public class PayView extends JFrame {
 					case 2:
 						if(func[i] instanceof Comissionado && !hlist.getSelectedValue().toString().equals("Lista Vazia") ) {
 							if(hlist.getSelectedIndex() == achou) {
-								new DetailView(func[i]).setVisible(true);	
+								new DetailView(func[i], 2).setVisible(true);	
 							}
 							achou += 1;
 						}
@@ -149,7 +149,7 @@ public class PayView extends JFrame {
 					case 3:
 						if(func[i] instanceof Assalariado && !hlist.getSelectedValue().toString().equals("Lista Vazia")) {
 							if(hlist.getSelectedIndex() == achou) {
-								new DetailView(func[i]).setVisible(true);
+								new DetailView(func[i], 2).setVisible(true);
 							}
 							achou += 1;
 						}

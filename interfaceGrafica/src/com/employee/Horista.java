@@ -5,17 +5,18 @@ import com.adm.SystemMT;
 
 public class Horista extends Funcionario implements SystemMT{
 	
-     // Getting the day of the week
 	protected double salarioBase = 0;
+	private double psalary = 0;
 	protected int tipo = 1;
 	protected int diasTB = 0;
 	private String pday = "Sexta-Feira"; 
+	
 	private int frequenciaD = 6;
 	private int frequencia = 1;
 	
 	@Override
 	public String toString() {
-		return name + " / " + code +  " / " + salarioBase + "RS";
+		return name + " / " + code +  " / " + salary + "RS";
 	}
 	public int getFrequencia() {
 		return frequencia;
@@ -67,4 +68,13 @@ public class Horista extends Funcionario implements SystemMT{
 	public void setFrequenciaD(int frequenciaD) {
 		this.frequenciaD += frequenciaD;
 	}
+	
+	public double getPsalary() {
+		return psalary;
+	}
+
+	public void setPsalary(double psalary) {
+		this.psalary = psalary;
+	}
+
 }

@@ -1,13 +1,12 @@
 package com.view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.adm.Command;
+import com.adm.Utility;
 import com.employee.Comissionado;
 import com.employee.Funcionario;
 import com.payroll.BaterPonto;
@@ -21,55 +20,25 @@ import java.awt.Dimension;
 import javax.swing.JTextField;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
-import java.awt.Window.Type;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+
 
 public class EditView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField codeField;
+	Utility UT = new Utility();
 
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					//EditView frame = new EditView(null, "editar");
-					//frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	public static int getIndex(String codigo){
-        int i = 0;
-        int index = 0;
-        //2019265
-        int pt = codigo.length() - 5;
-        while(i < codigo.length() - 4 )
-        {
-            index += Math.pow(10, pt - i) * Character.getNumericValue(codigo.charAt(i + 4));
-            i += 1;
-        }
-        return index;
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public EditView(Funcionario[] func, String action , Agenda[] agenda) {
 		
 		setResizable(false);
 		setTitle("Insira o Código de Acesso");
+		if(action.equals("TSindical")) {
+			setTitle("Insira o código sindical");
+		}
 		setForeground(Color.WHITE);
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -101,9 +70,8 @@ public class EditView extends JFrame {
 				boolean sinnotvalid = true;
 				try {
 					int teste = Integer.parseInt(codeField.getText());
-					indice = getIndex(codeField.getText());
+					indice = UT.getIndex(codeField.getText());
 					notvalid = func[indice] == null || Integer.parseInt(codeField.getText()) < 20190 || !func[indice].isSaved();
-					sinnotvalid = func[indice] == null || Integer.parseInt(codeField.getText()) < 1110 || Integer.parseInt(codeField.getText()) > 11199 || !func[indice].isSaved();
 				}
 				catch(Exception e0) {
 					System.err.print(e0);
@@ -136,7 +104,7 @@ public class EditView extends JFrame {
 					//JOptionPane.showMessageDialog(null, texto1.getText());
 					else {
 						int dialogButton = JOptionPane.YES_NO_OPTION;
-						 DetailView DV = new DetailView(func[indice], true);
+						 DetailView DV = new DetailView(func[indice], 1);
 						 DV.setVisible(true);
 						int dialogResult = JOptionPane.showConfirmDialog (null, "Deseja remover o funcionario?", "Confirmação", dialogButton);
 						if(!(dialogResult == JOptionPane.YES_OPTION) ){
@@ -153,22 +121,15 @@ public class EditView extends JFrame {
 				}
 				if(action.equals("TSindical"))
 				{
-					setTitle("Insira o código SINDICAL");
-					if(sinnotvalid)
+					int sindex = UT.findFuncSind(func, codeField.getText());
+					if(sindex == -1)
 					{
 						JOptionPane.showMessageDialog(null ,
 								"Código incorreto", "ERRO", JOptionPane.ERROR_MESSAGE);
 					}
 					//JOptionPane.showMessageDialog(null, texto1.getText());
 					else {
-						if(func[indice].isSindicaty()) {
-							new TaxaS(func, indice).setVisible(true);
-						}
-						else {
-							JOptionPane.showMessageDialog(null ,
-									"Funcionário não está associado ao sindicato\n"
-									+ "Para Associar-se Dirija-se a edição de dados", "ERRO", JOptionPane.ERROR_MESSAGE);
-						}
+						new TaxaS(func, sindex).setVisible(true);
 						setVisible(false);
 					}
 				}

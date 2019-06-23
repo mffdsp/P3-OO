@@ -8,8 +8,7 @@ public class Assalariado extends Funcionario implements SystemMT{
 	
 	private int payday = 30;
 	private int frequenciaD = 30; 
-	
-	
+
 	public boolean pagarFuncionario() {
 		
 		boolean Uday = false;

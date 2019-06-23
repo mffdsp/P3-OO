@@ -26,7 +26,7 @@ public class MainView extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
 	Utility UT = new Utility();
-	Agenda agenda[] = new Agenda[50];
+	Agenda agenda[] = new Agenda[500];
 	private JPanel contentPane;
 	private JLabel texto;
 	private JLabel LBadd;
@@ -174,7 +174,7 @@ public class MainView extends JFrame{
 		LBhora.setText(CalendarMT.valueToString(CalendarMT.Ahora) + ":" + CalendarMT.valueToString(CalendarMT.Aminuto)); 
 	
 		
-		Funcionario[] funcionarios = new Funcionario[50];	
+		Funcionario[] funcionarios = new Funcionario[500];	
 		UT.setALL(funcionarios, agenda);
 		Command.saveS(funcionarios);
 		

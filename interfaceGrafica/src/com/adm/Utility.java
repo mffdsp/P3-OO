@@ -13,7 +13,7 @@ public class Utility {
 	
 
 	public int findIndex(Funcionario[] func) {
-		for(int i = 0; i < 50; i++)
+		for(int i = 0; i < 500; i++)
 		{
 			if(!func[i].isSaved())
 			{
@@ -24,19 +24,61 @@ public class Utility {
 		
 	}
 	 
-	public void setALL(Funcionario[] func, Agenda[] agenda) {
-		for(int i = 0; i < 50; i++)
+	public int getIndex(String codigo){
+        int i = 0;
+        int index = 0;
+        //2019265
+        int pt = codigo.length() - 5;
+        while(i < codigo.length() - 4 )
+        {
+            index += Math.pow(10, pt - i) * Character.getNumericValue(codigo.charAt(i + 4));
+            i += 1;
+        }
+        return index;
+	}
+	
+	public boolean isFree(Funcionario[] func, String newScode) {
+		for(int i = 0; i < 500; i++)
 		{
-			func[i] = new Horista();
-			func[i].setType("Horista");
-			CalendarMT.payboo[i] = false;
-			agenda[i] = new Agenda();
-			agenda[i].setSaved(false);
+			if(func[i].getSindicatycode().equals(newScode) && func[i].isSindicaty() && func[i].isSaved())
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public int findFuncSind(Funcionario[] func, String newScode) {
+		for(int i = 0; i < 500; i++)
+		{
+			if(func[i].getSindicatycode().equals(newScode) && func[i].isSindicaty() && func[i].isSaved())
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	public void setALL(Funcionario[] func, Agenda[] agenda) {
+		for(int i = 0; i < 500; i++)
+		{
+			try {
+				
+				func[i] = new Horista();
+				func[i].setType("Horista");
+				CalendarMT.payboo[i] = false;
+				agenda[i] = new Agenda();
+				agenda[i].setSaved(false);
+				
+			}catch(Exception e){
+				System.err.println(e);
+			}
+			
 		}
 	}
 	
 	public void setList(Funcionario[] teste, DefaultListModel DLMC, DefaultListModel DLMA, DefaultListModel DLMH) {
-		for(int i = 0; i < 50; i++) { 
+		for(int i = 0; i < 500; i++) { 
 			if(teste[i].isSaved())
 			{
 				if(teste[i].getType().equals("Assalariado")){
@@ -52,7 +94,7 @@ public class Utility {
 	}
 	
 	public void payList(Funcionario[] teste, DefaultListModel DLMC, DefaultListModel DLMA, DefaultListModel DLMH) {
-		for(int i = 0; i < 50; i++) { 
+		for(int i = 0; i < 500; i++) { 
 			if(teste[i].isSaved())
 			{
 				if(teste[i] instanceof Assalariado && ((Assalariado)teste[i]).pagarFuncionario()){
@@ -61,12 +103,15 @@ public class Utility {
 					
 				}if(teste[i] instanceof Comissionado && ((Comissionado)teste[i]).pagarFuncionario()){
 					
-					((Comissionado)teste[i]).setRealSalary(teste[i].getSalary());
 					DLMC.addElement(teste[i].toString());	
+					((Comissionado)teste[i]).setPsalary(((Comissionado)teste[i]).getRealSalary());
+					((Comissionado)teste[i]).setRealSalary(-((Comissionado)teste[i]).getRealSalary() + teste[i].getSalary()/2);
 					
 				}if(teste[i] instanceof Horista && ((Horista)teste[i]).pagarFuncionario()){
 					
-					DLMH.addElement(teste[i].toString());	
+					DLMH.addElement(teste[i].toString());
+					((Horista)teste[i]).setPsalary(((Horista)teste[i]).getSalary());
+					teste[i].setSalary(((Horista)teste[i]).getSalarioBase());
 					
 				}
 			}

@@ -14,7 +14,7 @@ public class CalendarMT {
 	 public static int Adia = 1;
 	 public static int Ames = 6;
 	 public static int Aano = 2019;
-	 public static boolean[] payboo =  new boolean[50];
+	 public static boolean[] payboo =  new boolean[500];
 	 public static int DAYSGONE = 0;
 	 public static String weekday = "Domingo";
 	
@@ -63,7 +63,6 @@ public class CalendarMT {
     		 }
 	    		
 	    	}
-	 
 		 	DAYSGONE += 1;
 		 	if(DAYSGONE%7 == 0) {
 		 		weekday = "Domingo";
@@ -86,9 +85,7 @@ public class CalendarMT {
 		 	if(DAYSGONE%7 == 6) {
 		 		weekday = "Sabado";
 		 	}
-		 	
-	  
-	        
+ 
 	        int aux = Adia;
 
 	        if(Adia == 30 && Ames == 12)
