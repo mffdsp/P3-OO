@@ -445,6 +445,10 @@ public class RealEdit extends JFrame {
 				} else if(custom) {
 					
 					if(agenda[list.getSelectedIndex()] instanceof Mensal) {
+						if(!CBtipo.getSelectedItem().toString().equals("Assalariado")) {
+							JOptionPane.showMessageDialog(null ,
+									"Funcionario modificado automaticamente para ASSALARIADO\ndevido à agenda personalizada", "Mudança", JOptionPane.INFORMATION_MESSAGE);
+						}
 						func[index] = new Assalariado();
 						func[index].setType("Assalariado");
 						func[index].setAgendaToString(agenda[list.getSelectedIndex()].toString());
@@ -452,15 +456,19 @@ public class RealEdit extends JFrame {
 						
 					}else if(agenda[list.getSelectedIndex()] instanceof Semanal) {
 						
-						if(CBtipo.getSelectedItem().toString().equals("Comissionado")) {
+						if(CBtipo.getSelectedItem().toString().equals("Comissionado")  || CBtipo.getSelectedItem().toString().equals("Assalariado")) {
 							
+							if(CBtipo.getSelectedItem().toString().equals("Assalariado")) {
+								JOptionPane.showMessageDialog(null ,
+										"Funcionario modificado automaticamente para COMISSIONADO\ndevido à agenda personalizada", "Mudança", JOptionPane.INFORMATION_MESSAGE);
+							}
 							func[index] = new Comissionado();
 							func[index].setType("Comissionado");
 							func[index].setAgendaToString(agenda[list.getSelectedIndex()].toString());
 							((Comissionado) func[index]).setPday(((Semanal)agenda[list.getSelectedIndex()]).getDia());
 							((Comissionado) func[index]).setFrequencia(((Semanal)agenda[list.getSelectedIndex()]).getFrequencia());
 							
-						}if(CBtipo.getSelectedItem().toString().equals("Horista") || CBtipo.getSelectedItem().toString().equals("Assalariado")) {
+						}if(CBtipo.getSelectedItem().toString().equals("Horista")) {
 							
 							func[index] = new Horista();
 							func[index].setType("Horista");
@@ -495,6 +503,7 @@ public class RealEdit extends JFrame {
 				//Salario Base do Horista
 				if(func[index] instanceof Horista) {
 					((Horista) func[index]).setSalarioBase(Double.parseDouble(TFvalor.getText()));
+					func[index].setSalary(0);
 				} 
 				//Salario de Assalariado e Comissionado
 				else {
@@ -510,6 +519,8 @@ public class RealEdit extends JFrame {
 				
 				if(func[index] instanceof Comissionado) {
 				 ((Comissionado) func[index]).setPVenda(Integer.parseInt(TFcomi.getText()));
+				 ((Comissionado)func[index]).setRealSalary(func[index].getSalary()/2);
+				((Comissionado)func[index]).setPsalary(func[index].getSalary()/2);
 				}
 				
 				func[index].setSaved(true);
