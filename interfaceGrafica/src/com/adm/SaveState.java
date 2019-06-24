@@ -1,11 +1,16 @@
 package com.adm;
 
+import com.schedule.Agenda;
+import com.schedule.Mensal;
+import com.schedule.Semanal;
 
 public class SaveState{
 
 	private String name;
 	private String adress;
 	private double salary;
+	private double realSalary = 0;
+	private double salarybup = 0;
 	private String payMode;
 	private String type;
 	public int DtInicial;
@@ -24,10 +29,31 @@ public class SaveState{
 	private String agendaToString = "default"; 
 	private boolean[] payboo = new boolean[500];
 	private int pvenda = 15;
-	private int dia = 0;
-	private int frequencia = 0;
+	Agenda agenda = new Agenda();
 	private String weekdia = "Sexta-Feira";
-
+	private int agendaID = 0;
+	private int passouD = 0;
+	private int frequenciaD = 30; 
+	private boolean URpago = false;
+	
+	
+	public void setAgenda(Agenda agenda) {
+		if(agenda instanceof Mensal) {
+			this.agenda = new Mensal();
+			this.agenda.setFrequencia(agenda.getFrequencia());
+			((Mensal)this.agenda).setDia(((Mensal) agenda).getDia());
+		}
+		if(agenda instanceof Semanal) {
+			this.agenda = new Semanal();
+			this.agenda.setFrequencia(agenda.getFrequencia());
+			((Semanal)this.agenda).setDia((((Semanal) agenda).getDia()));
+		}
+	}
+	public Agenda getAgenda() {
+		return this.agenda;
+	}
+	
+	
 	public String getName() {
 		return name;
 	}
@@ -148,24 +174,47 @@ public class SaveState{
 	public void setPVenda(int pvenda) {
 		this.pvenda = pvenda;
 	}
-	public int getDia() {
-		return dia;
-	}
-	public void setDia(int dia) {
-		this.dia = dia;
-	}
-	public int getFrequencia() {
-		return frequencia;
-	}
-	public void setFrequencia(int frequencia) {
-		this.frequencia = frequencia;
-	}
 	public String getWeekdia() {
 		return weekdia;
 	}
 	public void setWeekdia(String weekdia) {
 		this.weekdia = weekdia;
 	}
-	
+	public int getAgendaID() {
+		return agendaID;
+	}
+	public void setAgendaID(int agendaID) {
+		this.agendaID = agendaID;
+	}
+	public int getFrequenciaD() {
+		return frequenciaD;
+	}
+	public void setFrequenciaD(int frequenciaD) {
+		this.frequenciaD = frequenciaD;
+	}
+	public int getPassouD() {
+		return passouD;
+	}
+	public void setPassouD(int passouD) {
+		this.passouD = passouD;
+	}
+	public double getRealSalary() {
+		return realSalary;
+	}
+	public void setRealSalary(double realSalary) {
+		this.realSalary += realSalary;
+	}
+	public boolean isURpago() {
+		return URpago;
+	}
+	public void setURpago(boolean uRpago) {
+		URpago = uRpago;
+	}
+	public double getSalarybup() {
+		return salarybup;
+	}
+	public void setSalarybup(double salarybup) {
+		this.salarybup = salarybup;
+	}
 
 }

@@ -130,7 +130,7 @@ public class EditView extends JFrame {
 					//JOptionPane.showMessageDialog(null, texto1.getText());
 					else {
 						new TaxaS(func, sindex).setVisible(true);
-						setVisible(false);
+						setVisible(false); 
 					}
 				}
 				if(action.equals("Lvenda"))

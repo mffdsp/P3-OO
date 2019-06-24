@@ -9,7 +9,6 @@ public class Horista extends Funcionario implements SystemMT{
 	
 	protected double salarioBase = 0;
 	private double psalary = 0;
-	private int frequenciaD = 6;
 	
 	@Override
 	public String toString() {
@@ -26,16 +25,14 @@ public class Horista extends Funcionario implements SystemMT{
 					(CalendarMT.Adia == ((Mensal)super.agenda).getDia() && !CalendarMT.weekday.equals("Domingo")&& !CalendarMT.weekday.equals("Sabado"));
 			
 			setPago(Uday && frequenciaD >= 30);
-			if(isPago()) {
-			frequenciaD = 26;
-			}
 			
 		}else if(super.agenda instanceof Semanal) {
-			
+			 
 			setPago(frequenciaD >= ((Semanal)super.agenda).getFrequencia()*7 && CalendarMT.weekday.equals(((Semanal)super.agenda).getDia()));
-			if(isPago()) {
-				 frequenciaD = 6;
-			}
+		}
+		if(isPago()) {
+			super.frequenciaD = 5;
+			super.setURpago(true);
 		}
 		return isPago();
 
@@ -57,14 +54,6 @@ public class Horista extends Funcionario implements SystemMT{
 	}
 	public double getSalarioBase() {
 		return salarioBase;
-	}
-
-	public int getFrequenciaD() {
-		return frequenciaD;
-	}
-
-	public void setFrequenciaD(int frequenciaD) {
-		this.frequenciaD += frequenciaD;
 	}
 	
 	public double getPsalary() {

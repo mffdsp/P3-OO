@@ -298,8 +298,7 @@ public class RealEdit extends JFrame {
 					acc = 0; list.setVisible(true);			
 					DefaultListModel DLMA = new DefaultListModel();
 					for(int i = 0; i < 50; i++) { 
-						if(agenda[i].isSaved()) {
-							
+						if(agenda[i].isSaved()) {		
 							DLMA.addElement(agenda[i]);
 						}
 					}
@@ -365,6 +364,8 @@ public class RealEdit extends JFrame {
 		BTsave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				int savefrequency = func[index].getFrequenciaD();
+				
 				//TRY CATCH, BEFORE SAVING
 				if(!UT.isFree(func, TFscode.getText()) && TFscode.isVisible() && !TFscode.getText().equals(func[index].getSindicatycode())) {
 					LBindisponivel.setVisible(true);
@@ -372,14 +373,20 @@ public class RealEdit extends JFrame {
 					return;
 				}
 				try {
-					Double.parseDouble(TFvalor.getText());
+					if(TFscode.isVisible()) {
+						Double.parseDouble(TFscode.getText());
+					}
+					if(TFvalor.isVisible()) {
+						Double.parseDouble(TFvalor.getText());
+					}
+				
 				}catch(Exception ex1) {
 					System.err.print(ex1);
 					UT.ERRO();
 					return;
 				}
 				try {
-					if(Integer.parseInt(TFcomi.getText()) > 100 || Integer.parseInt(TFcomi.getText()) < 0 && textField_3.isVisible() ) {
+					if(Integer.parseInt(TFcomi.getText()) > 100 || Integer.parseInt(TFcomi.getText()) < 0) {
 						throw new Exception("Valores fora do intervalo <insira entre 0 e 100>");
 					}
 				}catch(Exception ex3) {
@@ -388,7 +395,7 @@ public class RealEdit extends JFrame {
 					return;
 				}
 				//TRY CATCH, BEFORE SAVING
-				
+				 
 				
 				Agenda nocustom = new Agenda(); 
 				int dialogButton = JOptionPane.YES_NO_OPTION;
@@ -401,9 +408,9 @@ public class RealEdit extends JFrame {
 					//System.out.println("criou A");
 					func[index] = new Assalariado();
 					func[index].setType("Assalariado");
-					
+
 					nocustom = new Mensal();
-					((Mensal)nocustom).setDia(Integer.parseInt(textField_3.getText()));
+					((Mensal)nocustom).setDia(30);
 					nocustom.setFrequencia(1);
 					func[index].setAgenda(nocustom);
 					
@@ -421,6 +428,7 @@ public class RealEdit extends JFrame {
 					//System.out.println("criou C ");
 					func[index] = new Comissionado();
 					func[index].setType("Comissionado");
+
 					
 					nocustom = new Semanal();
 
@@ -453,7 +461,6 @@ public class RealEdit extends JFrame {
 				func[index].setPayMode(CBmetodo.getSelectedItem().toString());
 				func[index].setCustom(custom);
 				func[index].setCode("2019" + index);
-				
 				if(UT.isFree(func, TFscode.getText()) && TFscode.isVisible()) 
 				func[index].setSindicatycode(TFscode.getText());
 				
@@ -479,10 +486,13 @@ public class RealEdit extends JFrame {
 				if(func[index] instanceof Comissionado) {
 				 ((Comissionado) func[index]).setPVenda(Integer.parseInt(TFcomi.getText()));
 				 ((Comissionado)func[index]).setRealSalary(func[index].getSalary()/2);
-				((Comissionado)func[index]).setPsalary(func[index].getSalary()/2);
+				 ((Comissionado)func[index]).setPsalary(func[index].getSalary()/2);
 				}
 				
+				func[index].setSalarybup(Double.parseDouble(TFvalor.getText()));
+				func[index].setFrequenciaD(savefrequency);
 				func[index].setSaved(true);
+				Command.URpago[index] = false;
 				Command.saveS(func);
 				setVisible(false);
 				return;

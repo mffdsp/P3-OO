@@ -395,7 +395,7 @@ public class MainView extends JFrame{
 					DefaultListModel DLMA = new DefaultListModel();
 					DefaultListModel DLMC = new DefaultListModel();
 					DefaultListModel DLMH = new DefaultListModel();
-					try{
+					try{ 
 						UT.payList(funcionarios, DLMC, DLMA, DLMH);
 					}
 					catch(NullPointerException e2) {
@@ -407,8 +407,9 @@ public class MainView extends JFrame{
 						DLMH.addElement("Lista Vazia");
 					}if(DLMC.getSize() == 0) {
 						DLMC.addElement("Lista Vazia");
-					}
+					}		
 					new PayView(DLMA, DLMC, DLMH, funcionarios).setVisible(true);
+					
 				}
 			}
 		});

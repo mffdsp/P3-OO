@@ -43,7 +43,7 @@ public class SellView extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		setTitle("Lançar Venda");
+		setTitle("Lançar Venda"); 
 		
 		JEditorPane TFobs = new JEditorPane();
 		TFobs.setBackground(SystemColor.textHighlightText);
@@ -72,7 +72,7 @@ public class SellView extends JFrame {
 					double addValue = value * ((Comissionado)func[index]).getPVenda()/100;
 					
 					((Comissionado)func[index]).setRealSalary(addValue);
-					
+					((Comissionado)func[index]).setPsalary(((Comissionado)func[index]).getRealSalary());
 					JOptionPane.showMessageDialog(null ,
 							"Venda associada com sucesso à:\n"
 							+ func[index].getName() + "\nTaxa de:" + ((Comissionado)func[index]).getPVenda() + "%"

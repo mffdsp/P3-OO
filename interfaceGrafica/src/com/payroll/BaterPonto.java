@@ -25,7 +25,7 @@ public class BaterPonto extends JFrame {
 	private JPanel contentPane;
 		
 	public BaterPonto(Funcionario[] func, int index) {
-		
+		 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 263, 208);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

@@ -104,13 +104,15 @@ public class SignUP extends JFrame {
 		if(func[index] instanceof Horista) {
 			((Horista) func[index]).setSalarioBase(Double.parseDouble(SalaryField.getText()));
 			func[index].setSalary(0);
-			
+			func[index].setFrequenciaD(7); 
 			Agenda agenda = new Semanal();
 			agenda.setFrequencia(1);
 			((Semanal)agenda).setDia("Sexta-Feira");
 			func[index].setAgenda(agenda);
 			
 		}if(func[index] instanceof Assalariado) {
+						
+			func[index].setFrequenciaD(10);
 			
 			Agenda agenda = new Mensal();
 			agenda.setFrequencia(1);
@@ -118,6 +120,7 @@ public class SignUP extends JFrame {
 			func[index].setAgenda(agenda);
 			
 		}if(func[index] instanceof Comissionado) {
+			func[index].setFrequenciaD(6);
 			
 			Agenda agenda = new Semanal();
 			agenda.setFrequencia(2);
@@ -129,6 +132,8 @@ public class SignUP extends JFrame {
 			((Comissionado)func[index]).setPsalary(func[index].getSalary()/2);
 		}
 		
+		func[index].setSalarybup(DBsalary);
+		Command.URpago[index] = false;
 		func[index].setSaved(true);
 		Command.saveS(func);
 		setVisible(false);
@@ -249,7 +254,7 @@ public class SignUP extends JFrame {
 		CBtype.setSelectedIndex(1);
 		CBtype.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(CBtype.getSelectedItem().toString().equals(("Horista"))) {
+				if(CBtype.getSelectedItem().toString().equals(("Horista"))) { 
 					LBrs.setText("R$/hora");
 				}else LBrs.setText("R$");
 			}
@@ -266,9 +271,6 @@ public class SignUP extends JFrame {
 		CBptype.setBounds(223, 386, 140, 20);
 		CBptype.setModel(new DefaultComboBoxModel(new String[] {"Correios", "Maos", "Conta bancaria"}));
 		 
-		
-		
-		
 		JLabel lbimg = new JLabel("");
 		lbimg.setBounds(28, 11, 145, 107);
 		lbimg.setIcon(new ImageIcon(SignUP.class.getResource("/com/payroll/icons/icons8-gest\u00E3o-de-cliente-100.png")));

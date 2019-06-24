@@ -7,7 +7,10 @@ import javax.swing.border.EmptyBorder;
 
 import com.adm.Command;
 import com.adm.Utility;
+import com.employee.Assalariado;
+import com.employee.Comissionado;
 import com.employee.Funcionario;
+import com.employee.Horista;
 import com.view.MainView;
 
 import javax.swing.JTextField;
@@ -43,7 +46,7 @@ public class TaxaS extends JFrame {
 		contentPane.setBackground(SystemColor.menu);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(null); 
 		setTitle("Registrar Taxa");
 		
 		JEditorPane TFobs = new JEditorPane();
@@ -70,7 +73,23 @@ public class TaxaS extends JFrame {
 				try {
 					double value = Double.parseDouble(TFvalor.getText());
 					double salary = func[index].getSalary();
-					func[index].setSalary(salary - value);
+					
+					if(func[index] instanceof Comissionado) {
+						
+						salary = ((Comissionado)func[index]).getRealSalary();
+						((Comissionado)func[index]).setRealSalary(salary - value);
+						((Comissionado)func[index]).setPsalary(((Comissionado)func[index]).getRealSalary());
+						
+					}else {
+						func[index].setSalary(salary - value);
+						if(func[index] instanceof Horista) {
+							((Horista)func[index]).setPsalary(func[index].getSalary());
+						}
+						if(func[index] instanceof Assalariado) {
+							((Assalariado)func[index]).setPsalary(func[index].getSalary());
+						}
+					}
+					
 					JOptionPane.showMessageDialog(null ,
 							"Taxa debitada com sucesso à: \n"
 							+ func[index].getName() + "\nCódigo Sindical: " + func[index].getSindicatycode(), "Sucesso!", JOptionPane.INFORMATION_MESSAGE);

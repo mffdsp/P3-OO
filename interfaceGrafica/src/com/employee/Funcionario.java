@@ -10,6 +10,7 @@ public abstract class Funcionario{
 	protected String name;
 	protected String adress;
 	protected double salary;
+	private double salarybup = 1;
 	protected String payMode;
 	protected String type;
 	protected String code;
@@ -19,15 +20,18 @@ public abstract class Funcionario{
 	protected String Scode = "notset";
 	//Timecard
 	private boolean pago = false;
+	private boolean URpago = false;
 	protected int timeIN = 0;
 	protected int timeOUT = 0;
 	private boolean checkIN = false;
 	private boolean checkOUT = false;
 	//Schedule
+	private int passouD = 0;
+	protected int frequenciaD = 0; 
 	Agenda agenda = new Agenda();
 	private boolean custom = false;
 	private String shtype = "Mensal";
-	private int agendaID = -1; 
+	private int agendaID = -1;  
 	private String agendaToString = "default";
 	
 	public void setAgenda(Agenda agenda) {
@@ -157,6 +161,33 @@ public abstract class Funcionario{
 	}
 	public void setShtype(String shtype) {
 		this.shtype = shtype;
+	}
+	public int getFrequenciaD() {
+		return frequenciaD;
+	}
+	public void setFrequenciaD(int frequenciaD) {
+		this.frequenciaD = frequenciaD;
+	}
+	public void addFrequenciaD(int frequenciaD) {
+		this.frequenciaD += frequenciaD;
+	}
+	public int getPassouD() {
+		return passouD;
+	}
+	public void setPassouD(int passouD) {
+		this.passouD = passouD;
+	}
+	public boolean isURpago() {
+		return URpago;
+	}
+	public void setURpago(boolean uRpago) {
+		URpago = uRpago;
+	}
+	public double getSalarybup() {
+		return salarybup;
+	}
+	public void setSalarybup(double salarybup) {
+		this.salarybup = salarybup;
 	}
 }
 

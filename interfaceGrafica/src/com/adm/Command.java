@@ -13,16 +13,16 @@ public class Command {
 	
 	public static int SSindex = 0;
 	public static int UNDOAC = 0;
+	public static boolean URpago[] = new boolean[500];
 	public static int AgendaIndex = 0;
-	public static SaveState[][] SS = new SaveState[50][50];
+	public static SaveState[][] SS = new SaveState[500][500];
 	
 	public static void saveS(Funcionario[] func) {
 		
     	SSindex += 1;
-    	for(int i = 0; i < 50; i++) {
+    	for(int i = 0; i < 500; i++) {
 			if(func[i] != null) 
 			{
-				
 				SS[i][SSindex] = new SaveState();
 				SS[i][SSindex].setAgendaToString(func[i].getAgendaToString());
 				SS[i][SSindex].setName(func[i].getName());
@@ -39,20 +39,19 @@ public class Command {
 				SS[i][SSindex].setAindex(Command.AgendaIndex);
 				SS[i][SSindex].setCustom(func[i].isCustom());
 				SS[i][SSindex].setPayboo(CalendarMT.payboo[CalendarMT.DAYSGONE]);
+				SS[i][SSindex].setAgenda(func[i].getAgenda());
+				SS[i][SSindex].setAgendaID(func[i].getAgendaID());
+				SS[i][SSindex].setFrequenciaD(func[i].getFrequenciaD());
+				SS[i][SSindex].setPassouD(func[i].getPassouD());
+				SS[i][SSindex].setSalarybup(func[i].getSalarybup());
 				if(func[i] instanceof Horista) {
 					SS[i][SSindex].setSalarioBase(((Horista) func[i]).getSalarioBase());
 				}
 				if(func[i] instanceof Comissionado) {
 					SS[i][SSindex].setPVenda(((Comissionado) func[i]).getPVenda());
+					SS[i][SSindex].setRealSalary((((Comissionado) func[i]).getRealSalary()));
 				}
-
-				if(func[i].getAgenda() instanceof Mensal) {
-					SS[i][SSindex].setDia(((Mensal)func[i].getAgenda()).getDia());
-					SS[i][SSindex].setFrequencia(func[i].getAgenda().getFrequencia());
-				}if(func[i].getAgenda() instanceof Semanal) {
-					SS[i][SSindex].setWeekdia(((Semanal)func[i].getAgenda()).getDia());
-					SS[i][SSindex].setFrequencia(func[i].getAgenda().getFrequencia());
-				}
+				
 				
 			}
 			
@@ -65,11 +64,11 @@ public class Command {
 				System.out.println("EMPTY STACK");
 				return;
 			}
-			System.out.println("undo");
+			System.out.println("UNDONE");
 			UNDOAC += 1;
 			SSindex -= 1;
-			for(int i = 0; i < 50; i++) {
-				
+			for(int i = 0; i < 500; i++) {
+				try {
 				if(SS[i][SSindex].getType().equals("Comissionado")) {
 					teste[i] = new Comissionado();
 				}if(SS[i][SSindex].getType().equals("Horista")) {
@@ -91,21 +90,22 @@ public class Command {
 				teste[i].setCheckIN(SS[i][SSindex].isCheckIN());
 				teste[i].setCheckOUT(SS[i][SSindex].isCheckOUT());
 				teste[i].setCustom(SS[i][SSindex].isCustom());
+				teste[i].setFrequenciaD(SS[i][SSindex].getFrequenciaD());
+				teste[i].setSalarybup(SS[i][SSindex].getSalarybup());
 				if(teste[i] instanceof Horista) {
 					((Horista) teste[i]).setSalarioBase(SS[i][SSindex].getSalarioBase());
 					
 				}
 				if(teste[i] instanceof Comissionado) {
 					((Comissionado) teste[i]).setPVenda(SS[i][SSindex].getPVenda());
+					((Comissionado) teste[i]).setRealSalary(SS[i][SSindex].getRealSalary());
 				}
-				if(teste[i].getAgenda() instanceof Mensal) {
-					((Mensal)teste[i].getAgenda()).setDia(SS[i][SSindex].getDia());
-					teste[i].getAgenda().setFrequencia(SS[i][SSindex].getFrequencia());
-				}if(teste[i].getAgenda() instanceof Semanal) {
-					((Semanal)teste[i].getAgenda()).setDia((SS[i][SSindex].getWeekdia()));
-					teste[i].getAgenda().setFrequencia(SS[i][SSindex].getFrequencia());
+				teste[i].setAgenda(SS[i][SSindex].getAgenda());
+				teste[i].setAgendaID(SS[i][SSindex].getAgendaID());
 				}
-				
+				catch(Exception ex) {
+					System.err.print(ex);
+				}
 			}
 		} catch(Exception ex2) {
 			System.out.println(ex2.getMessage());
@@ -120,48 +120,47 @@ public class Command {
 				System.out.println("ENDOF STACK");
 				return;
 			}
-			System.out.println("redo");
+			System.out.println("REDONE");
 			UNDOAC -= 1;
 			SSindex += 1;
-			for(int i = 0; i < 50; i++) {
-				if(teste[i] != null) {
+			for(int i = 0; i < 500; i++) {
+				try {
+				if(SS[i][SSindex].getType().equals("Comissionado")) {
+					teste[i] = new Comissionado();
+				}if(SS[i][SSindex].getType().equals("Horista")) {
+					teste[i] = new Horista();
+				}if(SS[i][SSindex].getType().equals("Assalariado")) {
+					teste[i] = new Assalariado();
+				}
+				CalendarMT.payboo[CalendarMT.DAYSGONE] = SS[i][SSindex].isPayboo();
+				teste[i].setAgendaToString(SS[i][SSindex].getAgendaToString());
+				teste[i].setName(SS[i][SSindex].getName());
+				teste[i].setSalary(SS[i][SSindex].getSalary());
+				teste[i].setAdress(SS[i][SSindex].getAdress());
+				teste[i].setPayMode(SS[i][SSindex].getPayMode());
+				teste[i].setType(SS[i][SSindex].getType());
+				teste[i].setSindicaty(SS[i][SSindex].isSindicaty());
+				teste[i].setCode(SS[i][SSindex].getCode());
+				teste[i].setSindicatycode(SS[i][SSindex].getScode());
+				teste[i].setSaved(SS[i][SSindex].isSaved());
+				teste[i].setCheckIN(SS[i][SSindex].isCheckIN());
+				teste[i].setCheckOUT(SS[i][SSindex].isCheckOUT());
+				teste[i].setCustom(SS[i][SSindex].isCustom());
+				teste[i].setFrequenciaD(SS[i][SSindex].getFrequenciaD());
+				teste[i].setSalarybup(SS[i][SSindex].getSalarybup());
+				if(teste[i] instanceof Horista) {
+					((Horista) teste[i]).setSalarioBase(SS[i][SSindex].getSalarioBase());
 					
-					if(SS[i][SSindex].getType().equals("Comissionado")) {
-						teste[i] = new Comissionado();
-					}if(SS[i][SSindex].getType().equals("Horista")) {
-						teste[i] = new Horista();
-					}if(SS[i][SSindex].getType().equals("Assalariado")) {
-						teste[i] = new Assalariado();
-					}
-					CalendarMT.payboo[CalendarMT.DAYSGONE] = SS[i][SSindex].isPayboo();
-					teste[i].setAgendaToString(SS[i][SSindex].getAgendaToString());
-					teste[i].setName(SS[i][SSindex].getName());
-					teste[i].setSalary(SS[i][SSindex].getSalary());
-					teste[i].setAdress(SS[i][SSindex].getAdress());
-					teste[i].setPayMode(SS[i][SSindex].getPayMode());
-					teste[i].setType(SS[i][SSindex].getType());
-					teste[i].setSindicaty(SS[i][SSindex].isSindicaty());
-					teste[i].setCode(SS[i][SSindex].getCode());
-					teste[i].setSindicatycode(SS[i][SSindex].getScode());
-					teste[i].setSaved(SS[i][SSindex].isSaved());
-					teste[i].setCheckIN(SS[i][SSindex].isCheckIN());
-					teste[i].setCheckOUT(SS[i][SSindex].isCheckOUT());
-					teste[i].setCustom(SS[i][SSindex].isCustom());
-					if(teste[i] instanceof Horista) {
-						((Horista) teste[i]).setSalarioBase(SS[i][SSindex].getSalarioBase());
-						
-					}
-					if(teste[i] instanceof Comissionado) {
-						((Comissionado) teste[i]).setPVenda(SS[i][SSindex].getPVenda());
-					}
-					if(teste[i].getAgenda() instanceof Mensal) {
-						((Mensal)teste[i].getAgenda()).setDia(SS[i][SSindex].getDia());
-						teste[i].getAgenda().setFrequencia(SS[i][SSindex].getFrequencia());
-					}if(teste[i].getAgenda() instanceof Semanal) {
-						((Semanal)teste[i].getAgenda()).setDia((SS[i][SSindex].getWeekdia()));
-						teste[i].getAgenda().setFrequencia(SS[i][SSindex].getFrequencia());
-					}
-					
+				}
+				if(teste[i] instanceof Comissionado) {
+					((Comissionado) teste[i]).setPVenda(SS[i][SSindex].getPVenda());
+					((Comissionado) teste[i]).setRealSalary(SS[i][SSindex].getRealSalary());
+				}
+				teste[i].setAgenda(SS[i][SSindex].getAgenda());
+				teste[i].setAgendaID(SS[i][SSindex].getAgendaID());
+				}
+				catch(Exception ex) {
+					System.err.print(ex);
 				}
 			}
 		} catch(Exception ex2) {

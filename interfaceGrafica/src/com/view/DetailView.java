@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.employee.Assalariado;
 import com.employee.Comissionado;
 import com.employee.Funcionario;
 import com.employee.Horista;
@@ -124,6 +125,8 @@ public class DetailView extends JFrame {
 			TFsalary.setText(Double.toString(((Horista) func).getSalarioBase()));
 		}else if(func instanceof Comissionado) {
 			TFsalary.setText(Double.toString(((Comissionado) func).getPsalary()));
+		}else if(func instanceof Assalariado && action == 2) {
+			TFsalary.setText(Double.toString(((Assalariado) func).getPsalary()));
 		}else TFsalary.setText(Double.toString(func.getSalary()));
 		
 		TFsalary.setEditable(false);
@@ -170,7 +173,6 @@ public class DetailView extends JFrame {
 	    	TFscode.setText(func.getSindicatycode());
 	    }else TFscode.setText("Não associado");
 		//FRAME
-	
 		
 	}
 

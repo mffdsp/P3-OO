@@ -33,7 +33,7 @@ public class CalendarMT {
 	     if(Ahora == 0 && auxiliandinho == 23)
 	     {
 	         timeChange(func);
-	     }
+	     } 
 	 }
 	 public static void passMinute(Funcionario[] func) {
 		 
@@ -47,21 +47,14 @@ public class CalendarMT {
 	 }
      
 	 public static void timeChange(Funcionario[] func){
-		 
-		 	for(int i = 0; i < 50; i++) {
+		 	
+		 	for(int i = 0; i < 500; i++) {
     		 func[i].setCheckIN(false);
     		 func[i].setCheckOUT(false);
-    		 if(func[i] instanceof Horista) {
-    			 
-    			( (Horista) func[i]).setFrequenciaD(1);
-    		 }else if(func[i] instanceof Comissionado) 
-    		 {
-    			( (Comissionado) func[i]).setFrequenciaD(1);
-    		 }else if(func[i] instanceof Assalariado) {
-    			 
-        		( (Assalariado) func[i]).setFrequenciaD(1);
-    		 }
-	    		
+    		 func[i].addFrequenciaD(1);
+    		 func[i].setURpago(false);
+    	     Command.URpago[i] = false;
+				
 	    	}
 		 	DAYSGONE += 1;
 		 	if(DAYSGONE%7 == 0) {

@@ -9,8 +9,8 @@ public class Comissionado extends Funcionario implements SystemMT {
 	
 	private double valordevendas;
 	private double realSalary = 0;
-	private double psalary = 0;
-	private int frequenciaD = 6;
+	private double psalary = 0; 
+
 	
 	private int pvenda = 15;
 	
@@ -20,7 +20,7 @@ public class Comissionado extends Funcionario implements SystemMT {
 	}
 	
 	public boolean pagarFuncionario() {
-
+ 
 		boolean Uday = false;
 		
 		if(super.agenda instanceof Mensal)
@@ -29,16 +29,14 @@ public class Comissionado extends Funcionario implements SystemMT {
 					(CalendarMT.Adia == ((Mensal)super.agenda).getDia() && !CalendarMT.weekday.equals("Domingo")&& !CalendarMT.weekday.equals("Sabado"));
 			
 			setPago(Uday && frequenciaD >= 30);
-			if(isPago()) {
-			frequenciaD = 26;
-			}
 			
 		}else if(super.agenda instanceof Semanal) {
 			
 			setPago(frequenciaD >= ((Semanal)super.agenda).getFrequencia()*7 && CalendarMT.weekday.equals(((Semanal)super.agenda).getDia()));
-			if(isPago()) {
-				 frequenciaD = 6;
-			}
+		}
+		if(isPago()) {
+			super.frequenciaD = 5; 
+			super.setURpago(true);
 		}
 		return isPago();
 
@@ -58,14 +56,6 @@ public class Comissionado extends Funcionario implements SystemMT {
 
 	public void setRealSalary(double realSalary) {
 		this.realSalary += realSalary;
-	}
-
-	public int getFrequenciaD() {
-		return frequenciaD;
-	}
-
-	public void setFrequenciaD(int frequenciaD) {
-		this.frequenciaD += frequenciaD;
 	}
 	
 	public int getPVenda() {

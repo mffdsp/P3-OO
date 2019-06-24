@@ -33,6 +33,8 @@ public class PayView extends JFrame {
 	
 	public PayView(DefaultListModel DLMA, DefaultListModel DLMC,  DefaultListModel DLMH, Funcionario[] func) {
 		
+		
+		Command.saveS(func); 
 		setForeground(Color.WHITE);
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -72,8 +74,7 @@ public class PayView extends JFrame {
 				return values[index];
 			}
 		});
-		
-		Command.saveS(func);
+	
 		hlist.setModel(DLMH);
 		JButton BThorista = new JButton("Horistas");
 		BThorista.setForeground(Color.BLACK);
