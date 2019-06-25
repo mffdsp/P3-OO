@@ -123,7 +123,7 @@ public class ListView extends JFrame {
 				for(int i = 0; i < 500; i++) {
 					switch (mode){
 					case 1:
-						if(func[i] instanceof Horista && !hlist.getSelectedValue().toString().equals("Lista Vazia")) {
+						if(func[i] instanceof Horista && !hlist.getSelectedValue().toString().equals("Lista Vazia")  && func[i].isSaved()) {
 							if(hlist.getSelectedIndex() == achou) {
 								new DetailView(func[i], 1).setVisible(true);
 							}
@@ -131,7 +131,7 @@ public class ListView extends JFrame {
 						}
 						break;
 					case 2:
-						if(func[i] instanceof Comissionado) {
+						if(func[i] instanceof Comissionado && !hlist.getSelectedValue().toString().equals("Lista Vazia")  && func[i].isSaved()) {
 							if(hlist.getSelectedIndex() == achou) {
 								new DetailView(func[i], 1).setVisible(true);	
 							}
@@ -139,7 +139,7 @@ public class ListView extends JFrame {
 						}
 						break;
 					case 3:
-						if(func[i] instanceof Assalariado) {
+						if(func[i] instanceof Assalariado && !hlist.getSelectedValue().toString().equals("Lista Vazia") && func[i].isSaved()) {
 							if(hlist.getSelectedIndex() == achou) {
 								new DetailView(func[i], 1).setVisible(true);
 							}
