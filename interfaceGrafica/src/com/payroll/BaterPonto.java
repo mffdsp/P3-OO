@@ -55,7 +55,7 @@ public class BaterPonto extends JFrame {
 				Command.saveS(func);
 				setVisible(false);
 				}else {
-					JOptionPane.showMessageDialog(null ,"Entrada Já registrada hoje às" + func[index].getTimeIN(), "ERRO!", 
+					JOptionPane.showMessageDialog(null ,"Entrada Já registrada hoje", "ERRO!", 
 							JOptionPane.ERROR_MESSAGE);
 				}
 			}
