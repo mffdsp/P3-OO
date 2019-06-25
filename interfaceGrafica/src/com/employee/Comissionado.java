@@ -8,7 +8,7 @@ import com.schedule.Semanal;
 public class Comissionado extends Funcionario implements SystemMT {
 	
 	private double valordevendas;
-	private double realSalary = 0;
+	private double bonussalary = 0; 
 	private double psalary = 0; 
 
 	
@@ -16,7 +16,8 @@ public class Comissionado extends Funcionario implements SystemMT {
 	
 	@Override
 	public String toString() {
-		return name + " - " + code +  " - " + realSalary + "RS" + " / Pago via: " + payMode;
+		double total = bonussalary + salary;
+		return name + " - " + code +  " - " +  total + "RS" + " / Pago via: " + payMode;
 	}
 	
 	public boolean pagarFuncionario() {
@@ -50,12 +51,16 @@ public class Comissionado extends Funcionario implements SystemMT {
 		this.valordevendas = valordevendas;
 	}
 
-	public double getRealSalary() {
-		return realSalary;
+	public double getBonussalary() {
+		return bonussalary;
+	}
+	
+	public void setBonussalary(double bonussalary) {
+		this.bonussalary = bonussalary;
 	}
 
-	public void setRealSalary(double realSalary) {
-		this.realSalary += realSalary;
+	public void addBonussalary(double bonussalary) {
+		this.bonussalary += bonussalary;
 	}
 	
 	public int getPVenda() {

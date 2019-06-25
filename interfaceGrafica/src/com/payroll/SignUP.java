@@ -128,8 +128,7 @@ public class SignUP extends JFrame {
 			func[index].setAgenda(agenda);
 			
 			((Comissionado)func[index]).setPVenda(15);
-			((Comissionado)func[index]).setRealSalary(func[index].getSalary()/2);
-			((Comissionado)func[index]).setPsalary(func[index].getSalary()/2);
+			((Comissionado)func[index]).setPsalary(func[index].getSalary());
 		}
 		
 		func[index].setSalarybup(DBsalary);

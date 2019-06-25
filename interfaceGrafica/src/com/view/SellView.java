@@ -71,8 +71,9 @@ public class SellView extends JFrame {
 					double value = Double.parseDouble(TFvalor.getText());
 					double addValue = value * ((Comissionado)func[index]).getPVenda()/100;
 					
-					((Comissionado)func[index]).setRealSalary(addValue);
-					((Comissionado)func[index]).setPsalary(((Comissionado)func[index]).getRealSalary());
+					((Comissionado)func[index]).addBonussalary(addValue);
+					((Comissionado)func[index]).setPsalary(func[index].getSalary() + ((Comissionado)func[index]).getBonussalary());
+					
 					JOptionPane.showMessageDialog(null ,
 							"Venda associada com sucesso à:\n"
 							+ func[index].getName() + "\nTaxa de:" + ((Comissionado)func[index]).getPVenda() + "%"

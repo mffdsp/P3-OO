@@ -108,6 +108,8 @@ public class Utility {
 					pay = ((Horista)teste[i]).pagarFuncionario();
 				}
 				
+				
+				//SE ASSALARIADO
 				if(teste[i] instanceof Assalariado && (pay || Command.URpago[i])){
 					
 					if(pay) {
@@ -126,18 +128,32 @@ public class Utility {
 					
 					teste[i].setSalary(teste[i].getSalarybup());
 					
-				}if(teste[i] instanceof Comissionado && (pay || Command.URpago[i])){
+				}
+				//SE COMISSIONADO
+				if(teste[i] instanceof Comissionado && (pay || Command.URpago[i])){
 					
 					if(pay) {
 						Command.URpago[i] = true;
 					}
 					DLMC.addElement(teste[i].toString());	
-					((Comissionado)teste[i]).setPsalary(((Comissionado)teste[i]).getRealSalary());
-					((Comissionado)teste[i]).setRealSalary(-((Comissionado)teste[i]).getRealSalary() + teste[i].getSalary()/2);
 					
+					if(teste[i].getAgenda() instanceof Semanal) {
+						if(teste[i].getAgenda().getFrequencia() == 1) {
+							((Comissionado)teste[i]).setPsalary(teste[i].getSalary()/4 + ((Comissionado)teste[i]).getBonussalary());
+						}else if(teste[i].getAgenda().getFrequencia() == 2) {
+							((Comissionado)teste[i]).setPsalary(teste[i].getSalary()/2 + ((Comissionado)teste[i]).getBonussalary());
+						}else if(teste[i].getAgenda().getFrequencia() == 3) {
+							((Comissionado)teste[i]).setPsalary(teste[i].getSalary() * 3/4 + ((Comissionado)teste[i]).getBonussalary());
+						}
+					}else {
+						((Comissionado)teste[i]).setPsalary(teste[i].getSalary() + ((Comissionado)teste[i]).getBonussalary());
+					}
+					((Comissionado)teste[i]).setBonussalary(0);
 					teste[i].setSalary(teste[i].getSalarybup());
 					
-				}if(teste[i] instanceof Horista && (pay || Command.URpago[i])){
+				}
+				//SE Horista
+				if(teste[i] instanceof Horista && (pay || Command.URpago[i])){
 					
 					if(pay) {
 						Command.URpago[i] = true;

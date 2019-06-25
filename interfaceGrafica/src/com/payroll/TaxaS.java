@@ -76,9 +76,8 @@ public class TaxaS extends JFrame {
 					
 					if(func[index] instanceof Comissionado) {
 						
-						salary = ((Comissionado)func[index]).getRealSalary();
-						((Comissionado)func[index]).setRealSalary(salary - value);
-						((Comissionado)func[index]).setPsalary(((Comissionado)func[index]).getRealSalary());
+						salary = func[index].getSalary() + ((Comissionado)func[index]).getBonussalary();
+						((Comissionado)func[index]).setPsalary( salary - value);
 						
 					}else {
 						func[index].setSalary(salary - value);

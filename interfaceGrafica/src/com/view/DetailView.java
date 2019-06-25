@@ -157,7 +157,7 @@ public class DetailView extends JFrame {
 	
 	    contentPane.add(TFcustom);
 	    
-	    LBscode = new JLabel("SCode:");
+	    LBscode = new JLabel("SCode:"); 
 	    LBscode.setFont(new Font("Tahoma", Font.PLAIN, 13));
 	    LBscode.setBounds(32, 266, 103, 25);
 	    contentPane.add(LBscode);

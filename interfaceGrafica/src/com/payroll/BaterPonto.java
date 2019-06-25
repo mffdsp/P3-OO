@@ -26,6 +26,7 @@ public class BaterPonto extends JFrame {
 		
 	public BaterPonto(Funcionario[] func, int index) {
 		 
+	
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 263, 208);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -88,10 +89,12 @@ public class BaterPonto extends JFrame {
 					
 					if(func[index] instanceof Horista) {
 						((Horista) func[index]).addSalary(value);
+						((Horista) func[index]).setPsalary(func[index].getSalary());
 						JOptionPane.showMessageDialog(null ,
 								"Funcionário do tipo horista!" +
 								"\nSalario acumulado:" + func[index].getSalary() + "R$", "Horista", 	JOptionPane.INFORMATION_MESSAGE);
 					}
+					Command.saveS(func);
 					setVisible(false);
 				}
 				

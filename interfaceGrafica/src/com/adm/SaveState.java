@@ -11,6 +11,8 @@ public class SaveState{
 	private double salary;
 	private double realSalary = 0;
 	private double salarybup = 0;
+	private double psalary = 0;
+	private double bonussalary = 0;
 	private String payMode;
 	private String type;
 	public int DtInicial;
@@ -215,6 +217,18 @@ public class SaveState{
 	}
 	public void setSalarybup(double salarybup) {
 		this.salarybup = salarybup;
+	}
+	public double getPsalary() {
+		return psalary;
+	}
+	public void setPsalary(double psalary) {
+		this.psalary = psalary;
+	}
+	public double getBonussalary() {
+		return bonussalary;
+	}
+	public void setBonussalary(double bonussalary) {
+		this.bonussalary = bonussalary;
 	}
 
 }

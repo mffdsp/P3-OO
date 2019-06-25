@@ -365,6 +365,16 @@ public class RealEdit extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				int savefrequency = func[index].getFrequenciaD();
+				double bonus = 0;
+				double savesalary = 0;
+				
+				if(func[index] instanceof Comissionado) {
+					bonus = ((Comissionado)func[index]).getBonussalary();
+				}
+				if(func[index] instanceof Horista) {
+					savesalary = ((Horista)func[index]).getSalary();
+				}
+
 				
 				//TRY CATCH, BEFORE SAVING
 				if(!UT.isFree(func, TFscode.getText()) && TFscode.isVisible() && !TFscode.getText().equals(func[index].getSindicatycode())) {
@@ -474,21 +484,17 @@ public class RealEdit extends JFrame {
 				//Salario Base do Horista
 				if(func[index] instanceof Horista) {
 					((Horista) func[index]).setSalarioBase(Double.parseDouble(TFvalor.getText()));
-					func[index].setSalary(0);
+					func[index].setSalary(savesalary);
 				} 
 				//Salario de Assalariado e Comissionado
 				else {
 						func[index].setSalary(Double.parseDouble(TFvalor.getText()));
 						if(func[index] instanceof Comissionado) {
-							((Comissionado)func[index]).setRealSalary(func[index].getSalary()/2);
-						}
-				}
-				if(func[index] instanceof Comissionado) {
-				 ((Comissionado) func[index]).setPVenda(Integer.parseInt(TFcomi.getText()));
-				 ((Comissionado)func[index]).setRealSalary(func[index].getSalary()/2);
-				 ((Comissionado)func[index]).setPsalary(func[index].getSalary()/2);
-				}
-				
+							 ((Comissionado) func[index]).setPVenda(Integer.parseInt(TFcomi.getText()));
+							 ((Comissionado)func[index]).setPsalary(func[index].getSalary());
+							 ((Comissionado)func[index]).setBonussalary(bonus);
+							}
+				}	
 				func[index].setSalarybup(Double.parseDouble(TFvalor.getText()));
 				func[index].setFrequenciaD(savefrequency);
 				func[index].setSaved(true);
