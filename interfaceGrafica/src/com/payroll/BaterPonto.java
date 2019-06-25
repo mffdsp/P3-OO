@@ -67,7 +67,7 @@ public class BaterPonto extends JFrame {
 		btnSAIDA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				//Se ainda n bateu a entrada
+				//Se ainda nao bateu a entrada
 				if(!func[index].isCheckIN()){
 					JOptionPane.showMessageDialog(null ,"Ponto de entrada ainda não registrado", "Ação Inválida", 
 							JOptionPane.ERROR_MESSAGE); 
@@ -87,6 +87,7 @@ public class BaterPonto extends JFrame {
 							"Saída registrada com sucesso! as " + CalendarMT.Ahora  + ":" + CalendarMT.Aminuto + 
 							"\nHoras trabalhadas hoje: " + value + "Hrs", "Sucesso!", 	JOptionPane.INFORMATION_MESSAGE);
 					
+					//Caso horista, gera o "adicional", metodo add();
 					if(func[index] instanceof Horista) {
 						((Horista) func[index]).addSalary(value);
 						((Horista) func[index]).setPsalary(func[index].getSalary());
@@ -94,6 +95,7 @@ public class BaterPonto extends JFrame {
 								"Funcionário do tipo horista!" +
 								"\nSalario acumulado:" + func[index].getSalary() + "R$", "Horista", 	JOptionPane.INFORMATION_MESSAGE);
 					}
+					
 					Command.saveS(func);
 					setVisible(false);
 				}

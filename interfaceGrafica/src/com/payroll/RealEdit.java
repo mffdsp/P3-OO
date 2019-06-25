@@ -364,6 +364,7 @@ public class RealEdit extends JFrame {
 		BTsave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				//Salvo valores anteriores a mudança
 				int savefrequency = func[index].getFrequenciaD();
 				double bonus = 0;
 				double savesalary = 0;
@@ -391,7 +392,7 @@ public class RealEdit extends JFrame {
 					}
 				
 				}catch(Exception ex1) {
-					System.err.print(ex1);
+					System.err.println(ex1);
 					UT.ERRO();
 					return;
 				}
@@ -400,13 +401,13 @@ public class RealEdit extends JFrame {
 						throw new Exception("Valores fora do intervalo <insira entre 0 e 100>");
 					}
 				}catch(Exception ex3) {
-					System.err.print(ex3);
+					System.err.println(ex3);
 					UT.ERRO();
 					return;
 				}
 				//TRY CATCH, BEFORE SAVING
 				 
-				
+				//Se não há erro, peço confirmação
 				Agenda nocustom = new Agenda(); 
 				int dialogButton = JOptionPane.YES_NO_OPTION;
 				int dialogResult = JOptionPane.showConfirmDialog (null, "Deseja salvar as informações?", "Confirmação", dialogButton);
@@ -438,7 +439,6 @@ public class RealEdit extends JFrame {
 					//System.out.println("criou C ");
 					func[index] = new Comissionado();
 					func[index].setType("Comissionado");
-
 					
 					nocustom = new Semanal();
 
@@ -446,7 +446,7 @@ public class RealEdit extends JFrame {
 					nocustom.setFrequencia(2);
 					func[index].setAgenda(nocustom);
 					
-				}else if(custom && list.getSelectedIndex() >= 0) {
+				}else if(custom && list.getSelectedIndex() >= 0) { //Tratando das agendas personalizadas
 					
 					if(CBtipo.getSelectedItem().toString().equals("Comissionado")) {
 						func[index] = new Comissionado();
@@ -473,15 +473,14 @@ public class RealEdit extends JFrame {
 				func[index].setCode("2019" + index);
 				if(UT.isFree(func, TFscode.getText()) && TFscode.isVisible()) 
 				func[index].setSindicatycode(TFscode.getText());
-				
 				func[index].setAgendaID(list.getSelectedIndex());
 				
-				
+				//set sindicato
 				if(CBsind.getSelectedItem().toString().equals("SIM")) {
 					func[index].setSindicaty(true);
 				} else func[index].setSindicaty(false);
 				
-				//Salario Base do Horista
+				//Salario Base/h Horista
 				if(func[index] instanceof Horista) {
 					((Horista) func[index]).setSalarioBase(Double.parseDouble(TFvalor.getText()));
 					func[index].setSalary(savesalary);
@@ -490,16 +489,22 @@ public class RealEdit extends JFrame {
 				else {
 						func[index].setSalary(Double.parseDouble(TFvalor.getText()));
 						if(func[index] instanceof Comissionado) {
-							 ((Comissionado) func[index]).setPVenda(Integer.parseInt(TFcomi.getText()));
+							 ((Comissionado)func[index]).setPVenda(Integer.parseInt(TFcomi.getText()));
 							 ((Comissionado)func[index]).setPsalary(func[index].getSalary());
 							 ((Comissionado)func[index]).setBonussalary(bonus);
 							}
 				}	
+				//Backupsalary, caso haja modificação indevida 
 				func[index].setSalarybup(Double.parseDouble(TFvalor.getText()));
+				//frequencia de dias trabalhados até entao, não serão perdidos
 				func[index].setFrequenciaD(savefrequency);
 				func[index].setSaved(true);
-				Command.URpago[index] = false;
+				
+				//savestate
+				Command.URpago[index] = false;	
 				Command.saveS(func);
+				
+				//apaga scene
 				setVisible(false);
 				return;
 			}

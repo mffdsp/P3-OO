@@ -51,6 +51,7 @@ public class SaveState{
 			((Semanal)this.agenda).setDia((((Semanal) agenda).getDia()));
 		}
 	}
+	
 	public Agenda getAgenda() {
 		return this.agenda;
 	}

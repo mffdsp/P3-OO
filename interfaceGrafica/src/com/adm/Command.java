@@ -20,7 +20,6 @@ public class Command {
 	public static void saveS(Funcionario[] func) {
 		
     	SSindex += 1;
-    	System.out.println("SALVOU");
     	for(int i = 0; i < 500; i++) {
 			if(func[i] != null) 
 			{
@@ -115,7 +114,7 @@ public class Command {
 				teste[i].setAgendaID(SS[i][SSindex].getAgendaID());
 				}
 				catch(Exception ex) {
-					System.err.print(ex);
+					System.err.println(ex);
 				}
 			}
 		} catch(Exception ex2) {
@@ -135,7 +134,6 @@ public class Command {
 			UNDOAC -= 1;
 			SSindex += 1;
 			for(int i = 0; i < 500; i++) {
-				try {
 					try {
 						if(SS[i][SSindex].getType().equals("Comissionado")) {
 							teste[i] = new Comissionado();
@@ -177,12 +175,8 @@ public class Command {
 						teste[i].setAgendaID(SS[i][SSindex].getAgendaID());
 						}
 						catch(Exception ex) {
-							System.err.print(ex);
+							System.err.println(ex);
 						}
-					}
-				catch(Exception ex) {
-					System.err.print(ex);
-				}
 			}
 		} catch(Exception ex2) {
 			System.out.println(ex2.getMessage());

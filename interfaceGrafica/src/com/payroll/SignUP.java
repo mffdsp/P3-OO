@@ -88,12 +88,12 @@ public class SignUP extends JFrame {
 			DBsalary = Double.parseDouble(SalaryField.getText());
 			invalidenumber = false;
 		}catch(Exception ec) {
-			System.err.print(ec);
+			System.err.println(ec);
 			invalidenumber = true;
 		}
 		if(func[index].getName().equals("") || func[index].getAdress().equals("") || invalidenumber || DBsalary == -1) {
 			JOptionPane.showMessageDialog(null ,
-					"Preencha todos os campos corretamente!", "ERRO", JOptionPane.INFORMATION_MESSAGE);
+					"Preencha todos os campos corretamente!", "ERRO", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 	//	DBsalary = Double.parseDouble(SalaryField.getText());

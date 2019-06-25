@@ -62,8 +62,9 @@ public abstract class Funcionario{
 		return timeOUT;
 	}
 	public String toString() {
-		return name + " / " + code +  " / " + salary + "RS";
+		return name + " - " + code +  " - Pago via: " + payMode;
 	}
+	
 	public String getName() {
 		return name;
 	}

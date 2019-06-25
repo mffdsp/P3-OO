@@ -189,7 +189,7 @@ public class MainView extends JFrame{
 					
 				}catch(ArrayIndexOutOfBoundsException exception) {
 					
-					System.out.println("Indice fora dos limites definidos");
+					System.err.println("Indice fora dos limites definidos");
 				}
 				
 			}
@@ -233,7 +233,7 @@ public class MainView extends JFrame{
 					UT.setList(funcionarios, DLMC, DLMA, DLMH);
 				}
 				catch(NullPointerException e) {
-					System.out.println("Exception de ponteiro nulo");
+					System.err.println("Exception de ponteiro nulo");
 				}
 				if(DLMA.getSize() == 0) {
 					DLMA.addElement("Lista Vazia");
@@ -399,7 +399,7 @@ public class MainView extends JFrame{
 						UT.payList(funcionarios, DLMC, DLMA, DLMH);
 					}
 					catch(NullPointerException e2) {
-						System.out.println("Exception de ponteiro nulo");
+						System.err.println("Exception de ponteiro nulo");
 					}
 					if(DLMA.getSize() == 0) {
 						DLMA.addElement("Lista Vazia");

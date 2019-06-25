@@ -74,7 +74,7 @@ public class EditView extends JFrame {
 					notvalid = func[indice] == null || Integer.parseInt(codeField.getText()) < 20190 || !func[indice].isSaved();
 				}
 				catch(Exception e0) {
-					System.err.print(e0);
+					System.err.println(e0);
 					JOptionPane.showMessageDialog(null ,
 							"Formato inválido", "ERRO", JOptionPane.ERROR_MESSAGE);
 					return;

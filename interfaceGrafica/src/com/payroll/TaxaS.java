@@ -97,7 +97,7 @@ public class TaxaS extends JFrame {
 							
 				} catch(Exception ex0) {
 					UT.ERRO();
-					System.err.print(ex0); 
+					System.err.println(ex0); 
 					return;
 				}
 			}

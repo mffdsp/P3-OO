@@ -16,10 +16,11 @@ public class Comissionado extends Funcionario implements SystemMT {
 	
 	@Override
 	public String toString() {
-		double total = bonussalary + salary;
-		return name + " - " + code +  " - " +  total + "RS" + " / Pago via: " + payMode;
+		return name + " - " + code +  " - Pago via: " + payMode;
 	}
 	
+	
+	//Metodo obrigatório devido a interface, pode ser alterado em um tipo sem modificar os demais.
 	public boolean pagarFuncionario() {
  
 		boolean Uday = false;
