@@ -56,19 +56,14 @@ OLDCOMMITS = https://github.com/mffdsp/P3/tree/master/Projeto-OO
 
  <img src="srcIcon/VENDAICON.png" align= "center"> `Funcionario.launchSellResult()`
 
-
- <img src="srcIcon/TAXAICON.png" align= "center"> `FuncionariolaunchSindicalTaxes()`
-
+ <img src="srcIcon/TAXAICON.png" align= "center"> `Funcionario.launchSindicalTaxes()`
 
  <img src="srcIcon/EDITICON.png" align= "center"> `Funcionario.editEmpregado()`
 
-
  <img src="srcIcon/FOLHAICON.png" align= "center"> `Funcionario[].payRoll()`
-
 
  <img src="srcIcon/REDOICON.png" align= "center"> `System.UndoRedo()`
  
-
 <img src="srcIcon/AGENDAICON.png" align= "center"> `Schedule.create()`
 
 
