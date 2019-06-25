@@ -75,8 +75,11 @@ OLDCOMMITS = https://github.com/mffdsp/P3/tree/master/Projeto-OO
 
 
 
+## UMLS DO PROJETO
 
 <img src="UMLFUNC.png" align= "center">
+
+<img src="UMLVIEW.png" align= "center">
 
 ```
 
