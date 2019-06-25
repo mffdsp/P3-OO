@@ -24,7 +24,6 @@ public class Command {
 			if(func[i] != null) 
 			{
 				SS[i][SSindex] = new SaveState();
-				SS[i][SSindex].setAgendaToString(func[i].getAgendaToString());
 				SS[i][SSindex].setName(func[i].getName());
 				SS[i][SSindex].setSalary(func[i].getSalary());
 				SS[i][SSindex].setAdress(func[i].getAdress());
@@ -42,7 +41,6 @@ public class Command {
 				SS[i][SSindex].setAgenda(func[i].getAgenda());
 				SS[i][SSindex].setAgendaID(func[i].getAgendaID());
 				SS[i][SSindex].setFrequenciaD(func[i].getFrequenciaD());
-				SS[i][SSindex].setPassouD(func[i].getPassouD());
 				SS[i][SSindex].setSalarybup(func[i].getSalarybup());
 				if(func[i] instanceof Horista) {
 					SS[i][SSindex].setSalarioBase(((Horista) func[i]).getSalarioBase());
@@ -82,7 +80,6 @@ public class Command {
 					teste[i] = new Assalariado();
 				}
 				CalendarMT.payboo[CalendarMT.DAYSGONE] = SS[i][SSindex].isPayboo();
-				teste[i].setAgendaToString(SS[i][SSindex].getAgendaToString());
 				teste[i].setName(SS[i][SSindex].getName());
 				teste[i].setSalary(SS[i][SSindex].getSalary());
 				teste[i].setAdress(SS[i][SSindex].getAdress());
@@ -143,7 +140,6 @@ public class Command {
 							teste[i] = new Assalariado();
 						}
 						CalendarMT.payboo[CalendarMT.DAYSGONE] = SS[i][SSindex].isPayboo();
-						teste[i].setAgendaToString(SS[i][SSindex].getAgendaToString());
 						teste[i].setName(SS[i][SSindex].getName());
 						teste[i].setSalary(SS[i][SSindex].getSalary());
 						teste[i].setAdress(SS[i][SSindex].getAdress());

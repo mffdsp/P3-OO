@@ -10,7 +10,7 @@ public abstract class Funcionario{
 	protected String name;
 	protected String adress;
 	protected double salary;
-	private double salarybup = 1;
+	protected double salarybup = 1;
 	protected String payMode;
 	protected String type;
 	protected String code;
@@ -19,20 +19,17 @@ public abstract class Funcionario{
 	protected boolean sindicaty = false;
 	protected String Scode = "notset";
 	//Timecard
-	private boolean pago = false;
-	private boolean URpago = false;
+	protected boolean pago = false;
+	protected boolean URpago = false;
 	protected int timeIN = 0;
 	protected int timeOUT = 0;
-	private boolean checkIN = false;
-	private boolean checkOUT = false;
+	protected boolean checkIN = false;
+	protected boolean checkOUT = false;
 	//Schedule
-	private int passouD = 0;
 	protected int frequenciaD = 0; 
 	Agenda agenda = new Agenda();
-	private boolean custom = false;
-	private String shtype = "Mensal";
-	private int agendaID = -1;  
-	private String agendaToString = "default";
+	protected boolean custom = false;
+	protected int agendaID = -1;  
 	
 	public void setAgenda(Agenda agenda) {
 		if(agenda instanceof Mensal) {
@@ -151,18 +148,6 @@ public abstract class Funcionario{
 	public void setPago(boolean pago) {
 		this.pago = pago;
 	}
-	public String getAgendaToString() {
-		return agendaToString;
-	}
-	public void setAgendaToString(String agendaToString) {
-		this.agendaToString = agendaToString;
-	}
-	public String getShtype() {
-		return shtype;
-	}
-	public void setShtype(String shtype) {
-		this.shtype = shtype;
-	}
 	public int getFrequenciaD() {
 		return frequenciaD;
 	}
@@ -171,12 +156,6 @@ public abstract class Funcionario{
 	}
 	public void addFrequenciaD(int frequenciaD) {
 		this.frequenciaD += frequenciaD;
-	}
-	public int getPassouD() {
-		return passouD;
-	}
-	public void setPassouD(int passouD) {
-		this.passouD = passouD;
 	}
 	public boolean isURpago() {
 		return URpago;
