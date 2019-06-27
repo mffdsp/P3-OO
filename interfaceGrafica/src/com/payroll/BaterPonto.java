@@ -52,7 +52,12 @@ public class BaterPonto extends JFrame {
 				JOptionPane.showMessageDialog(null ,
 						"Entrada registrada com sucesso! as " + CalendarMT.Ahora + ":"+  CalendarMT.Aminuto, "Sucesso!", 	JOptionPane.INFORMATION_MESSAGE);
 				func[index].setTimeIN(CalendarMT.Ahora);
-				Command.saveS(func);
+				try {
+					Command.saveS(func);
+				} catch (CloneNotSupportedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				setVisible(false);
 				}else {
 					JOptionPane.showMessageDialog(null ,"Entrada Já registrada hoje", "ERRO!", 
@@ -93,10 +98,16 @@ public class BaterPonto extends JFrame {
 						((Horista) func[index]).setPsalary(func[index].getSalary());
 						JOptionPane.showMessageDialog(null ,
 								"Funcionário do tipo horista!" +
-								"\nSalario acumulado:" + func[index].getSalary() + "R$", "Horista", 	JOptionPane.INFORMATION_MESSAGE);
+								""
+								+ "\nSalario acumulado:" + func[index].getSalary() + "R$", "Horista", 	JOptionPane.INFORMATION_MESSAGE);
 					}
 					
-					Command.saveS(func);
+					try {
+						Command.saveS(func);
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					setVisible(false);
 				}
 				

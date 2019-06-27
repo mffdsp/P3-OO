@@ -1,12 +1,18 @@
 package com.employee;
 
 import com.adm.CalendarMT;
-import com.adm.SystemMT;
 import com.schedule.Mensal;
 import com.schedule.Semanal;
 
-public class Comissionado extends Funcionario implements SystemMT {
+public class Comissionado extends Funcionario implements Cloneable{
 	
+	
+
+	@Override
+	public Comissionado clone() throws CloneNotSupportedException {
+	        return (Comissionado) super.clone();
+	}
+	 
 	private double valordevendas;
 	private double bonussalary = 0; 
 	private double psalary = 0; 
@@ -18,7 +24,6 @@ public class Comissionado extends Funcionario implements SystemMT {
 	public String toString() {
 		return name + " - " + code +  " - Pago via: " + payMode;
 	}
-	
 	
 	//Metodo obrigatório devido a interface, pode ser alterado em um tipo sem modificar os demais.
 	public boolean pagarFuncionario() {

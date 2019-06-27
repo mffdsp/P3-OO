@@ -1,7 +1,16 @@
 package com.schedule;
 
-public class Mensal extends Agenda{
+import com.employee.Assalariado;
+
+public class Mensal extends Agenda implements Cloneable{
 	
+	
+	@Override
+	public Mensal clone() throws CloneNotSupportedException {
+	     return (Mensal) super.clone();
+	}
+	 
+	 
 	private int dia = 0;
 	
 	public String toString() {

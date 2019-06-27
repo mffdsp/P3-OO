@@ -1,5 +1,7 @@
 package com.adm;
 
+import java.awt.Color;
+
 import javax.swing.JLabel;
 
 import com.employee.Assalariado;

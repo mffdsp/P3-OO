@@ -57,7 +57,7 @@ public class MainView extends JFrame{
 		
 	}
 	
-	public MainView() {
+	public MainView() throws CloneNotSupportedException {
 					
 		//frameset
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
@@ -409,7 +409,12 @@ public class MainView extends JFrame{
 					}if(DLMC.getSize() == 0) {
 						DLMC.addElement("Lista Vazia");
 					}		
-					new PayView(DLMA, DLMC, DLMH, funcionarios).setVisible(true);
+					try {
+						new PayView(DLMA, DLMC, DLMH, funcionarios).setVisible(true);
+					} catch (CloneNotSupportedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					
 				}
 			}
@@ -447,6 +452,7 @@ public class MainView extends JFrame{
 		
 		CalendarMT.clock(LBdata, LBhora, LBsemana, funcionarios);
 		
+		
 		JButton BTattdia = new JButton("");
 		BTattdia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		BTattdia.setContentAreaFilled(false);
@@ -458,6 +464,13 @@ public class MainView extends JFrame{
 		});
 		BTattdia.setBounds(145, 422, 55, 40);
 		contentPane.add(BTattdia);
+		
+		JLabel LBur = new JLabel("New label");
+		LBur.setFont(new Font("Tahoma", Font.BOLD, 13));
+		LBur.setForeground(new Color(30, 144, 255));
+		LBur.setBounds(15, 46, 84, 30);
+		contentPane.add(LBur);
+		UT.UR(LBur);
 		
 }
 }

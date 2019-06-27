@@ -1,6 +1,9 @@
 package com.adm;
 
+import java.awt.Color;
+
 import javax.swing.DefaultListModel;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import com.employee.Assalariado;
@@ -171,5 +174,31 @@ public class Utility {
 		JOptionPane.showMessageDialog(null ,
 				"Preencha todos os campos corretamente!", "ERRO", JOptionPane.ERROR_MESSAGE);
 	}
+	
+	 public void UR(JLabel LBur) {
+		 Thread undo = new Thread() {
+			 public void run() {
+				 try {
+					for(;;) {
+						if(Command.UndoAC) {
+							LBur.setForeground(new Color(255, 165, 0));
+							LBur.setText("Undone!");
+							Command.UndoAC = false;
+							sleep(500);
+						}else if(Command.RedoAC) {
+							LBur.setForeground(new Color(30, 144, 255));
+							LBur.setText("Redone!");
+							Command.RedoAC = false;
+							sleep(500);
+						}
+						LBur.setText("");
+					}
+				}catch(Exception e) {
+					 System.err.print(e);
+				 }
+		 }
+		};
+		 undo.start();
+	 }
 
 }

@@ -116,7 +116,12 @@ public class EditView extends JFrame {
 						func[indice].setSaved(false);
 						JOptionPane.showMessageDialog(null ,
 						"Funcionário removido com sucesso", "Remover", JOptionPane.INFORMATION_MESSAGE);
-						Command.saveS(func);
+						try {
+							Command.saveS(func);
+						} catch (CloneNotSupportedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						setVisible(false);
 					}
 				}

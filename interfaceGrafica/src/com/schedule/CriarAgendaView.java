@@ -146,7 +146,12 @@ public class CriarAgendaView extends JFrame {
 								"Agenda definida como:\n" + ((Mensal) agenda[Command.AgendaIndex]).toString() , "Sucesso", JOptionPane.INFORMATION_MESSAGE);
 						agenda[Command.AgendaIndex].setSaved(true);
 						setVisible(false);
-					Command.saveS(func);
+					try {
+						Command.saveS(func);
+					} catch (CloneNotSupportedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 				Command.AgendaIndex += 1; 
 				

@@ -32,7 +32,7 @@ public class PayView extends JFrame {
 	private JPanel contentPane;
 	int mode = 1;
 	
-	public PayView(DefaultListModel DLMA, DefaultListModel DLMC,  DefaultListModel DLMH, Funcionario[] func) {
+	public PayView(DefaultListModel DLMA, DefaultListModel DLMC,  DefaultListModel DLMH, Funcionario[] func) throws CloneNotSupportedException {
 		
 		
 		Command.saveS(func); 

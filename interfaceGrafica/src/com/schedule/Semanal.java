@@ -1,6 +1,12 @@
 package com.schedule;
 
-public class Semanal extends Agenda{
+public class Semanal extends Agenda implements Cloneable{
+	
+	
+	@Override
+	public Semanal clone() throws CloneNotSupportedException {
+	     return (Semanal) super.clone();
+	}
 	
 	private String dia = "Segunda-Feira";
 	

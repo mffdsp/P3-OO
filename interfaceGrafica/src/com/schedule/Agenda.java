@@ -1,7 +1,10 @@
 package com.schedule;
 
-public class Agenda {
+import com.employee.Assalariado;
+
+public class Agenda implements Cloneable{
 	
+	 
 	private int frequencia = 0; 
 	private int index = 0;
 	private boolean saved = false;

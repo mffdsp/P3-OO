@@ -502,7 +502,12 @@ public class RealEdit extends JFrame {
 				
 				//savestate
 				Command.URpago[index] = false;	
-				Command.saveS(func);
+				try {
+					Command.saveS(func);
+				} catch (CloneNotSupportedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 				//apaga scene
 				setVisible(false);

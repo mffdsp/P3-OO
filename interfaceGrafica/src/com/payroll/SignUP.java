@@ -134,7 +134,12 @@ public class SignUP extends JFrame {
 		func[index].setSalarybup(DBsalary);
 		Command.URpago[index] = false;
 		func[index].setSaved(true);
-		Command.saveS(func);
+		try {
+			Command.saveS(func);
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setVisible(false);
 		return;
 						

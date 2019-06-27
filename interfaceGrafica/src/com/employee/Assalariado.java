@@ -1,13 +1,18 @@
 package com.employee;
 
 import com.adm.CalendarMT;
-import com.adm.SystemMT;
 import com.schedule.Agenda;
 import com.schedule.Mensal;
 import com.schedule.Semanal;
 
-public class Assalariado extends Funcionario implements SystemMT{
-
+public class Assalariado extends Funcionario implements Cloneable{
+	
+	
+	 @Override
+	 public Assalariado clone() throws CloneNotSupportedException {
+	     return (Assalariado) super.clone();
+	 }
+	 
 	private double psalary = 0;
 
 	public boolean pagarFuncionario() {

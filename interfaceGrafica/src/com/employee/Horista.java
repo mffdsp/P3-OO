@@ -1,11 +1,16 @@
 package com.employee;
 
 import com.adm.CalendarMT;
-import com.adm.SystemMT;
 import com.schedule.Mensal;
 import com.schedule.Semanal;
 
-public class Horista extends Funcionario implements SystemMT{
+public class Horista extends Funcionario implements Cloneable{
+	
+	
+	@Override
+	public Horista clone() throws CloneNotSupportedException {
+	        return (Horista) super.clone();
+	}
 	
 	protected double salarioBase = 0;
 	private double psalary = 0;

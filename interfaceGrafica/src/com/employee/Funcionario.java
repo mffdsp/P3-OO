@@ -4,7 +4,7 @@ import com.schedule.Agenda;
 import com.schedule.Mensal;
 import com.schedule.Semanal;
 
-public abstract class Funcionario{
+public abstract class Funcionario implements Cloneable{
 	 
 	//base
 	protected String name;
@@ -27,7 +27,7 @@ public abstract class Funcionario{
 	protected boolean checkOUT = false;
 	//Schedule
 	protected int frequenciaD = 0; 
-	Agenda agenda = new Agenda();
+	public Agenda agenda = new Agenda();
 	protected boolean custom = false;
 	protected int agendaID = -1;  
 	
