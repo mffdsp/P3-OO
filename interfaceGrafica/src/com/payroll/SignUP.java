@@ -318,21 +318,23 @@ public class SignUP extends JFrame {
 		
 		codeLabel.setText("2019" + index); 
 		
-		JLabel ScodeLabel = new JLabel((String) null);
+		JLabel ScodeLabel = new JLabel("Código Sindical: ");
 		ScodeLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		ScodeLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		ScodeLabel.setBounds(268, 249, 159, 33);
+		ScodeLabel.setVisible(false);
 		contentPane.add(ScodeLabel);
-	
+
 		CBsindboo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				if(CBsindboo.getSelectedItem().equals("SIM")) {
+					ScodeLabel.setVisible(true);
 					sind = true;
 					int indexs = 0;
 					while(indexs < 500) {
 						if(UT.isFree(func, "111" + indexs)) {
-							ScodeLabel.setText("111" + indexs);
+							ScodeLabel.setText("Código sindical: " + "111" + indexs);
 							break;
 						} indexs += 1;
 					}

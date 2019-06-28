@@ -3,6 +3,8 @@ package com.adm;
 import java.awt.Color;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -12,6 +14,7 @@ import com.employee.Funcionario;
 import com.employee.Horista;
 import com.schedule.Agenda;
 import com.schedule.Semanal;
+import com.view.MainView;
 
 public class Utility {
 	
@@ -175,11 +178,12 @@ public class Utility {
 				"Preencha todos os campos corretamente!", "ERRO", JOptionPane.ERROR_MESSAGE);
 	}
 	
-	 public void UR(JLabel LBur) {
+	 public void UR(JLabel LBur, JButton UndoBTN, JButton RedoBTN) {
 		 Thread undo = new Thread() {
 			 public void run() {
 				 try {
 					for(;;) {
+						//att text
 						if(Command.UndoAC) {
 							LBur.setForeground(new Color(255, 165, 0));
 							LBur.setText("Undone!");
@@ -192,6 +196,15 @@ public class Utility {
 							sleep(500);
 						}
 						LBur.setText("");
+						
+						//att icon
+						if(Command.SSindex == 1) {
+							UndoBTN.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-desfazer-32 (2).png")));
+						}else UndoBTN.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-desfazer-32 (3).png")));
+						if(Command.UNDOAC == 0 || Command.SS[0][Command.SSindex + 1] == null) {
+							RedoBTN.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-refazer-32 (1).png")));
+						}else RedoBTN.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-refazer-32.png")));
+						
 					}
 				}catch(Exception e) {
 					 System.err.print(e);

@@ -271,10 +271,10 @@ public class MainView extends JFrame{
 		JButton UndoBTN = new JButton("");
 		UndoBTN.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		UndoBTN.setContentAreaFilled(false);
-		UndoBTN.setIcon(new ImageIcon(MainView.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
+		UndoBTN.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-desfazer-32 (3).png")));
 		UndoBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Command.undo(funcionarios);
+				Command.UR_ACTION(funcionarios, "UNDO");
 			}
 		});
 		UndoBTN.setBounds(10, 11, 35, 50);
@@ -285,11 +285,11 @@ public class MainView extends JFrame{
 		RedoBTN.setContentAreaFilled(false);
 		RedoBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Command.redo(funcionarios);
+				Command.UR_ACTION(funcionarios, "REDO");
 			}
 
 		});
-		RedoBTN.setIcon(new ImageIcon(MainView.class.getResource("/com/sun/javafx/scene/web/skin/Redo_16x16_JFX.png")));
+		RedoBTN.setIcon(new ImageIcon(MainView.class.getResource("/com/payroll/icons/icons8-refazer-32.png")));
 		RedoBTN.setBounds(45, 11, 35, 50);
 		contentPane.add(RedoBTN);
 		
@@ -470,7 +470,7 @@ public class MainView extends JFrame{
 		LBur.setForeground(new Color(30, 144, 255));
 		LBur.setBounds(15, 46, 84, 30);
 		contentPane.add(LBur);
-		UT.UR(LBur);
+		UT.UR(LBur, UndoBTN, RedoBTN);
 		
 }
 }

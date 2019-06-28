@@ -23,8 +23,7 @@ public class Command {
 		
     	SSindex += 1;
     	for(int i = 0; i < 500; i++) {
-			if(func[i] != null) 
-			{
+				
 				SS[i][SSindex] = new SaveState();				
 				//save employee
 				if(func[i] instanceof Horista) {
@@ -59,21 +58,29 @@ public class Command {
 			
 		}
 
-	}
-	public static void undo(Funcionario[] teste){
-		try {
-			if(SSindex == 1) {
-				System.out.println("EMPTY STACK");
-				return;
-			}
-			UndoAC = true;
-			UNDOAC += 1;
-			SSindex -= 1;
+	public static void UR_ACTION(Funcionario[] teste, String action){
 		
+		if(SSindex == 1 && action.equals("UNDO")) {
+			System.out.println("EMPTY/ENDOF STACK");
+			return;
+		}else if (action.equals("REDO") && (UNDOAC == 0 || SS[0][SSindex + 1] == null) ) {
+			System.out.println("EMPTY/ENDOF STACK");
+			return;
+		}
+			
+		if(action.equals("UNDO")) {
+				UndoAC = true;
+				UNDOAC += 1;
+				SSindex -= 1;
+		}else if(action.equals("REDO")) {
+				RedoAC = true;
+				UNDOAC -= 1;
+				SSindex += 1;
+		}
+		try {
 			for(int i = 0; i < 500; i++) {
-				try {
-					//undo employee
-					
+				
+				//employee DATA
 				if(SS[i][SSindex].funcionariosSAVE instanceof Comissionado) {
 					
 					teste[i] = new Comissionado();
@@ -89,7 +96,7 @@ public class Command {
 					teste[i] = new Assalariado();
 					teste[i] = ((Assalariado)SS[i][SSindex].funcionariosSAVE).clone();
 				}
-					//undo schedules
+					//undo schedules DATA
 				if(SS[i][SSindex].agendasSAVE instanceof Mensal) {
 					
 					teste[i].agenda = new Mensal();
@@ -101,74 +108,14 @@ public class Command {
 					teste[i].setAgenda(SS[i][SSindex].agendasSAVE);
 					
 				}
-				//save Payroll state
+				//Payroll DATA
 				CalendarMT.payboo[CalendarMT.DAYSGONE] = SS[i][SSindex].payboo;
 				
 				}
-				catch(Exception ex) {
-					System.err.println(ex);
-				}
-			}
-		} catch(Exception ex2) {
-			System.out.println(ex2.getMessage());
-			JOptionPane.showMessageDialog(null ,
-					"Não há ações para desfazer", "Empty Stack!", JOptionPane.ERROR_MESSAGE);
+		}catch(Exception ex) {		
+			System.err.println(ex);
 		}
 	}
-	public static void redo(Funcionario[] teste){
-		try {
-			if(UNDOAC == 0) {
-				System.out.println("ENDOF STACK");
-				return;
-			}
-			RedoAC = true;
-			UNDOAC -= 1;
-			SSindex += 1;
-			for(int i = 0; i < 500; i++) {
-				try {
-					//undo employee
-					
-				if(SS[i][SSindex].funcionariosSAVE instanceof Comissionado) {
-					
-					teste[i] = new Comissionado();
-					teste[i] = ((Comissionado)SS[i][SSindex].funcionariosSAVE).clone();
-					
-				}else if(SS[i][SSindex].funcionariosSAVE instanceof Horista) {
-					
-					teste[i] = new Horista();
-					teste[i] = ((Horista)SS[i][SSindex].funcionariosSAVE).clone();
-					
-				}else if(SS[i][SSindex].funcionariosSAVE instanceof Assalariado) {
-					
-					teste[i] = new Assalariado();
-					teste[i] = ((Assalariado)SS[i][SSindex].funcionariosSAVE).clone();
-				}
-					//undo schedules
-				if(SS[i][SSindex].agendasSAVE instanceof Mensal) {
-					
-					teste[i].agenda = new Mensal();
-					teste[i].setAgenda(SS[i][SSindex].agendasSAVE);
-					
-				}else if(SS[i][SSindex].agendasSAVE instanceof Semanal) {
-					
-					teste[i].agenda = new Semanal();
-					teste[i].setAgenda(SS[i][SSindex].agendasSAVE);
-					
-				}
-				//save Payroll state
-				CalendarMT.payboo[CalendarMT.DAYSGONE] = SS[i][SSindex].payboo;
-				
-				}
-				catch(Exception ex) {
-					System.err.println(ex);
-				}
-			}
-		} catch(Exception ex2) {
-			System.out.println(ex2.getMessage());
-			JOptionPane.showMessageDialog(null ,
-					"Não há ações para refazer", "End of Stack!", JOptionPane.ERROR_MESSAGE);
-		}
-		
-	}
+	
 	
 }
