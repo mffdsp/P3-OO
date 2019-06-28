@@ -5,6 +5,7 @@
                             "------            Instruções de Uso:               -----"
                             "------                                             -----"
                             "------  + Executar = java -jar executavel.jar      -----"
+                            "------  + Obs. Se possível execute no windows      -----"
                             "------  + Codigos em src/com                       -----"
                             "------  + Cada Btn representa uma função*          -----"  
                             "------  + Datas/Horas são fantasiosas              -----"
