@@ -106,12 +106,11 @@ public class Utility {
 			if(teste[i].isSaved())
 			{ 
 				boolean pay = false;
-				if(teste[i] instanceof Assalariado) {
-					pay = ((Assalariado)teste[i]).pagarFuncionario();
-				}else if(teste[i] instanceof Comissionado) {
-					pay = ((Comissionado)teste[i]).pagarFuncionario();
-				}else if(teste[i] instanceof Horista) {
-					pay = ((Horista)teste[i]).pagarFuncionario();
+				
+				try {
+					pay = teste[i].pagarFuncionario();
+				}catch(Exception ex) {
+					System.err.println(ex);
 				}
 				
 				

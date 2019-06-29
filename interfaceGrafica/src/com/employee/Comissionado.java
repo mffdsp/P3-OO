@@ -25,7 +25,6 @@ public class Comissionado extends Funcionario implements Cloneable{
 		return name + " - " + code +  " - Pago via: " + payMode;
 	}
 	
-	//Metodo obrigatório devido a interface, pode ser alterado em um tipo sem modificar os demais.
 	public boolean pagarFuncionario() {
  
 		boolean Uday = false;

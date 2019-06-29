@@ -10,7 +10,6 @@ public class Mensal extends Agenda implements Cloneable{
 	     return (Mensal) super.clone();
 	}
 	 
-	 
 	private int dia = 0;
 	
 	public String toString() {

@@ -1,5 +1,6 @@
 package com.employee;
 
+import com.adm.CalendarMT;
 import com.schedule.Agenda;
 import com.schedule.Mensal;
 import com.schedule.Semanal;
@@ -32,17 +33,46 @@ public abstract class Funcionario implements Cloneable{
 	protected int agendaID = -1;  
 	
 	public void setAgenda(Agenda agenda) {
+		
 		if(agenda instanceof Mensal) {
+			
 			this.agenda = new Mensal();
 			this.agenda.setFrequencia(agenda.getFrequencia());
 			((Mensal)this.agenda).setDia(((Mensal) agenda).getDia());
+			
 		}
 		if(agenda instanceof Semanal) {
+			
 			this.agenda = new Semanal();
 			this.agenda.setFrequencia(agenda.getFrequencia());
 			((Semanal)this.agenda).setDia((((Semanal) agenda).getDia()));
+			
 		}
 	}
+	
+	public boolean pagarFuncionario() {
+
+		boolean Uday = false;
+		
+		if(this.agenda instanceof Mensal)
+		{
+			Uday = ( CalendarMT.Adia >= (((Mensal)this.agenda).getDia() - 2) && CalendarMT.weekday.equals("Sexta-Feira") ) ||
+					(CalendarMT.Adia == ((Mensal)this.agenda).getDia() && !CalendarMT.weekday.equals("Domingo")&& !CalendarMT.weekday.equals("Sabado"));
+			
+			setPago(Uday && frequenciaD >= 30);
+			
+		}else if(this.agenda instanceof Semanal) {
+			 
+			setPago(frequenciaD >= ((Semanal)this.agenda).getFrequencia()*7 && CalendarMT.weekday.equals(((Semanal)this.agenda).getDia()));
+		}
+		if(isPago()) {
+			this.frequenciaD = 5;
+			this.setURpago(true);
+		}
+		return isPago();
+
+	}
+	
 	public Agenda getAgenda() {
 		return this.agenda;
 	}
@@ -61,7 +91,6 @@ public abstract class Funcionario implements Cloneable{
 	public String toString() {
 		return name + " - " + code +  " - Pago via: " + payMode;
 	}
-	
 	public String getName() {
 		return name;
 	}
@@ -98,10 +127,8 @@ public abstract class Funcionario implements Cloneable{
 	public void setSindicaty(boolean sindicaty) {
 		this.sindicaty = sindicaty;
 	}
-	
 	public void setCode(String code) {
 		this.code = code;
-		
 	}
 	public String getCode() {
 		return this.code;

@@ -19,8 +19,6 @@ public class Assalariado extends Funcionario implements Cloneable{
 
 		boolean Uday = false;
 		
-		
-		//Metodo obrigatório devido a interface, pode ser alterado em um tipo sem modificar os demais.
 		if(super.agenda instanceof Mensal)
 		{
 			Uday = ( CalendarMT.Adia >= (((Mensal)super.agenda).getDia() - 2) && CalendarMT.weekday.equals("Sexta-Feira") ) ||
