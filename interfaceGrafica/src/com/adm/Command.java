@@ -16,14 +16,18 @@ public class Command {
 	public static boolean URpago[] = new boolean[500];
 	public static int AgendaIndex = 0;
 	public static SaveState[][] SS = new SaveState[500][500];
+	
+	//For visual
 	public static boolean UndoAC = false;
 	public static boolean RedoAC = false;
 	
+	
+	//PSV para nao passar por argumento em toda View
 	public static void saveS(Funcionario[] func) throws CloneNotSupportedException {
 		
     	SSindex += 1;
-    	for(int i = 0; i < 500; i++) {
-				
+    	try {
+    		for(int i = 0; i < 500; i++) {
 				SS[i][SSindex] = new SaveState();				
 				//save employee
 				if(func[i] instanceof Horista) {
@@ -52,13 +56,15 @@ public class Command {
 					
 				}
 				//save Payroll state
-				SS[i][SSindex].payboo = CalendarMT.payboo[CalendarMT.DAYSGONE];
+				SS[i][SSindex].payboo = CalendarMT.payboo[i];
 			}
-			
+    	}catch(Exception ex) {
+    		System.err.println(ex);
+    	}	
 			
 		}
-
-	public static void UR_ACTION(Funcionario[] teste, String action){
+	
+	public static void UR_ACTION(Funcionario[] func, String action){
 		
 		if(SSindex == 1 && action.equals("UNDO")) {
 			System.out.println("EMPTY/ENDOF STACK");
@@ -77,39 +83,40 @@ public class Command {
 				UNDOAC -= 1;
 				SSindex += 1;
 		}
+		//Nullpointer (?)
 		try {
 			for(int i = 0; i < 500; i++) {
 				
 				//employee DATA
 				if(SS[i][SSindex].funcionariosSAVE instanceof Comissionado) {
 					
-					teste[i] = new Comissionado();
-					teste[i] = ((Comissionado)SS[i][SSindex].funcionariosSAVE).clone();
+					func[i] = new Comissionado();
+					func[i] = ((Comissionado)SS[i][SSindex].funcionariosSAVE).clone();
 					
 				}else if(SS[i][SSindex].funcionariosSAVE instanceof Horista) {
 					
-					teste[i] = new Horista();
-					teste[i] = ((Horista)SS[i][SSindex].funcionariosSAVE).clone();
+					func[i] = new Horista();
+					func[i] = ((Horista)SS[i][SSindex].funcionariosSAVE).clone();
 					
 				}else if(SS[i][SSindex].funcionariosSAVE instanceof Assalariado) {
 					
-					teste[i] = new Assalariado();
-					teste[i] = ((Assalariado)SS[i][SSindex].funcionariosSAVE).clone();
+					func[i] = new Assalariado();
+					func[i] = ((Assalariado)SS[i][SSindex].funcionariosSAVE).clone();
 				}
 					//undo schedules DATA
 				if(SS[i][SSindex].agendasSAVE instanceof Mensal) {
 					
-					teste[i].agenda = new Mensal();
-					teste[i].setAgenda(SS[i][SSindex].agendasSAVE);
+					func[i].agenda = new Mensal();
+					func[i].setAgenda(SS[i][SSindex].agendasSAVE);
 					
 				}else if(SS[i][SSindex].agendasSAVE instanceof Semanal) {
 					
-					teste[i].agenda = new Semanal();
-					teste[i].setAgenda(SS[i][SSindex].agendasSAVE);
+					func[i].agenda = new Semanal();
+					func[i].setAgenda(SS[i][SSindex].agendasSAVE);
 					
 				}
 				//Payroll DATA
-				CalendarMT.payboo[CalendarMT.DAYSGONE] = SS[i][SSindex].payboo;
+				CalendarMT.payboo[i] = SS[i][SSindex].payboo;
 				
 				}
 		}catch(Exception ex) {		
