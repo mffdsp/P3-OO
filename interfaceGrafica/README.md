@@ -23,7 +23,7 @@
 
 OLDCOMMITS = https://github.com/mffdsp/P3/tree/master/Projeto-OO
 
-Projeto compactado = https://drive.google.com/drive/u/3/folders/1vTLpowv-iHf6_XOzYuu3SbPPea9WW3EJ
+Projeto compactado = https://drive.google.com/open?id=1wCvWCV7N4COv0pFwhGh9YuOJS7LCbquE
 
 ## Funções implementadas
 
