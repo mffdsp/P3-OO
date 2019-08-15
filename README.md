@@ -2,7 +2,7 @@
 
 ## Projeto Refatoramento - Folha de Pagamento
 
-**Utilização inicial** 
+Utilização inicial -> 
 Igual ao do projeto OO, do diretório [FolhaDePagamentoOO](https://github.com/hglps/FolhaDePagamentoOO/) , 
 no entanto, a entrada é por uma string descrevendo a funcionalidade desejada.
 
