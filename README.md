@@ -13,8 +13,8 @@ no entanto, a entrada é por uma string descrevendo a funcionalidade desejada.
 | ------------- | ----------- | 
 |  choicemenusfactory/ChoiceFactory.java    |  choicemenufactory/NewEmployee.java |
 |   registerfactory/ChangeRegisterFactory.java |  main/Headmaster.java |
-|   typemenufactory/TypeEmployeeFactory.java |
-
+|   typemenufactory/TypeEmployeeFactory.java | registerfactory/TypeChange.java |
+| | choicemenufactory/ChangeRegister.java |
 
 ## Visitor
 | Interface | Implementação |  Utilização |
