@@ -45,7 +45,6 @@ no entanto, a entrada é por uma string descrevendo a funcionalidade desejada.
 | Interface | Implementação | 
 | ------------- | ------------- | 
 | choicemenusfactory/ChoiceOperation.java     |  choicemenusfactory/(CardUpdate.java ; ChangeRegister.java ; DeleteEmployee.java ; InvalidChoice.java ; NewEmployee.java ; NewSale.java ; Payroll.java ; ServiceFee.java ; ShowInfo.java ; )
-  |   companypackage/Employee.java |
 |  registerfactory/ChangeOperation.java     |  registerfactory/ (AddressChange.java ;  InvalidChange.java ; NameChange.java ; TypeChange.java ; UnionChange.java ; UnionFeeChange.java ; WayChange.java)  |
 |  typemenufactory/TypeOperation.java      | typemenufactory/ (AddCommissioned.java ; AddHourly.java ; AddSalaried.java ; InvalidType.java ; ReturnCommissioned.java; ReturnHourly.java; ReturnSalaried.java)  | 
 
@@ -55,11 +54,7 @@ no entanto, a entrada é por uma string descrevendo a funcionalidade desejada.
 Info: **hlc2@ic.ufal.br**
          
               
-               
-               
-               
-               
-               
+              
                
                
                
