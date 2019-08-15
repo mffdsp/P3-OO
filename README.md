@@ -12,10 +12,11 @@ no entanto, a entrada é por uma string descrevendo a funcionalidade desejada.
 
   
 ## Factory
-| Interface | Implementação |  Utilização |
-| ------------- | ------------- | ------------- |
-|  visitor/(Visitor.java ; Visitable.java)    |  visitor/CalculateSalaryVisitor.java   |   main/Headmaster.java|
-|     |  companypackage/(Hourly.java ; Commissioned.java ; Salaried.java)   |   
+ Implementação 
+| ------------- |
+|  *choicemenusfactory/ChoiceFactory.java*    |
+|   *registerfactory/ChangeRegisterFactory.java* |
+|   *typemenufactory/TypeEmployeeFactory.java* |
 
 
 ## Visitor
