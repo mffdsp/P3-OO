@@ -49,6 +49,8 @@ no entanto, a entrada é por uma string descrevendo a funcionalidade desejada.
 |  registerfactory/ChangeOperation.java     |  registerfactory/ (AddressChange.java ;  InvalidChange.java ; NameChange.java ; TypeChange.java ; UnionChange.java ; UnionFeeChange.java ; WayChange.java)  |
 |  typemenufactory/TypeOperation.java      | typemenufactory/ (AddCommissioned.java ; AddHourly.java ; AddSalaried.java ; InvalidType.java ; ReturnCommissioned.java; ReturnHourly.java; ReturnSalaried.java)  | 
 
+---
+
 
 Info: **hlc2@ic.ufal.br**
          
