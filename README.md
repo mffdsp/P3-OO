@@ -1,16 +1,13 @@
- FolhaDePagamentoRefactored
+# FolhaDePagamentoRefactored
 
-Projeto Refatoramento - Folha de Pagamento
+## Projeto Refatoramento - Folha de Pagamento
 
-**Utilização inicial** : Igual ao do projeto OO, do diretório [FolhaDePagamentoOO](https://github.com/hglps/FolhaDePagamentoOO/) , 
+**Utilização inicial** 
+Igual ao do projeto OO, do diretório [FolhaDePagamentoOO](https://github.com/hglps/FolhaDePagamentoOO/) , 
 no entanto, a entrada é por uma string descrevendo a funcionalidade desejada.
 
-**PADRÕES DE PROJETO UTILIZADOS - FORMATO: package/Class(es):**
+# PADRÕES DE PROJETO UTILIZADOS
 
-* Factory : **choicemenusfactory/ChoiceFactory.java ; registerfactory/ChangeRegisterFactory.java ; typemenufactory/TypeEmployeeFactory.java**
-
-
-  
 ## Factory
 | Implementação | Utilização|
 | ------------- | ----------- | 
