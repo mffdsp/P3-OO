@@ -16,12 +16,15 @@ no entanto, a entrada é por uma string descrevendo a funcionalidade desejada.
 |   typemenufactory/TypeEmployeeFactory.java | registerfactory/TypeChange.java |
 | | choicemenufactory/ChangeRegister.java |
 
+---
+
 ## Visitor
 | Interface | Implementação |  Utilização |
 | ------------- | ------------- | ------------- |
 |  visitor/(Visitor.java ; Visitable.java)    |  visitor/CalculateSalaryVisitor.java   |   main/Headmaster.java|
 |     |  companypackage/(Hourly.java ; Commissioned.java ; Salaried.java)   |   
 
+---
 
 ## Interpreter
 | Interface | Implementação |  Utilização |
@@ -29,14 +32,16 @@ no entanto, a entrada é por uma string descrevendo a funcionalidade desejada.
 |  interpreter/Specification.java    |  nterpreter/(NewSaleSpec.java ; NewServiceFeeSpec.java ; PartOfUnion.java)  |   choicemenufactory/NewSale.java |
 |     |    |  registerfactory/UnionFeeChange.java |
 
+---
+
 ## Strategy
 | Interface | Implementação |  Utilização |
 | ------------- | ------------- | ------------- |
 | strategy/UnionContract.java     |  strategy/(UnionMember.java ; NotUnionMember.java)  |   companypackage/Employee.java |
 
-## Command : 
+---
 
-## Strategy
+## Command
 | Interface | Implementação | 
 | ------------- | ------------- | 
 | choicemenusfactory/ChoiceOperation.java     |  choicemenusfactory/(CardUpdate.java ; ChangeRegister.java ; DeleteEmployee.java ; InvalidChoice.java ; NewEmployee.java ; NewSale.java ; Payroll.java ; ServiceFee.java ; ShowInfo.java ; )
