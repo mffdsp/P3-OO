@@ -33,14 +33,13 @@ NewSale.java ; Payroll.java ; ServiceFee.java ; ShowInfo.java ; )**
 ## Interpreter
 | Interface | Implementação |  Utilização |
 | ------------- | ------------- | ------------- |
-|  interpreter/Specification.java)    |  nterpreter/(NewSaleSpec.java ; NewServiceFeeSpec.java ; PartOfUnion.java)  |   choicemenufactory/NewSale.java |
+|  interpreter/Specification.java    |  nterpreter/(NewSaleSpec.java ; NewServiceFeeSpec.java ; PartOfUnion.java)  |   choicemenufactory/NewSale.java |
 |     |    |  registerfactory/UnionFeeChange.java |
 
-## Interpreter : **interface interpreter/Specification.java implementada nas classes interpreter/(NewSaleSpec.java ; NewServiceFeeSpec.java ; PartOfUnion.java) usada em choicemenufactory/NewSale.java e registerfactory/UnionFeeChange.java**
-
-## Strategy : 
-**interface strategy/UnionContract.java implementada em strategy/(UnionMember.java ; NotUnionMember.java) e usada em companypackage/Employee.java**
-
+## Strategy
+| Interface | Implementação |  Utilização |
+| ------------- | ------------- | ------------- |
+| strategy/UnionContract.java     |  strategy/(UnionMember.java ; NotUnionMember.java)  |   companypackage/Employee.java |
 
 
 Info: **hlc2@ic.ufal.br**
