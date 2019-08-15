@@ -6,7 +6,7 @@
 Igual ao do projeto OO, do diretório [FolhaDePagamentoOO](https://github.com/hglps/FolhaDePagamentoOO/) , 
 no entanto, a entrada é por uma string descrevendo a funcionalidade desejada.
 
-# PADRÕES DE PROJETO UTILIZADOS
+# Padrões de projeto utilizados
 
 ## Factory
 | Implementação | Utilização|
