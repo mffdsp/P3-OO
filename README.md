@@ -24,13 +24,17 @@ NewSale.java ; Payroll.java ; ServiceFee.java ; ShowInfo.java ; )**
 	ReturnSalaried.java)**
   
 ## Visitor
-| Interface  | Implementado em |  Utilizado em |
+| Interface | Implementação |  Utilização |
 | ------------- | ------------- | ------------- |
 |  visitor/(Visitor.java ; Visitable.java)    |  visitor/CalculateSalaryVisitor.java   |   main/Headmaster.java|
 |     |  companypackage/(Hourly.java ; Commissioned.java ; Salaried.java)   |   
 
-interfaces 
-implementadas em  e nas classes companypackage/(Hourly.java ; Commissioned.java ; Salaried.java) usada na classe main/Headmaster.java**
+
+## Interpreter
+| Interface | Implementação |  Utilização |
+| ------------- | ------------- | ------------- |
+|  interpreter/Specification.java)    |  nterpreter/(NewSaleSpec.java ; NewServiceFeeSpec.java ; PartOfUnion.java)  |   choicemenufactory/NewSale.java |
+|     |    |  registerfactory/UnionFeeChange.java |
 
 ## Interpreter : **interface interpreter/Specification.java implementada nas classes interpreter/(NewSaleSpec.java ; NewServiceFeeSpec.java ; PartOfUnion.java) usada em choicemenufactory/NewSale.java e registerfactory/UnionFeeChange.java**
 
