@@ -36,6 +36,15 @@ no entanto, a entrada é por uma string descrevendo a funcionalidade desejada.
 
 ## Command : 
 
+## Strategy
+| Interface | Implementação |  Utilização |
+| ------------- | ------------- | ------------- |
+| choicemenusfactory/ChoiceOperation.java     |  implementada em choicemenusfactory/(CardUpdate.java ; ChangeRegister.java ; DeleteEmployee.java ; InvalidChoice.java ; NewEmployee.java ; NewSale.java ; Payroll.java ; ServiceFee.java ; ShowInfo.java ; )
+  |   companypackage/Employee.java |
+|  registerfactory/ChangeOperation.java     |  implementada em registerfactory/ (AddressChange.java ;  InvalidChange.java ; NameChange.java ; TypeChange.java ; UnionChange.java ; UnionFeeChange.java ; WayChange.java)  |   companypackage/Employee.java |
+|  typemenufactory/TypeOperation.java      | implementada em typemenufactory/ (AddCommissioned.java ; AddHourly.java ; AddSalaried.java ; InvalidType.java ; ReturnCommissioned.java; ReturnHourly.java; ReturnSalaried.java)  |   companypackage/Employee.java |
+
+
 ### interface choicemenusfactory/ChoiceOperation.java 
 
 implementada em choicemenusfactory/(CardUpdate.java ; ChangeRegister.java ; DeleteEmployee.java ; InvalidChoice.java ; NewEmployee.java ; NewSale.java ; Payroll.java ; ServiceFee.java ; ShowInfo.java ; )
