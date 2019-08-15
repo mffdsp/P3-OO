@@ -51,6 +51,8 @@ implementada em registerfactory/ (AddressChange.java ;  InvalidChange.java ; Nam
 ### interface typemenufactory/TypeOperation.java 
 
 implementada em typemenufactory/ (AddCommissioned.java ; AddHourly.java ; AddSalaried.java ; InvalidType.java ; ReturnCommissioned.java; ReturnHourly.java; ReturnSalaried.java)**
+
+
 Info: **hlc2@ic.ufal.br**
          
               
