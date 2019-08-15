@@ -39,10 +39,10 @@ no entanto, a entrada é por uma string descrevendo a funcionalidade desejada.
 ## Strategy
 | Interface | Implementação | 
 | ------------- | ------------- | 
-| choicemenusfactory/ChoiceOperation.java     |  implementada em choicemenusfactory/(CardUpdate.java ; ChangeRegister.java ; DeleteEmployee.java ; InvalidChoice.java ; NewEmployee.java ; NewSale.java ; Payroll.java ; ServiceFee.java ; ShowInfo.java ; )
+| choicemenusfactory/ChoiceOperation.java     |  choicemenusfactory/(CardUpdate.java ; ChangeRegister.java ; DeleteEmployee.java ; InvalidChoice.java ; NewEmployee.java ; NewSale.java ; Payroll.java ; ServiceFee.java ; ShowInfo.java ; )
   |   companypackage/Employee.java |
-|  registerfactory/ChangeOperation.java     |  implementada em registerfactory/ (AddressChange.java ;  InvalidChange.java ; NameChange.java ; TypeChange.java ; UnionChange.java ; UnionFeeChange.java ; WayChange.java)  |
-|  typemenufactory/TypeOperation.java      | implementada em typemenufactory/ (AddCommissioned.java ; AddHourly.java ; AddSalaried.java ; InvalidType.java ; ReturnCommissioned.java; ReturnHourly.java; ReturnSalaried.java)  | 
+|  registerfactory/ChangeOperation.java     |  registerfactory/ (AddressChange.java ;  InvalidChange.java ; NameChange.java ; TypeChange.java ; UnionChange.java ; UnionFeeChange.java ; WayChange.java)  |
+|  typemenufactory/TypeOperation.java      | typemenufactory/ (AddCommissioned.java ; AddHourly.java ; AddSalaried.java ; InvalidType.java ; ReturnCommissioned.java; ReturnHourly.java; ReturnSalaried.java)  | 
 
 
 Info: **hlc2@ic.ufal.br**
