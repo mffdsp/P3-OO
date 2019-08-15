@@ -9,20 +9,15 @@ no entanto, a entrada é por uma string descrevendo a funcionalidade desejada.
 
 * Factory : **choicemenusfactory/ChoiceFactory.java ; registerfactory/ChangeRegisterFactory.java ; typemenufactory/TypeEmployeeFactory.java**
 
-* Command : **interface choicemenusfactory/ChoiceOperation.java implementada em choicemenusfactory/
-(CardUpdate.java ; ChangeRegister.java ; DeleteEmployee.java ; InvalidChoice.java ; NewEmployee.java ; 
-NewSale.java ; Payroll.java ; ServiceFee.java ; ShowInfo.java ; )**
 
-**interface registerfactory/ChangeOperation.java implementada em registerfactory/ (	AddressChange.java ;  InvalidChange.java ; NameChange.java ; TypeChange.java ; UnionChange.java ; UnionFeeChange.java ; WayChange.java)**
-
-**interface typemenufactory/TypeOperation.java implementada em typemenufactory/ (   	AddCommissioned.java ;
-	AddHourly.java 	;
-	AddSalaried.java 	;
-	InvalidType.java 	;
-	ReturnCommissioned.java	;
-	ReturnHourly.java 	;
-	ReturnSalaried.java)**
   
+## Factory
+| Interface | Implementação |  Utilização |
+| ------------- | ------------- | ------------- |
+|  visitor/(Visitor.java ; Visitable.java)    |  visitor/CalculateSalaryVisitor.java   |   main/Headmaster.java|
+|     |  companypackage/(Hourly.java ; Commissioned.java ; Salaried.java)   |   
+
+
 ## Visitor
 | Interface | Implementação |  Utilização |
 | ------------- | ------------- | ------------- |
@@ -41,7 +36,20 @@ NewSale.java ; Payroll.java ; ServiceFee.java ; ShowInfo.java ; )**
 | ------------- | ------------- | ------------- |
 | strategy/UnionContract.java     |  strategy/(UnionMember.java ; NotUnionMember.java)  |   companypackage/Employee.java |
 
+## Command : 
 
+### interface choicemenusfactory/ChoiceOperation.java 
+
+implementada em choicemenusfactory/(CardUpdate.java ; ChangeRegister.java ; DeleteEmployee.java ; InvalidChoice.java ; NewEmployee.java ; NewSale.java ; Payroll.java ; ServiceFee.java ; ShowInfo.java ; )
+
+
+### interface registerfactory/ChangeOperation.java 
+
+implementada em registerfactory/ (AddressChange.java ;  InvalidChange.java ; NameChange.java ; TypeChange.java ; UnionChange.java ; UnionFeeChange.java ; WayChange.java)
+
+### interface typemenufactory/TypeOperation.java 
+
+implementada em typemenufactory/ (AddCommissioned.java ; AddHourly.java ; AddSalaried.java ; InvalidType.java ; ReturnCommissioned.java; ReturnHourly.java; ReturnSalaried.java)**
 Info: **hlc2@ic.ufal.br**
          
               
